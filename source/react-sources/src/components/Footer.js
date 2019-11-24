@@ -5,13 +5,14 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { Link } from 'react-router-dom';
+
 
 const useStyles = makeStyles({
   root: {
     width: '100%',
     position: 'fixed',
     bottom: 0,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   },
 });
 
@@ -28,8 +29,8 @@ export default function Footer() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
+      <BottomNavigationAction component={Link} to="/" label="Home" icon={<RestoreIcon />} />
+      <BottomNavigationAction component={Link} to="/Settings" label="Settings" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
     </BottomNavigation>
   );
