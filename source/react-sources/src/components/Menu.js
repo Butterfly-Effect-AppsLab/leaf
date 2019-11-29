@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,11 +9,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
-
+import history from "../utils/history";
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    position: "fixed",
+    top: 0,
+    width: "100%",
+    zIndex: 1001,
+    minHeight: "50px",
+  },
+  toolbar: {
+    height: "50px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -23,20 +31,45 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ButtonAppBar() {
+const ButtonAppBar = ({history}) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [title, setTitle] = React.useState("Dashboard");
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  useEffect(() => {
+    const processPathName = pathname => {
+      switch (pathname) {
+        case "/":
+          setTitle("Dashboard");
+          break;
+        case "/Settings":
+          setTitle("Settings");
+          break;
+        case "/Firmy":
+          setTitle("Zoznam Firiem");
+          break;
+        default:
+          break;
+      }
+    };
+
+    if (history) {
+      processPathName(history.location.pathname);
+      history.listen((location, action) => {
+        processPathName(location.pathname);
+      });
+    }
+  }, [history]);
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.toolbar}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleClick}>
             <MenuIcon />
           </IconButton>
@@ -49,14 +82,16 @@ export default function ButtonAppBar() {
           >
             <MenuItem component={Link} to="/" onClick={handleClose}>Home</MenuItem>
             <MenuItem component={Link} to="/Settings" onClick={handleClose}>Settings</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam Firiem</MenuItem>
           </Menu>
-          <Typography variant="h6" className={classes.title} color="secondary">
-            News
+          <Typography variant="h6" className={classes.title}>
+            {title}
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+export default ButtonAppBar;

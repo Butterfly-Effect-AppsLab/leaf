@@ -7,6 +7,6 @@ const MainPage = () => {
         <Hello />
     </div>
     )
-}
+};
 
 export default MainPage;

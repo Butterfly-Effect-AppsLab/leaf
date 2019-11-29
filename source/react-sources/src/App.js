@@ -5,12 +5,12 @@ import Layout from "./components/Layout";
 import Routes from "./Routes";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import red from "@material-ui/core/colors/red";
-import yellow from "@material-ui/core/colors/yellow"
+import blue from "@material-ui/core/colors/blue";
 
 const theme = createMuiTheme({
     palette: {
         primary: red,
-        secondary: yellow,
+        secondary: blue,
     }
 });
 
