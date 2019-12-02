@@ -7,12 +7,13 @@ import Menu from "./Menu"
 const Layout = ({children, history}) => {
     return (
     <div
-        style={{ position: "relative", overflow: "auto", overflowX: "hidden" }}
+        id="Hlavny"
+        style={{  width: "100%", height: "100%", position: "fixed", overflow: "hidden" }}
     >
         <Menu history={history} />
-        <div
+        <div id="Paddingovy"
             style={{
-              paddingTop: "50px",
+              paddingTop: "70px",
               paddingBottom: "50px"
             }}
         >

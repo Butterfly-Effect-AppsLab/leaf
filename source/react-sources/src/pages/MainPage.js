@@ -1,10 +1,12 @@
 import React from "react";
-import Hello from "../components/Hello";
+import Login from "../components/Login";
+import Hello from "../components/Hello"
 
 
 const MainPage = () => {
     return (<div>
-        <Hello />
+        <Login />
+        {/*<Hello />*/}
     </div>
     )
 };

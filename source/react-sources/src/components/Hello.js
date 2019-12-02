@@ -34,10 +34,12 @@ function Hello() {
 
   const handleChange = param_name => event => {
     setValues({ ...values, [param_name]: event.target.value});
+    console.log(values)
   };
 
   const handleSubmit = param_nname => () => {
     setValues({ ...values, [param_nname]: values.name});
+    console.log(values)
   };
 
   return (

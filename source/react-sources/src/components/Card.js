@@ -46,16 +46,16 @@ export default function SimpleCard() {
   const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio"];
 
   return (
-    <div
+    <divs
       style={{
         overflowX: "auto",
         overflowY: "hidden",
         whiteSpace: "nowrap",
-        paddingTop: "10px",
+        // paddingTop: "10px",
           // Tuto to paddujes, aby to nebolo nalepene na header
       }}
     >
       {headlines.map(headline => renderCard(headline))}
-    </div>
+    </divs>
   );
 }

@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     width: "100%",
     zIndex: 1001,
-    minHeight: "50px",
   },
   toolbar: {
     height: "50px",
@@ -67,7 +66,7 @@ const ButtonAppBar = ({history}) => {
   }, [history]);
 
   return (
-    <div className={classes.root}>
+    <div name="menu" className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleClick}>
