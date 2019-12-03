@@ -44,7 +44,7 @@ export default function SimpleCard() {
     );
   };
 
-  const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio"];
+  const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio", "Zubné kefky", "Kaviareň"];
 
   return (
     <div
@@ -53,7 +53,7 @@ export default function SimpleCard() {
         overflowY: "hidden",
         whiteSpace: "nowrap",
         // paddingTop: "10px",
-          // Tuto to paddujes, aby to nebolo nalepene na header
+          // Tuto to paddujes, aby to nebolo nalepene na header --- presunute do Layoutu
       }}
     >
       {headlines.map(headline => renderCard(headline))}

@@ -43,11 +43,11 @@ const ButtonAppBar = ({history}) => {
   useEffect(() => {
     const processPathName = pathname => {
       switch (pathname) {
-        case "/":
-          setTitle("Dashboard");
+        case "/Login":
+          setTitle("Login");
           break;
-        case "/Settings":
-          setTitle("Settings");
+        case "/Otazky":
+          setTitle("Otázky");
           break;
         case "/Firmy":
           setTitle("Zoznam Firiem");
@@ -59,17 +59,15 @@ const ButtonAppBar = ({history}) => {
 
     if (history) {
       processPathName(history.location.pathname);
-      console.log(history.location.pathname);
       history.listen((location, action) => {
         processPathName(location.pathname);
-              console.log(history.location.pathname);
 
       });
     }
   }, [history]);
 
   return (
-    <div name="menu" className={classes.root}>
+    <div id="menu" className={classes.root}>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleClick}>
@@ -82,8 +80,8 @@ const ButtonAppBar = ({history}) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
           >
-            <MenuItem component={Link} to="/" onClick={handleClose}>Home</MenuItem>
-            <MenuItem component={Link} to="/Settings" onClick={handleClose}>Settings</MenuItem>
+            <MenuItem component={Link} to="/Login" onClick={handleClose}>Login</MenuItem>
+            <MenuItem component={Link} to="/Otazky" onClick={handleClose}>Otázky</MenuItem>
             <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam Firiem</MenuItem>
           </Menu>
           <Typography variant="h6" className={classes.title}>

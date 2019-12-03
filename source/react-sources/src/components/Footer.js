@@ -25,10 +25,10 @@ const Footer = ({ history }) => {
   useEffect(() => {
     const processPathName = pathname => {
       switch (pathname) {
-        case "/":
+        case "/Login":
           setValue(0);
           break;
-        case "/Settings":
+        case "/Otazky":
           setValue(1);
           break;
         case "/Firmy":
@@ -41,9 +41,8 @@ const Footer = ({ history }) => {
 
     if (history) {
       processPathName(history.location.pathname);
-      console.log(history.location.pathname);
       history.listen((location, action) => {
-      console.log(history.location.pathname);
+        processPathName(location.pathname);
       });
     }
   }, [history]);
@@ -55,10 +54,10 @@ const Footer = ({ history }) => {
         setValue(newValue);
         switch (newValue) {
           case 0:
-            history.push("/");
+            history.push("/Login");
             break;
           case 1:
-            history.push("/Settings");
+            history.push("/Otazky");
             break;
           case 2:
             history.push("/Firmy");
@@ -70,8 +69,8 @@ const Footer = ({ history }) => {
       showLabels
         className={classes.root}
       >
-        <BottomNavigationAction className={classes.icon} label="Dashboard" icon={<RestoreIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Settings" icon={<FavoriteIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Login" icon={<RestoreIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Otázky" icon={<FavoriteIcon />} />
         <BottomNavigationAction className={classes.icon} label="Zoznam Firiem" icon={<LocationOnIcon />} />
       </BottomNavigation>
   );
