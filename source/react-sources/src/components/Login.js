@@ -34,7 +34,7 @@ function Login() {
     new_pass: '',
   });
 
-  const handleChangeName = param_name => event => {
+  const handleChangeName = (param_name) => event => {
     setNames({ ...names, [param_name]: event.target.value});
   };
 
@@ -42,15 +42,16 @@ function Login() {
     setPassws({ ...passws, [param_pass]: event.target.value});
   };
 
-  const handleSubmitName = param_nname => () => {
+const handleSubmitName = (param_nname) => {
     setNames({ ...names, [param_nname]: names.name});
     console.log(names);
   };
-
-  const handleSubmitPass = param_npass => () => {
+  const handleSubmitPass = (param_npass) => {
     setPassws({ ...passws, [param_npass]: passws.pass});
     console.log(passws);
   };
+
+
 
   return (
     <div id="Login" align="center" >
@@ -84,7 +85,7 @@ function Login() {
           <Button
             variant="contained"
             color="primary"
-            // onClick={handleSubmitName('new_name') && handleSubmitPass('new_pass')}
+            // onClick={handleSubmitPass('new_pass')}
             onClick={() => {
                 handleSubmitName('new_name');
                 handleSubmitPass('new_pass');

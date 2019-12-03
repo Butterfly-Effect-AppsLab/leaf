@@ -59,8 +59,11 @@ const ButtonAppBar = ({history}) => {
 
     if (history) {
       processPathName(history.location.pathname);
+      console.log(history.location.pathname);
       history.listen((location, action) => {
         processPathName(location.pathname);
+              console.log(history.location.pathname);
+
       });
     }
   }, [history]);
