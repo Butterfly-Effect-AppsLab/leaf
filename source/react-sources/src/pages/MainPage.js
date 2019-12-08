@@ -3,7 +3,7 @@ import Login from "../components/Login";
 import Hello from "../components/Hello"
 
 
-const LoginPage = () => {
+const MainPage = () => {
     return (<div>
         <Login />
         {/*<Hello />*/}
@@ -11,4 +11,4 @@ const LoginPage = () => {
     )
 };
 
-export default LoginPage;
+export default MainPage;

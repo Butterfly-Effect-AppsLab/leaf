@@ -1,4 +1,5 @@
 import React from "react";
+import "./Layout.css";
 import Footer from "./Footer";
 import Menu from "./Menu"
 
@@ -7,13 +8,13 @@ const Layout = ({children, history}) => {
     return (
     <div
         id="Hlavny"
-        style={{  width: "100%", height: "100%", position: "fixed", overflow: "auto" }}
+        style={{  width: "100%", height: "100%", position: "fixed", overflow: "hidden" }}
     >
         <Menu history={history} />
         <div id="Paddingovy"
             style={{
-                marginTop: "70px",
-                marginBottom: "50px"
+              paddingTop: "70px",
+              paddingBottom: "50px"
             }}
         >
             {children}

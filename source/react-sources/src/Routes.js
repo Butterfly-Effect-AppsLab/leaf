@@ -1,14 +1,14 @@
-import React from "react";
 import { Route, withRouter } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import FirmsPage from "./pages/FirmsPage";
-import MyQuestionsPage from "./pages/MyQuestionsPage";
+import MainPage from "./pages/MainPage";
+import SettingsPage from "./pages/SettingsPage";
+import FirmyPage from "./pages/FirmyPage";
+import React from "react";
 
 const Routes = () => (
   <>
-    <Route exact path={"/Login"} component={LoginPage} />
-    <Route exact path={"/Otazky"} component={MyQuestionsPage} />
-    <Route exact path={"/Firmy"} component={FirmsPage} />
+    <Route exact path={"/"} component={MainPage} />
+    <Route exact path={"/Settings"} component={SettingsPage} />
+    <Route exact path={"/Firmy"} component={FirmyPage} />
   </>
 );
 export default withRouter(Routes);
