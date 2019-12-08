@@ -13,7 +13,6 @@ const useStyles = makeStyles({
     margin: 5,
     display: "inline-block",
     padding: "10px",
-    overflowX: "auto",
       // Tento padding sa tyka velkosti jednotlivych kariet
   },
   title: {
@@ -47,7 +46,7 @@ export default function SimpleCard() {
   const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio"];
 
   return (
-    <div
+    <divs
       style={{
         overflowX: "auto",
         overflowY: "hidden",
@@ -57,6 +56,6 @@ export default function SimpleCard() {
       }}
     >
       {headlines.map(headline => renderCard(headline))}
-    </div>
+    </divs>
   );
 }

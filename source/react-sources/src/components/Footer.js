@@ -41,9 +41,8 @@ const Footer = ({ history }) => {
 
     if (history) {
       processPathName(history.location.pathname);
-      console.log(history.location.pathname);
       history.listen((location, action) => {
-      console.log(history.location.pathname);
+        processPathName(location.pathname);
       });
     }
   }, [history]);

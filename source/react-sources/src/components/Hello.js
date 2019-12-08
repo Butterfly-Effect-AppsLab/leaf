@@ -37,7 +37,7 @@ function Hello() {
     console.log(values)
   };
 
-  const handleSubmit = param_nname => {
+  const handleSubmit = param_nname => () => {
     setValues({ ...values, [param_nname]: values.name});
     console.log(values)
   };
