@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -13,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 250,
   },
   dense: {
     marginTop: 19,
@@ -32,24 +35,32 @@ function Login() {
  const [passws, setPassws] = React.useState({
     pass: '',
     new_pass: '',
+    show_pass: false,
   });
 
-  const handleChangeName = param_name => event => {
+  const handleChangeName = (param_name) => event => {
     setNames({ ...names, [param_name]: event.target.value});
   };
 
   const handleChangePass = param_pass => event => {
     setPassws({ ...passws, [param_pass]: event.target.value});
+    console.log(param_pass)
   };
 
-  const handleSubmitName = param_nname => () => {
+  const handleSubmitName = (param_nname) => {
     setNames({ ...names, [param_nname]: names.name});
-    console.log(names);
   };
 
-  const handleSubmitPass = param_npass => () => {
+  const handleSubmitPass = (param_npass) => {
     setPassws({ ...passws, [param_npass]: passws.pass});
-    console.log(passws);
+  };
+
+const handleClickShowPassword = () => {
+    setPassws({ ...passws, show_pass: !passws.show_pass });
+  };
+
+  const handleMouseDownPassword = event => {
+    event.preventDefault();
   };
 
   return (
@@ -72,19 +83,36 @@ function Login() {
                 />
                 <br />
                 <TextField
-                  id="standard-password"
-                  label="Heslo"
-                  className={classes.textField}
-                  onChange={handleChangePass('pass')}
-                  margin="normal"
-                  color="primary"
+                    id="standard-adornment-password"
+                    type={passws.show_pass ? 'text' : 'password'}
+                    label="Heslo"
+                    margin="normal"
+                    color="primary"
+                    className={classes.textField}
+                    align
+                    value={passws.pass}
+                    onChange={handleChangePass('pass')}
+                    InputProps={{
+                    endAdornment: (
+                          <InputAdornment position="start">
+                                <IconButton
+                                  aria-label="toggle password visibility"
+                                  onClick={handleClickShowPassword}
+                                  onMouseDown={handleMouseDownPassword}
+                                  edge="end"
+                                >
+                                  {passws.show_pass ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                          </InputAdornment>
+                    )
+                    }}
                 />
             </form>
           </Grid>
+        <br />
           <Button
             variant="contained"
             color="primary"
-            // onClick={handleSubmitName('new_name') && handleSubmitPass('new_pass')}
             onClick={() => {
                 handleSubmitName('new_name');
                 handleSubmitPass('new_pass');

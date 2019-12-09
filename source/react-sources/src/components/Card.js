@@ -13,6 +13,7 @@ const useStyles = makeStyles({
     margin: 5,
     display: "inline-block",
     padding: "10px",
+    overflowX: "auto",
       // Tento padding sa tyka velkosti jednotlivych kariet
   },
   title: {
@@ -43,19 +44,19 @@ export default function SimpleCard() {
     );
   };
 
-  const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio"];
+  const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio", "Zubné kefky", "Kaviareň"];
 
   return (
-    <divs
+    <div
       style={{
         overflowX: "auto",
         overflowY: "hidden",
         whiteSpace: "nowrap",
         // paddingTop: "10px",
-          // Tuto to paddujes, aby to nebolo nalepene na header
+          // Tuto to paddujes, aby to nebolo nalepene na header --- presunute do Layoutu
       }}
     >
       {headlines.map(headline => renderCard(headline))}
-    </divs>
+    </div>
   );
 }

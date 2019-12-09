@@ -28,7 +28,7 @@ const Footer = ({ history }) => {
         case "/":
           setValue(0);
           break;
-        case "/Settings":
+        case "/Otazky":
           setValue(1);
           break;
         case "/Firmy":
@@ -57,7 +57,7 @@ const Footer = ({ history }) => {
             history.push("/");
             break;
           case 1:
-            history.push("/Settings");
+            history.push("/Otazky");
             break;
           case 2:
             history.push("/Firmy");
@@ -69,8 +69,8 @@ const Footer = ({ history }) => {
       showLabels
         className={classes.root}
       >
-        <BottomNavigationAction className={classes.icon} label="Dashboard" icon={<RestoreIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Settings" icon={<FavoriteIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Login" icon={<RestoreIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Otázky" icon={<FavoriteIcon />} />
         <BottomNavigationAction className={classes.icon} label="Zoznam Firiem" icon={<LocationOnIcon />} />
       </BottomNavigation>
   );
