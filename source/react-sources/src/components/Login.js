@@ -44,7 +44,6 @@ function Login() {
 
   const handleChangePass = param_pass => event => {
     setPassws({ ...passws, [param_pass]: event.target.value});
-    console.log(param_pass)
   };
 
   const handleSubmitName = (param_nname) => {
