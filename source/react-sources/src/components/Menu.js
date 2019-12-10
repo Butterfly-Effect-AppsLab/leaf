@@ -52,8 +52,11 @@ const ButtonAppBar = ({history}) => {
         case "/Firmy":
           setTitle("Zoznam firiem");
           break;
-         case "/LCFirma":
+        case "/LCFirma":
           setTitle("Otázky k firmám");
+          break;
+        case "/LcKategorie":
+          setTitle("Lean Canvas kategorie");
           break;
         default:
           break;
@@ -87,6 +90,7 @@ const ButtonAppBar = ({history}) => {
             <MenuItem component={Link} to="/Otazky" onClick={handleClose}>Môj projekt</MenuItem>
             <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam firiem</MenuItem>
             <MenuItem component={Link} to="/LCFirma" onClick={handleClose}>Otázky k firmám</MenuItem>
+            <MenuItem component={Link} to="/LcKategorie" onClick={handleClose}>Lean Canvas kategorie</MenuItem>
           </Menu>
           <Typography variant="h6" className={classes.title}>
             {title}

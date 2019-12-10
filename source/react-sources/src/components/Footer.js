@@ -38,6 +38,9 @@ const Footer = ({ history }) => {
         case "/LCFirma":
           setValue(3);
           break;
+        case "/LcKategorie":
+          setValue(4);
+          break;
         default:
           break;
       }
@@ -69,6 +72,9 @@ const Footer = ({ history }) => {
           case 3:
             history.push("/LCFirma");
             break;
+          case 4:
+            history.push("/LcKategorie");
+            break;
           default:
             break;
         }
@@ -80,6 +86,7 @@ const Footer = ({ history }) => {
         <BottomNavigationAction className={classes.icon} label="Otázky" icon={<FavoriteIcon />} />
         <BottomNavigationAction className={classes.icon} label="Zoznam firiem" icon={<LocationOnIcon />} />
         <BottomNavigationAction className={classes.icon} label="Otázky k firmám" icon={<QuestionAnswerIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Lean Canvas kategorie" icon={<QuestionAnswerIcon />} />
       </BottomNavigation>
   );
 };

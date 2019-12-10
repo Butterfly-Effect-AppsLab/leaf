@@ -19,6 +19,11 @@ def my_Firmy():
 def my_LCFirma():
     return flask.render_template("index.html", token="Hello FLASK!")
 
+@app.route('/LcKategorie')
+def my_LcKategorie():
+    return flask.render_template("index.html", token="Hello FLASK!")
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
