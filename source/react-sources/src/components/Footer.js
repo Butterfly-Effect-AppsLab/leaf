@@ -5,6 +5,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 
 const useStyles = makeStyles({
   root: {
@@ -34,6 +35,9 @@ const Footer = ({ history }) => {
         case "/Firmy":
           setValue(2);
           break;
+        case "/LCFirma":
+          setValue(3);
+          break;
         default:
           break;
       }
@@ -62,6 +66,9 @@ const Footer = ({ history }) => {
           case 2:
             history.push("/Firmy");
             break;
+          case 3:
+            history.push("/LCFirma");
+            break;
           default:
             break;
         }
@@ -71,7 +78,8 @@ const Footer = ({ history }) => {
       >
         <BottomNavigationAction className={classes.icon} label="Login" icon={<RestoreIcon />} />
         <BottomNavigationAction className={classes.icon} label="Otázky" icon={<FavoriteIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Zoznam Firiem" icon={<LocationOnIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Zoznam firiem" icon={<LocationOnIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Otázky k firmám" icon={<QuestionAnswerIcon />} />
       </BottomNavigation>
   );
 };

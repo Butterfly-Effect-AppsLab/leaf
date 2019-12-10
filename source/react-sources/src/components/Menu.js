@@ -50,7 +50,10 @@ const ButtonAppBar = ({history}) => {
           setTitle("Otázky");
           break;
         case "/Firmy":
-          setTitle("Zoznam Firiem");
+          setTitle("Zoznam firiem");
+          break;
+         case "/LCFirma":
+          setTitle("Otázky k firmám");
           break;
         default:
           break;
@@ -81,8 +84,9 @@ const ButtonAppBar = ({history}) => {
               onClose={handleClose}
           >
             <MenuItem component={Link} to="/" onClick={handleClose}>Login</MenuItem>
-            <MenuItem component={Link} to="/Otazky" onClick={handleClose}>Otázky</MenuItem>
-            <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam Firiem</MenuItem>
+            <MenuItem component={Link} to="/Otazky" onClick={handleClose}>Môj projekt</MenuItem>
+            <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam firiem</MenuItem>
+            <MenuItem component={Link} to="/LCFirma" onClick={handleClose}>Otázky k firmám</MenuItem>
           </Menu>
           <Typography variant="h6" className={classes.title}>
             {title}
