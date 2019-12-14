@@ -47,7 +47,7 @@ const ButtonAppBar = ({history}) => {
           setTitle("Login");
           break;
         case "/Otazky":
-          setTitle("Otázky");
+          setTitle("Môj projekt");
           break;
         case "/Firmy":
           setTitle("Zoznam firiem");
@@ -56,7 +56,7 @@ const ButtonAppBar = ({history}) => {
           setTitle("Otázky k firmám");
           break;
         case "/LcKategorie":
-          setTitle("Lean Canvas kategorie");
+          setTitle("Lean Canvas kategórie");
           break;
         default:
           break;
@@ -86,16 +86,15 @@ const ButtonAppBar = ({history}) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
           >
-            <MenuItem component={Link} to="/" onClick={handleClose}>Login</MenuItem>
             <MenuItem component={Link} to="/Otazky" onClick={handleClose}>Môj projekt</MenuItem>
             <MenuItem component={Link} to="/Firmy" onClick={handleClose}>Zoznam firiem</MenuItem>
             <MenuItem component={Link} to="/LCFirma" onClick={handleClose}>Otázky k firmám</MenuItem>
-            <MenuItem component={Link} to="/LcKategorie" onClick={handleClose}>Lean Canvas kategorie</MenuItem>
+            <MenuItem component={Link} to="/LcKategorie" onClick={handleClose}>Lean Canvas kategórie</MenuItem>
           </Menu>
           <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" component={Link} to="/" onClick={handleClose}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     width: '100%',
     position: 'fixed',
     bottom: 0,
-    height: "50px",
+    height: "60px",
   },
   icon: {
     color: "#64b5f6",
@@ -26,21 +26,18 @@ const Footer = ({ history }) => {
   useEffect(() => {
     const processPathName = pathname => {
       switch (pathname) {
-        case "/":
+        case "/Otazky":
           setValue(0);
           break;
-        case "/Otazky":
+        case "/Firmy":
           setValue(1);
           break;
-        case "/Firmy":
+        case "/LCFirma":
           setValue(2);
           break;
-        case "/LCFirma":
-          setValue(3);
-          break;
-        //case "/LcKategorie":
-        //  setValue(4);
-        //  break;
+        case "/LcKategorie":
+         setValue(3);
+         break;
         default:
           break;
       }
@@ -61,21 +58,17 @@ const Footer = ({ history }) => {
         setValue(newValue);
         switch (newValue) {
           case 0:
-            history.push("/");
-            break;
-          case 1:
             history.push("/Otazky");
             break;
-          case 2:
+          case 1:
             history.push("/Firmy");
             break;
-          case 3:
+          case 2:
             history.push("/LCFirma");
             break;
-          //case 4:
-          //  history.push("/LcKategorie");
-          //  break;
-          // <BottomNavigationAction className={classes.icon} label="Lean Canvas kategorie" icon={<QuestionAnswerIcon />} />
+          case 3:
+            history.push("/LcKategorie");
+            break;
           default:
             break;
         }
@@ -83,10 +76,10 @@ const Footer = ({ history }) => {
       showLabels
         className={classes.root}
       >
-        <BottomNavigationAction className={classes.icon} label="Login" icon={<RestoreIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Otázky" icon={<FavoriteIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Môj projekt" icon={<FavoriteIcon />} />
         <BottomNavigationAction className={classes.icon} label="Zoznam firiem" icon={<LocationOnIcon />} />
         <BottomNavigationAction className={classes.icon} label="Otázky k firmám" icon={<QuestionAnswerIcon />} />
+        <BottomNavigationAction className={classes.icon} label="Lean Canvas kategórie" icon={<RestoreIcon />} />
       </BottomNavigation>
   );
 };

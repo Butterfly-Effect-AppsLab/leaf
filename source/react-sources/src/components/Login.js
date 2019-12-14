@@ -7,6 +7,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import GoogleLogin from 'react-google-login';
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -58,9 +60,13 @@ const handleClickShowPassword = () => {
     setPassws({ ...passws, show_pass: !passws.show_pass });
   };
 
-  const handleMouseDownPassword = event => {
+const handleMouseDownPassword = event => {
     event.preventDefault();
   };
+
+const responseGoogle = (response) => {
+  console.log(response);
+}
 
   return (
     <div id="Login" align="center" >
@@ -119,6 +125,14 @@ const handleClickShowPassword = () => {
           >
             Prihlásiť sa
           </Button>
+        <br/>
+        <br/>
+        <GoogleLogin
+            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+        />
 
     </div>
   );

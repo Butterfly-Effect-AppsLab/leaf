@@ -13,7 +13,7 @@ const Layout = ({children, history}) => {
         <div id="Paddingovy"
             style={{
                 marginTop: "70px",
-                marginBottom: "50px"
+                marginBottom: "60px"
             }}
         >
             {children}

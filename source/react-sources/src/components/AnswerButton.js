@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(0),
       },
   },
   button: {
@@ -36,6 +36,7 @@ export default function AnswerButton() {
         direction="column"
         alignItems="center"
         justify="center"
+
       >
               {options.map(option => renderButton(option))}
       </Grid>
