@@ -78,6 +78,7 @@ export default function AddCard() {
                   // Tuto to paddujes, aby to nebolo nalepene na header --- presunute do Layoutu
               }}
           >
+              {projects.map(project => renderCard(project))}
               <Card className={classes.card}>
                   <CardContent>
                       <IconButton onClick={handleClick} style={{display: 'block', margin: 'auto'}}
@@ -93,7 +94,6 @@ export default function AddCard() {
                       </Typography>
                   </CardContent>
               </Card>
-              {projects.map(project => renderCard(project))}
           </div>
       );
   }
