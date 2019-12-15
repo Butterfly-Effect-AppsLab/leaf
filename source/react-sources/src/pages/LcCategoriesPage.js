@@ -1,12 +1,12 @@
 import React from "react";
-import Card from "../components/CategoryCard";
+import CategoryCard from "../components/CategoryCard";
 
 const LcCategoriesPage = () => {
     return (
         <div>
             <body>
                 <b>Vyber si kategoriu</b>
-                <Card />
+                <CategoryCard />
                 <br />
             </body>
         </div>)

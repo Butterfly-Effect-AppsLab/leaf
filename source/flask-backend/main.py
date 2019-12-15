@@ -23,6 +23,9 @@ def my_LCFirma():
 def my_LcKategorie():
     return flask.render_template("index.html", token="Hello FLASK!")
 
+@app.route('/ProjectInfo')
+def project_info():
+    return flask.render_template("index.html", token="Hello FLASK!")
 
 
 if __name__ == '__main__':

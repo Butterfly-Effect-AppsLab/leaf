@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function MediaCard() {
+export default function CategoryCard() {
   const classes = useStyles();
 
   const renderCard = title => {
