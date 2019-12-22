@@ -3,7 +3,7 @@ from sqlalchemy import (Column, String, Integer, Boolean, ForeignKey,
 from sqlalchemy.event import listens_for
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from db_conn import connect
+from source.flask_backend.database.db_conn import connect
 
 
 Base = declarative_base()
@@ -64,11 +64,11 @@ class UserProject(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_user = Column(Integer, ForeignKey('users.id'))
-    id_project = Column(Integer, nullable=False)
+    # id_project = Column(Integer, nullable=False, autoincrement=True)
     title = Column(String, nullable=False)
     description = Column(String, nullable=False)
 
-    __table_args__ = (UniqueConstraint('id_user', 'id_project', name='_uc_id_project'),
+    __table_args__ = (UniqueConstraint('id_user', 'id', name='_uc_id_project'),
                       UniqueConstraint('id_user', 'title', name='_uc_project_title'),)
 
     # many to one
@@ -204,8 +204,11 @@ class Company(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
-    description = Column(String)
     id_specialization = Column(Integer, ForeignKey('specializations.id'))
+    description = Column(String)
+    history = Column(String)
+    unique_val_prop = Column(String)
+    revenue = Column(Integer)
 
     __table_args__ = (UniqueConstraint('name', name='_uc_company_name'),)
 
@@ -253,65 +256,41 @@ class Task(Base):
         return f'<LeanCanvasStage(name="{self.name}", id="{self.id}")>'
 
 
-@listens_for(UserProject, 'before_insert')
-def increment_id_project(mapper, connection, target):
-    num = session.query(func.max(UserProject.id_project).label('max_id_project')).\
-        filter(UserProject.id_user == target.id_user).first()
-
-    target.id_project = (num.max_id_project + 1) if num.max_id_project else 1
+# @listens_for(UserProject, 'before_insert')
+# def increment_id_project(mapper, connection, target):
+#     num = session.query(func.max(UserProject.id_project).label('max_id_project')).\
+#         filter(UserProject.id_user == target.id_user).first()
+#
+#     target.id_project = (num.max_id_project + 1) if num.max_id_project else 1
 
 
 if __name__ == '__main__':
-    db = connect()
+    db_conn = connect()
 
-    Session = sessionmaker(db)
+    user_spec_assoc.drop(db_conn)
+    user_task_assoc.drop(db_conn)
+    user_case_assoc.drop(db_conn)
+
+    Base.metadata.drop_all(bind=db_conn, tables=[
+        UserProject.__table__,
+        UserProfile.__table__,
+        User.__table__,
+
+        Specialization.__table__,
+        Company.__table__,
+        CaseStudy.__table__,
+        CaseStudyAnswer.__table__,
+
+        LeanCanvasPart.__table__,
+        LeanCanvasQuestion.__table__,
+        LeanCanvasStage.__table__,
+
+        ProjectPhase.__table__,
+        Task.__table__,
+    ])
+
+    Session = sessionmaker(db_conn)
     session = Session()
 
-    Base.metadata.create_all(db)
-
-    # Create
-    user_a = User(email='admin@admin.com', password='admin')
-    session.add(user_a)
-    session.commit()
-
-    user_a_profile = UserProfile(id_user=user_a.id, name='Jozef')
-    session.add(user_a_profile)
-    session.commit()
-
+    Base.metadata.create_all(db_conn)
     # listen(UserProject, "before_insert", UserProject.increment)
-
-    # project = UserProject(id_user=5, title='project3', description='description1')
-    # session.add(project)
-    # session.commit()
-
-    # Delete
-    # users = session.query(User)
-    # for user in users:
-    #     session.delete(user)
-    #     session.commit()
-    #
-    # profiles = session.query(UserProfile)
-    # for profile in profiles:
-    #     session.delete(profile)
-    #     session.commit()
-
-    print('-----------users-----------------')
-    # users = session.query(User).order_by(desc(User.id))
-    users = session.query(User).order_by(desc(User.id))
-
-    for user in users.filter(User.id == 5):
-        print(user)
-        print('\t' + user.profile.name)
-        print('---his projects')
-        for project in user.projects:
-            print(project)
-
-    print('-----------user_profiles-----------------')
-    profiles = session.query(UserProfile)
-    for profile in profiles:
-        print(profile)
-        print('\t' + profile.user.email)
-
-    # Update
-    # user_a.email = "admin@admin.sk"
-    # session.commit()
