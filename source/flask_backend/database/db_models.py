@@ -77,7 +77,7 @@ class UserProject(Base):
     lean_canvas_parts = relationship("LeanCanvasPart", back_populates="project")
 
     def __repr__(self):
-        return f'<UserProject(title="{self.title}", id_user="{self.id_user}", id_project="{self.id_project}")>'
+        return f'<UserProject(title="{self.title}", id_user="{self.id_user}", id_project="{self.id}")>'
 
 
 class LeanCanvasStage(Base):
@@ -206,7 +206,7 @@ class Company(Base):
     name = Column(String, nullable=False)
     id_specialization = Column(Integer, ForeignKey('specializations.id'))
     description = Column(String)
-    history = Column(String)
+    story_behind = Column(String)
     unique_val_prop = Column(String)
     revenue = Column(Integer)
 

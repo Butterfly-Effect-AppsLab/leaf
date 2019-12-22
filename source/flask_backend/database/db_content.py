@@ -15,7 +15,7 @@ def set_content():
         company = Company(name='adidas' + str(num),
                           id_specialization=1,
                           description='svetoznama firma v oblasti sportu',
-                          history='spolocnost vznikla ....',
+                          story_behind='spolocnost vznikla ....',
                           unique_val_prop='je vynimocny...',
                           revenue=1000)
         session.add(company)
@@ -27,12 +27,12 @@ def set_content():
         session.commit()
 
     for num in range(1, 20):
-        user_a_profile = UserProfile(id_user=num, name='Jozef' + str(num))
-        session.add(user_a_profile)
+        profile = UserProfile(id_user=num, name='Jozef' + str(num))
+        session.add(profile)
         session.commit()
 
     for num in range(1, 20):
-        for sub_num in range(1, 2):
+        for sub_num in range(1, 3):
             project = UserProject(id_user=num,
                                   title='project' + str(sub_num),
                                   description='description project' + str(sub_num))
