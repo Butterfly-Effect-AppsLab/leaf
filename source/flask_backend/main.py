@@ -37,7 +37,7 @@ def get_company_info(company_id):
     for company in company_data:
         company_info_json = {
             'description': company.description,
-            'history': company.history,
+            'story_behind': company.history,
             'unique_val_prop': company.unique_val_prop,
             'revenue': company.revenue
         }
