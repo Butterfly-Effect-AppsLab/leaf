@@ -2,7 +2,7 @@
 #-----------------Python-------------------
 #------------------------------------------
 
-source/flask-backend/static/react/
+source/flask_backend/static/react/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
