@@ -1,5 +1,6 @@
 import Footer from "./Footer";
-import Menu from "./Menu"
+import Menu from "./Menu";
+import React from "react";
 
 
 const Layout = ({children, history}) => {

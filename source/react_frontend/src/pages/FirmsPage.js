@@ -1,5 +1,6 @@
 import Card from "../components/Card";
-import AddProject from "../components/AddProject"
+import AddProject from "../components/AddProject";
+import React from "react";
 
 const FirmsPage = () => {
     return (

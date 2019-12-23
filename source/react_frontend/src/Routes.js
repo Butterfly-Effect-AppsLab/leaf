@@ -5,6 +5,7 @@ import MyQuestionsPage from "./pages/MyQuestionsPage";
 import FirmQuestionsPage from "./pages/FirmQuestionsPage";
 import LcCategoriesPage from "./pages/LcCategoriesPage";
 import ProjectInfoPage from './pages/ProjectInfoPage';
+import React from "react";
 
 const Routes = () => (
   <>

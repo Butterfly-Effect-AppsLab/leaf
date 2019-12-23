@@ -1,5 +1,6 @@
 import AnswerButton from "../components/AnswerButton";
 import Typography from '@material-ui/core/Typography';
+import React from "react";
 
 const FirmQuestionsPage = () => {
     return (<div>
