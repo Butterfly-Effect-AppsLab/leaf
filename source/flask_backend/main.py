@@ -1,8 +1,8 @@
 from flask import request, abort, jsonify, Flask, render_template
 from sqlalchemy.orm import sessionmaker
-from source.flask_backend.database.db_conn import connect
-from source.flask_backend.database.db_models import (Company, UserProject, CaseStudy,
-                                                     ProjectAnswer, ProjectQuestion)
+from database.db_conn import connect
+from database.db_models import (Company, UserProject, CaseStudy, ProjectAnswer, ProjectQuestion)
+
 # from flask_login import login_required
 
 app = Flask("__main__")

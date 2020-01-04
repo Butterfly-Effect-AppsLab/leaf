@@ -1,5 +1,5 @@
-from source.flask_backend.database.db_models import *
-from source.flask_backend.database.db_conn import connect
+from database.db_models import *
+from database.db_conn import connect
 from datetime import datetime
 
 

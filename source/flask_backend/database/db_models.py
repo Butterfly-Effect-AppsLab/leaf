@@ -3,7 +3,7 @@ from sqlalchemy import (Column, String, Integer, Boolean, DateTime, ForeignKey,
 from sqlalchemy.event import listens_for
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from source.flask_backend.database.db_conn import connect
+from database.db_conn import connect
 
 
 Base = declarative_base()
