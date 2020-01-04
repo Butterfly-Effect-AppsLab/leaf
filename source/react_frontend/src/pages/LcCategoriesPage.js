@@ -1,4 +1,5 @@
 import CategoryCard from "../components/CategoryCard";
+import React from "react";
 
 const LcCategoriesPage = () => {
     return (
