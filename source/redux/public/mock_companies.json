@@ -1,0 +1,60 @@
+{
+  "companies": {
+    "1": {
+      "company_name": "adidas1",
+      "specialization": 1
+    },
+    "2": {
+      "company_name": "adidas2",
+      "specialization": 1
+    },
+    "3": {
+      "company_name": "adidas3",
+      "specialization": 1
+    },
+    "4": {
+      "company_name": "adidas4",
+      "specialization": 1
+    },
+    "5": {
+      "company_name": "adidas5",
+      "specialization": 1
+    },
+    "6": {
+      "company_name": "adidas6",
+      "specialization": 1
+    },
+    "7": {
+      "company_name": "adidas7",
+      "specialization": 1
+    },
+    "8": {
+      "company_name": "adidas8",
+      "specialization": 1
+    },
+    "9": {
+      "company_name": "adidas9",
+      "specialization": 1
+    },
+    "10": {
+      "company_name": "adidas10",
+      "specialization": 1
+    },
+    "11": {
+      "company_name": "adidas11",
+      "specialization": 1
+    },
+    "12": {
+      "company_name": "adidas12",
+      "specialization": 1
+    },
+    "13": {
+      "company_name": "adidas13",
+      "specialization": 1
+    },
+    "14": {
+      "company_name": "adidas14",
+      "specialization": 1
+    }
+  }
+}

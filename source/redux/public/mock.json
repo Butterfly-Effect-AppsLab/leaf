@@ -1,0 +1,18 @@
+{
+  "todos": {
+    "allIds": [
+      101,
+      102
+    ],
+    "byIds": {
+      "101": {
+        "content": "Loaded from BE 444",
+        "completed": false
+      },
+      "102": {
+        "content": "Loaded from BE 5555",
+        "completed": false
+      }
+    }
+  }
+}

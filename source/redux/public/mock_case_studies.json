@@ -1,0 +1,24 @@
+{
+  "case_studies": {
+    "1": {
+      "description": "svetoznama firma v oblasti sportu",
+      "employees_num": 1,
+      "id": 1,
+      "id_company": 1,
+      "motivation": "bezci nemaju vhodnu obuv, ktora ....",
+      "name": "bezecke tenisky1",
+      "revenue": 100,
+      "unique_value": "je vynimocny..."
+    },
+    "2": {
+      "description": "svetoznama firma v oblasti sportu",
+      "employees_num": 2,
+      "id": 2,
+      "id_company": 1,
+      "motivation": "bezci nemaju vhodnu obuv, ktora ....",
+      "name": "bezecke tenisky2",
+      "revenue": 200,
+      "unique_value": "je vynimocny..."
+    }
+  }
+}
