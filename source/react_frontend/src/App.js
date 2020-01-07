@@ -6,7 +6,6 @@ import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import red from "@material-ui/core/colors/red";
 import blue from "@material-ui/core/colors/blue";
 import React from "react";
-import { connect } from "react-redux";
 
 const theme = createMuiTheme({
     palette: {
