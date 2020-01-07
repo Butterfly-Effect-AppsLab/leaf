@@ -1,6 +1,6 @@
 import React from "react";
 //import TodoApp from "../components/Todos/TodoApp";
-import { fetchMockData, setProjectTheme, fetchRequest } from "../redux/actions";
+import { fetchMockData, setProjectTheme, fetchPostData } from "../redux/actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getStore, getIdUser } from "../redux/selectors";
@@ -49,8 +49,8 @@ const setTheme = ( setProjectTheme, dispatch ) => () => {
   dispatch(setProjectTheme(data));
 };
 
-const testRequest = ( fetachData ) => () => {
-  fetachData();
+const testRequest = ( fetchPost ) => () => {
+    fetchPost();
 };
 
 
@@ -58,7 +58,7 @@ const MainPage = (props) => {
   const data = props.data; 
   const fetchMockData = props.fetchMockData; 
   const setProjectTheme = props.setProjectTheme;
-  const fetchReq = props.fetchRequest;
+  const fetchPost = props.fetchPostData;
   console.log('================================')
   const store = data.store;
   console.log('newState: ', store);
@@ -80,7 +80,7 @@ const MainPage = (props) => {
       <button onClick={setTheme(setProjectTheme, props.dispatch)}>
         Set project theme
       </button>
-      <button onClick={testRequest(fetchReq)}>
+      <button onClick={testRequest(fetchPost)}>
         Get test request
       </button>
       {/*ziskat projekty, doplnit moj, vypisat cely store*/}
@@ -98,7 +98,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchMockData: bindActionCreators(fetchMockData, dispatch),
-  fetchRequest: bindActionCreators(fetchRequest, dispatch),
+  fetchPostData: bindActionCreators(fetchPostData, dispatch),
   setProjectTheme,
   dispatch
 });

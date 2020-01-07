@@ -26,23 +26,25 @@ const getFailActionType = (dataGroup) => {
 
 /* --------------------------------------------------------------------------------------------*/
 
-export const fetchRequest = () => async dispatch => {
-    /*const header = {
+export const fetchPostData = () => async dispatch => {
+    const header = 
+    {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            },
+        },
         body: JSON.stringify({
             firstParam: 'yourValue',
             secondParam: 'yourOtherValue',
-            }),
-    }*/
+        }),
+    };
+
     try {
-        //const response = await fetch("http://localhost:5000/api/v1.0/companies/");
-        const request = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-        const json = await request.json();
-        console.log(request);
+        const response = await fetch("http://localhost:5000/api/v1.0/test-post/", header);
+        //const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const json = await response.json();
+        console.log(response);
         console.log(json);
         //dispatch(fetchMockDataSuccess(json, header));
     } catch (err) {

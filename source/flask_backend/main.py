@@ -99,6 +99,16 @@ def set_new_project(id_user):
     return jsonify({'id_project': new_project.id}), 201
 
 
+# https://restfulapi.net/http-status-codes/
+@app.route('/api/v1.0/test-post/', methods=['POST'])
+# @login_required
+def test_post():
+    print('..........', request)
+    print(request.json)
+
+    return make_response(jsonify({'test': 20202020}), 201)
+
+
 @app.route('/api/v1.0/project-questions/', methods=['GET'])
 # @login_required
 def get_project_stage_questions():
