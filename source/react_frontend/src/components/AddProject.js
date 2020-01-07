@@ -5,8 +5,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import IconButton from '@material-ui/core/IconButton';
-import { connect } from "react-redux";
-import { addProject } from "../redux/actions";
 
 const useStyles = makeStyles({
   card: {

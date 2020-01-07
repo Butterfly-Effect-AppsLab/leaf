@@ -128,7 +128,7 @@ const responseGoogle = (response) => {
         <br/>
         <br/>
         <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+            clientId="614010348541-jauh1n59v4va3pgvbbeleivi7q3f61dh.apps.googleusercontent.com"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
