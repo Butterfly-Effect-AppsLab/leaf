@@ -1,7 +1,20 @@
-from flask import request, abort, jsonify, Flask, render_template, make_response
+from flask import (
+    request,
+    abort,
+    jsonify,
+    Flask,
+    render_template,
+    make_response
+)
 from sqlalchemy.orm import sessionmaker
 from database.db_conn import connect
-from database.db_models import (Company, UserProject, CaseStudy, ProjectAnswer, ProjectQuestion)
+from database.db_models import (
+    Company,
+    UserProject,
+    CaseStudy,
+    ProjectAnswer,
+    ProjectQuestion
+)
 
 # from flask_login import login_required
 
