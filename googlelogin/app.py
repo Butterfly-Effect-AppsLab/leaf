@@ -23,8 +23,8 @@ from db import init_db_command
 from user import User
 
 # Configuration
-GOOGLE_CLIENT_ID = "614010348541-jauh1n59v4va3pgvbbeleivi7q3f61dh.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "xVYQjA0tke9USqWGJBxGMrC0"
+GOOGLE_CLIENT_ID = "dopln"
+GOOGLE_CLIENT_SECRET = "dopln"
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
@@ -156,4 +156,4 @@ def get_google_provider_cfg():
 
 
 if __name__ == "__main__":
-    app.run(ssl_context="adhoc")
+    app.run(host='127.0.0.1' port=5000 debug=true)
