@@ -4,6 +4,7 @@ import { fetchMockData, setProjectTheme, fetchPostData } from "../redux/actions"
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getStore, getIdUser } from "../redux/selectors";
+import { GoogleLogin } from 'react-google-login';
 
 
 const getUser = (fetchData, state) => () => {
@@ -53,6 +54,17 @@ const testRequest = ( fetchPost ) => () => {
     fetchPost();
 };
 
+const responseGoogle = (response) => {
+  console.log(response);
+  console.log(response.accessToken);
+  const options = {
+    method: 'POST',
+    body: response.accessToken,
+    mode: 'cors',
+    cache: 'default'
+  };
+  console.log(options);
+}
 
 const MainPage = (props) => {
   const data = props.data; 
@@ -63,6 +75,7 @@ const MainPage = (props) => {
   const store = data.store;
   console.log('newState: ', store);
   const idUser = data.idUser;
+
   return (
     <div>
       <button onClick={getUser(fetchMockData)}>
@@ -83,6 +96,13 @@ const MainPage = (props) => {
       <button onClick={testRequest(fetchPost)}>
         Get test request
       </button>
+      <GoogleLogin
+            clientId=""
+            buttonText="Vstup do aplikacie pomocou Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+      />
       {/*ziskat projekty, doplnit moj, vypisat cely store*/}
     </div>
   );
