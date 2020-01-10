@@ -3,14 +3,16 @@ import history from "./utils/history"; /*objekt, ktory drzi referenciu navstiven
 import Layout from "./components/Layout";
 import Routes from "./Routes";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
-import red from "@material-ui/core/colors/red";
-import blue from "@material-ui/core/colors/blue";
 import React from "react";
 
 const theme = createMuiTheme({
     palette: {
-        primary: red,
-        secondary: blue,
+        primary: {
+            main: '#EFCA59'
+        },
+        secondary: {
+            main: '#E17A47'
+        },
     }
 });
 

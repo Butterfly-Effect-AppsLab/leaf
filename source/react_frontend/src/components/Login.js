@@ -1,27 +1,35 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import GoogleLogin from 'react-google-login';
+import {ReactComponent as Logo} from '../icons/logo.svg';
+import {ReactComponent as Rocket} from '../icons/rocket.svg';
+import history from "../utils/history";
 
 
 const useStyles = makeStyles(theme => ({
   container: {
-    display: 'block',
-    flexWrap: 'wrap',
+    background: 'linear-gradient(207.11deg, #EFCA59 0%, #E17A47 98%);',
+    height: '100%',
+    width: '100%',
+    position: 'fixed',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundImage: Rocket,
   },
-  textField: {
+  button: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 250,
+    position: 'fixed',
+    bottom: '25%',
+    align: 'center',
   },
-  dense: {
-    marginTop: 19,
+  icon: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    position: 'fixed',
+    bottom: '50%',
+    align: 'center',
   },
   menu: {
     width: 200,
@@ -29,109 +37,29 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Login() {
-  const classes = useStyles();
-  const [names, setNames] = React.useState({
-    name: '',
-    new_name: '',
-  });
- const [passws, setPassws] = React.useState({
-    pass: '',
-    new_pass: '',
-    show_pass: false,
-  });
-
-  const handleChangeName = (param_name) => event => {
-    setNames({ ...names, [param_name]: event.target.value});
-  };
-
-  const handleChangePass = param_pass => event => {
-    setPassws({ ...passws, [param_pass]: event.target.value});
-  };
-
-  const handleSubmitName = (param_nname) => {
-    setNames({ ...names, [param_nname]: names.name});
-  };
-
-  const handleSubmitPass = (param_npass) => {
-    setPassws({ ...passws, [param_npass]: passws.pass});
-  };
-
-const handleClickShowPassword = () => {
-    setPassws({ ...passws, show_pass: !passws.show_pass });
-  };
-
-const handleMouseDownPassword = event => {
-    event.preventDefault();
-  };
+const classes = useStyles();
 
 const responseGoogle = (response) => {
   console.log(response);
-}
+  history.push('/Firmy');
+  };
 
   return (
-    <div id="Login" align="center" >
-          <h1>Prihlásenie {names.new_name} {passws.new_pass} </h1>
-          <Grid
-            container
-            justify="center"
-            alignItems="center"
-          >
-            <form className={classes.container} noValidate autoComplete="off">
-                <TextField
-                  id="standard-name"
-                  label="E-mail"
-                  className={classes.textField}
-                  onChange={handleChangeName('name')}
-                  margin="normal"
-                  color="primary"
-                  align
-                />
-                <br />
-                <TextField
-                    id="standard-adornment-password"
-                    type={passws.show_pass ? 'text' : 'password'}
-                    label="Heslo"
-                    margin="normal"
-                    color="primary"
-                    className={classes.textField}
-                    align
-                    value={passws.pass}
-                    onChange={handleChangePass('pass')}
-                    InputProps={{
-                    endAdornment: (
-                          <InputAdornment position="start">
-                                <IconButton
-                                  aria-label="toggle password visibility"
-                                  onClick={handleClickShowPassword}
-                                  onMouseDown={handleMouseDownPassword}
-                                  edge="end"
-                                >
-                                  {passws.show_pass ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                          </InputAdornment>
-                    )
-                    }}
-                />
-            </form>
-          </Grid>
-        <br />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-                handleSubmitName('new_name');
-                handleSubmitPass('new_pass');
-            }}
-          >
-            Prihlásiť sa
-          </Button>
-        <br/>
-        <br/>
+    <div
+        id="Login"
+        align="center"
+        className={classes.container}
+    >
+      <Rocket className={classes.icon} style={{bottom:'15%'}} />
+      <Logo height='40px' className={classes.icon} />
         <GoogleLogin
-            clientId="614010348541-jauh1n59v4va3pgvbbeleivi7q3f61dh.apps.googleusercontent.com"
+            className={classes.button}
+            clientId="702198151733-gkconifts891hamvv4euma658np5qbol.apps.googleusercontent.com"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
+            buttonText={'Prihlásiť cez Google'}
+
         />
 
     </div>

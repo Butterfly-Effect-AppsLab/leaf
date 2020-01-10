@@ -8,18 +8,21 @@ import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles({
   card: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     margin: 5,
     display: "inline-block",
     padding: "10px",
     overflowX: "auto",
-      // Tento padding sa tyka velkosti jednotlivych kariet
+    background: "#E17A47",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    display: "block",
+    color: "white",
+    verticalAlign: "middle",
+
+
   },
   pos: {
     marginBottom: 12
@@ -72,7 +75,6 @@ export default function AddProject() {
                   <CardContent>
                       <Typography
                           className={classes.title}
-                          color="textSecondary"
                           gutterBottom
                       >
                           {text}

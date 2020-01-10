@@ -6,21 +6,21 @@ import React from "react";
 
 const useStyles = makeStyles({
   card: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     margin: 5,
     display: "inline-block",
     padding: "10px",
     overflowX: "auto",
+    background: "#EFCA59",
       // Tento padding sa tyka velkosti jednotlivych kariet
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
   },
-  pos: {
-    marginBottom: 12
-  }
 });
 
 export default function SimpleCard() {
@@ -32,7 +32,6 @@ export default function SimpleCard() {
             <CardContent>
               <Typography
                 className={classes.title}
-                color="textSecondary"
                 gutterBottom
               >
                 {title}

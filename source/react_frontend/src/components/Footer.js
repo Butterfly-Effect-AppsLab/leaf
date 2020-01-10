@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     height: "60px",
   },
   icon: {
-    color: "#64b5f6",
+    color: "#7C7C7C",
   }
 });
 
