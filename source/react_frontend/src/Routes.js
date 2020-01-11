@@ -7,6 +7,7 @@ import LcCategoriesPage from "./pages/LcCategoriesPage";
 import ProjectInfoPage from './pages/ProjectInfoPage';
 import Test_ReduxPage from './pages/Test_ReduxPage';
 import React from "react";
+import OnboardingPage from "./pages/OnboardingPage";
 
 const Routes = () => (
   <>
@@ -16,6 +17,7 @@ const Routes = () => (
     <Route exact path={"/LCFirma"} component={FirmQuestionsPage} />
     <Route exact path={"/LcKategorie"} component={LcCategoriesPage} />
     <Route exact path={"/ProjectInfo"} component={ProjectInfoPage} />
+    <Route exact path={"/Onboarding"} component={OnboardingPage} />
     <Route exact path={"/test_redux"} component={Test_ReduxPage} />
   </>
 );

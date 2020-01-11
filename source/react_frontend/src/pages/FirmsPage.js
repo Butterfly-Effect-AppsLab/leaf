@@ -7,22 +7,20 @@ const FirmsPage = () => {
     return (
         <div
              style={{
-                 paddingLeft: "10px",
-                 paddingRight: "10px",
                  background: "#E5E5E5",
                  height: '100%',
                  width: '100%',
              }}
         >
-            <body>
-                <h1 style={{paddingTop: 20, margin: 0}}>Domov</h1>
+            <body style={{color: "#7C7C7C"}}>
+                <h1 style={{paddingTop: 20, paddingRight: 10, paddingLeft: 10,  margin: 0}}>Domov</h1>
                 <br />
-                <b>Vyber si firmu</b>
-                <Typography>Nauč sa na jednej z firiem, ako správne vytvoriť biznis plán a zisti, čo je dôležité pri začiatkoch biznisu</Typography>
+                <b style={{paddingRight: 10, paddingLeft: 10}}>Vyber si firmu</b>
+                <Typography style={{paddingRight: 10, paddingLeft: 10}}>Nauč sa na jednej z firiem, ako správne vytvoriť biznis plán a zisti, čo je dôležité pri začiatkoch biznisu</Typography>
                 <Card />
                 <br />
-                <b>Moje projekty</b>
-                <Typography>Rozvíjaj svoje vlastné nápady a projekt</Typography>
+                <b style={{paddingRight: 10, paddingLeft: 10}}>Moje projekty</b>
+                <Typography style={{paddingRight: 10, paddingLeft: 10}}>Rozvíjaj svoje vlastné nápady a projekt</Typography>
                 <AddProject/>
             </body>
         </div>)

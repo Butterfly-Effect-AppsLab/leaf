@@ -5,28 +5,45 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import IconButton from '@material-ui/core/IconButton';
+import Rocket from '../icons/rocket-cut.svg'
+
 
 const useStyles = makeStyles({
-  card: {
-    width: 150,
-    height: 150,
-    margin: 5,
-    display: "inline-block",
-    padding: "10px",
-    overflowX: "auto",
-    background: "#E17A47",
+   addCard: {
+       width: 150,
+       height: 150,
+       margin: 5,
+       display: "inline-block",
+       padding: "10px",
+       overflowX: "auto",
+       background: "#E5E5E5",
+      // Tento padding sa tyka velkost
+   },
+   addTitle: {
+        fontSize: 20,
+        color: "#A6AAB4",
+  },
+    card: {
+        width: 150,
+        height: 150,
+        margin: 5,
+        display: "inline-block",
+        padding: "10px",
+        overflowX: "auto",
+        background: "#E17A47",
+        backgroundImage: `url(${Rocket})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "150px 150px",
+        backgroundPosition: "left bottom"
+      // Tento padding sa tyka velkost
+
   },
   title: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
-    verticalAlign: "middle",
-
-
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "white",
+        verticalAlign: "middle",
   },
-  pos: {
-    marginBottom: 12
-  }
 });
 export default function AddProject() {
   let helpCount = JSON.parse(localStorage.getItem('numProjects'));
@@ -44,7 +61,7 @@ export default function AddProject() {
   const handleClick = () => {
       let newCount = count + 1;
       if(newCount > 3) {
-        newCount = 0
+        newCount = 3
       }
       // localStorage.setItem('numProjects', newCount);
       setCount(newCount);
@@ -95,14 +112,14 @@ export default function AddProject() {
               }}
           >
               {projects.map(project => renderCard(project))}
-              <Card className={classes.card}>
+              <Card className={classes.addCard}>
                   <CardContent>
                       <IconButton onClick={handleClick} style={{display: 'block', margin: 'auto'}}
                                   aria-label="add-project" color="primary">
                           <AddCircleIcon fontSize="large"/>
                       </IconButton>
                       <Typography
-                          className={classes.title}
+                          className={classes.addTitle}
                           color="textSecondary"
                           gutterBottom
                       >

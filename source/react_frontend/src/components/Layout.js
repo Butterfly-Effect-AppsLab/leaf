@@ -28,6 +28,6 @@ const Layout = ({children, history}) => {
            history.location.pathname !== '/'  && <Footer history={history}/>
         }    </div>
     )
-}
+};
 
 export default Layout;

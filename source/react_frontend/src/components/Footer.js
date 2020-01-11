@@ -2,10 +2,8 @@ import React, {useEffect} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import {ReactComponent as Home} from '../icons/home.svg';
+import {ReactComponent as User} from '../icons/user.svg';
 
 const useStyles = makeStyles({
   root: {
@@ -26,18 +24,18 @@ const Footer = ({ history }) => {
   useEffect(() => {
     const processPathName = pathname => {
       switch (pathname) {
-        case "/Otazky":
+        case "/Firmy":
           setValue(0);
           break;
-        case "/Firmy":
+        case "/Profil":
           setValue(1);
           break;
-        case "/LCFirma":
-          setValue(2);
-          break;
-        case "/LcKategorie":
-         setValue(3);
-         break;
+        // case "/LCFirma":
+        //   setValue(2);
+        //   break;
+        // case "/LcKategorie":
+        //  setValue(3);
+        //  break;
         default:
           break;
       }
@@ -58,17 +56,17 @@ const Footer = ({ history }) => {
         setValue(newValue);
         switch (newValue) {
           case 0:
-            history.push("/Otazky");
-            break;
-          case 1:
             history.push("/Firmy");
             break;
-          case 2:
-            history.push("/LCFirma");
+          case 1:
+            history.push("/Profil");
             break;
-          case 3:
-            history.push("/LcKategorie");
-            break;
+          // case 2:
+          //   history.push("/LCFirma");
+          //   break;
+          // case 3:
+          //   history.push("/LcKategorie");
+          //   break;
           default:
             break;
         }
@@ -76,10 +74,9 @@ const Footer = ({ history }) => {
       showLabels
         className={classes.root}
       >
-        <BottomNavigationAction className={classes.icon} label="Môj projekt" icon={<FavoriteIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Zoznam firiem" icon={<LocationOnIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Otázky k firmám" icon={<QuestionAnswerIcon />} />
-        <BottomNavigationAction className={classes.icon} label="Lean Canvas kategórie" icon={<RestoreIcon />} />
+        <BottomNavigationAction className={classes.icon} icon={<Home />} />
+        <BottomNavigationAction className={classes.icon} icon={<User />} />
+
       </BottomNavigation>
   );
 };

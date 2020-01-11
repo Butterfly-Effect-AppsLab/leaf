@@ -3,6 +3,10 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
+import Barbershop from '../icons/barbershop.svg';
+import Zubok from '../icons/zubok.svg';
+import Coffee from '../icons/coffee.svg';
+
 
 const useStyles = makeStyles({
   card: {
@@ -13,6 +17,10 @@ const useStyles = makeStyles({
     padding: "10px",
     overflowX: "auto",
     background: "#EFCA59",
+    backgroundImage: `url(${Barbershop})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "150px 150px",
+    backgroundPosition: "left center",
       // Tento padding sa tyka velkosti jednotlivych kariet
   },
   title: {
@@ -41,7 +49,8 @@ export default function SimpleCard() {
     );
   };
 
-  const headlines = ["Barber shop", "Módna značka", "Dizajn štúdio", "Zubné kefky", "Kaviareň"];
+  const headlines = ["Schollar Barbershop", "Čistý zúbok", "Honest Coffee"];
+  const icons = ["Barbershop", "Zubok", "Coffee"];
 
   return (
         <div

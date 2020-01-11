@@ -8,10 +8,10 @@ import React from "react";
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#EFCA59'
+            main: '#E17A47'
         },
         secondary: {
-            main: '#E17A47'
+            main: '#EFCA59'
         },
     }
 });
