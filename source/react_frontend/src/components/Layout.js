@@ -11,7 +11,8 @@ const Layout = ({children, history}) => {
             width: "100%",
             height: "100%",
             position: "fixed",
-            overflow: "auto" }}
+            overflow: "auto",
+        }}
     >
         {/*{*/}
         {/*   history.location.pathname !== '/'  && <Menu history={history}/>*/}
