@@ -1,21 +1,21 @@
+import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
+import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
-
 
 const useStyles = makeStyles({
   card: {
     padding: "10px",
+    textAlign: 'center',
     marginTop: "30px",
     marginBottom: "30px",
     marginRight: "15px",
     marginLeft: "15px",
     overflowX: "auto",
   },
+
   title: {
     fontSize: 20,
     fontWeight: "bold",
@@ -25,6 +25,7 @@ const useStyles = makeStyles({
   }
 });
 
+
 export default function CategoryCard() {
   const classes = useStyles();
 
@@ -32,11 +33,6 @@ export default function CategoryCard() {
     return (
           <Card className={classes.card}>
             <CardActionArea>
-            <CardMedia
-              className={classes.media}
-              //image="/static/images/cards/contemplative-reptile.jpg"
-              title="Contemplative Reptile"
-            />
             <CardContent>
               <Typography
                 className={classes.title}
@@ -51,8 +47,8 @@ export default function CategoryCard() {
     );
   };
 
-  const headlines = ["Partners", "Activities", "Resources", "Customer relationships", 
-                     "Channels", "Value Proposition", "Customer segments", "Cost structure", "Revenue streams"];
+  const headlines = ["Zákazníci", "Problém a konkurencia", "Unikátnosť produktu", "Riešenie",
+                     "Neférová výhoda", "Zdroj príjmov", "Kľúčové metriky", "Náklady", "Marketingové náklady"];
 
   return (
         <div
