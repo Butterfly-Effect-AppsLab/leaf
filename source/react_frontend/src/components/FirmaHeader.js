@@ -5,21 +5,25 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import {headlines} from './Card';
+
+
+//import {headlines} from './Card';
 
 const useStyles = makeStyles(theme => ({
   spat: {
-        textAlign: "center",
+    textAlign: "center",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    color: '#FFFFFF'
+  appBar: {
+    position: 'fixed',
+    maxHeight: '80px',
+    top: 0,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
     textAlign: "center",
+    borderRadius: '0%',
   },
   head: {
     width: '100%',
@@ -36,19 +40,19 @@ export default function DenseAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.spat}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
+    <div>
+      <AppBar color='secondary' className={classes.appBar}>
+        <Toolbar>
           <div>
-            <IconButton edge="start" className={classes.menuButton} aria-label="menu">
+            <IconButton edge="start" className={classes.title}>
               <ArrowBackIosIcon />
-              <Typography className={classes.menuButton}>
+              <Typography className={classes.card}>
               Späť
               </Typography>
             </IconButton>
           </div>
           <div className={classes.head} >
-            <Typography className={classes.title} variant="h6" color="inherit">
+            <Typography className={classes.title} variant="h6">
               Čistý zúbok
             </Typography>
           </div>

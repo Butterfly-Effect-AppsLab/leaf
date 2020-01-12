@@ -4,8 +4,10 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Backround_cisty_zubok from "../icons/backround_cisty_zubok.svg";
 
 const useStyles = makeStyles({
+
   card: {
     padding: "10px",
     textAlign: 'center',
@@ -14,17 +16,21 @@ const useStyles = makeStyles({
     marginRight: "15px",
     marginLeft: "15px",
     overflowX: "auto",
+    backgroundColor: "transparent",
+    border: '3px solid white',
+    borderRadius: '6px',
+
   },
 
   title: {
     fontSize: 20,
     fontWeight: "bold",
+      color: 'white',
   },
   pos: {
     marginBottom: 12
   }
 });
-
 
 export default function CategoryCard() {
   const classes = useStyles();
@@ -44,6 +50,7 @@ export default function CategoryCard() {
             </CardContent>
             </CardActionArea>
           </Card>
+
     );
   };
 
