@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Backround_cisty_zubok from "../icons/backround_cisty_zubok.svg";
+import LockIcon from '@material-ui/icons/Lock';
 
 const useStyles = makeStyles({
 
@@ -19,9 +19,14 @@ const useStyles = makeStyles({
     backgroundColor: "transparent",
     border: '3px solid white',
     borderRadius: '6px',
-
+    position: 'relative'
   },
-
+  lockicon: {
+      right: '10px',
+      bottom: '5px',
+      position: 'absolute',
+      color: 'white',
+  },
   title: {
     fontSize: 20,
     fontWeight: "bold",
@@ -47,6 +52,9 @@ export default function CategoryCard() {
               >
                 {title}
               </Typography>
+              <div>
+                  <LockIcon className={classes.lockicon} />
+              </div>
             </CardContent>
             </CardActionArea>
           </Card>
