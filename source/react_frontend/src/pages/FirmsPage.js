@@ -7,9 +7,10 @@ const FirmsPage = () => {
     return (
         <div
              style={{
-                 background: "#E5E5E5",
+                 background: "#F9FAFB",
                  height: '100%',
                  width: '100%',
+                 marginBottom: "60px"
              }}
         >
             <body style={{color: "#7C7C7C"}}>

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
        display: "inline-block",
        padding: "10px",
        overflowX: "auto",
-       background: "#E5E5E5",
+       background: "#F9FAFB",
       // Tento padding sa tyka velkost
    },
    addTitle: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
         fontSize: 20,
         fontWeight: "bold",
         color: "white",
-        verticalAlign: "middle",
+        textAlign: "center",
   },
 });
 export default function AddProject() {
