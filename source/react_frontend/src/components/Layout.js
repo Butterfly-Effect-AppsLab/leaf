@@ -1,33 +1,24 @@
 import Footer from "./Footer";
-import Menu from "./Menu";
 import React from "react";
+import FirmaHeader from "../components/FirmaHeader";
+
 
 
 const Layout = ({children, history}) => {
     return (
-    <div
-        id="Hlavny"
-        style={{
-            width: "100%",
-            height: "100%",
-            position: "fixed",
-            overflow: "auto",
-        }}
-    >
-        {/*{*/}
-        {/*   history.location.pathname !== '/'  && <Menu history={history}/>*/}
-        {/*}*/}
-        {/*<div id="Paddingovy"*/}
-        {/*    style={{*/}
-        {/*        marginTop: "70px",*/}
-        {/*        marginBottom: "60px"*/}
-        {/*    }}*/}
-        {/*>*/}
+        <div
+            id="Hlavny"
+            style={{
+                width: "100%",
+                height: "100%",
+                position: "fixed",
+                overflow: "auto",
+            }}
+        >
+            <FirmaHeader history={history}/>
             {children}
-        {/*</div>*/}
-        {
-            (history.location.pathname !== '/' && history.location.pathname !== '/Onboarding') && <Footer history={history}/>
-        }    </div>
+            <Footer history={history}/>
+        </div>
     )
 };
 

@@ -6,79 +6,70 @@ import {ReactComponent as Home} from '../icons/home.svg';
 import {ReactComponent as User} from '../icons/user.svg';
 
 const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    position: 'fixed',
-    bottom: 0,
-    height: "60px",
-  },
-  icon: {
-    color: "#7C7C7C",
-  }
+    root: {
+        width: '100%',
+        position: 'fixed',
+        bottom: 0,
+        height: "60px",
+    },
+    icon: {
+        color: "#7C7C7C",
+    }
 });
 
-const Footer = ({ history }) => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+const Footer = ({history}) => {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
 
-  useEffect(() => {
-    const processPathName = pathname => {
-      switch (pathname) {
-        case "/Firmy":
-          setValue(0);
-          break;
-        case "/Profil":
-          setValue(1);
-          break;
-        // case "/LCFirma":
-        //   setValue(2);
-        //   break;
-        // case "/LcKategorie":
-        //  setValue(3);
-        //  break;
-        default:
-          break;
-      }
-    };
+    useEffect(() => {
+        const processPathName = pathname => {
+            switch (pathname) {
+                case "/":
+                    setValue(-1);
+                    break;
+                case "/Firmy":
+                    setValue(0);
+                    break;
+                case "/Profil":
+                    setValue(1);
+                    break;
+                default:
+                    break;
+            }
+        };
 
-    if (history) {
-      processPathName(history.location.pathname);
-      history.listen((location, action) => {
-        processPathName(location.pathname);
-      });
-    }
-  }, [history]);
-
-  return (
-      <BottomNavigation
-        value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-        switch (newValue) {
-          case 0:
-            history.push("/Firmy");
-            break;
-          case 1:
-            history.push("/Profil");
-            break;
-          // case 2:
-          //   history.push("/LCFirma");
-          //   break;
-          // case 3:
-          //   history.push("/LcKategorie");
-          //   break;
-          default:
-            break;
+        if (history) {
+            processPathName(history.location.pathname);
+            history.listen((location, action) => {
+                processPathName(location.pathname);
+            });
         }
-      }}
-      showLabels
-        className={classes.root}
-      >
-        <BottomNavigationAction className={classes.icon} icon={<Home />} />
-        <BottomNavigationAction className={classes.icon} icon={<User />} />
+    }, [history]);
 
-      </BottomNavigation>
-  );
+    return value >= 0 ? (
+        <BottomNavigation
+            value={value}
+            onChange={(event, newValue) => {
+                setValue(newValue);
+                switch (newValue) {
+                    case 0:
+                        history.push("/Firmy");
+                        break;
+                    case 1:
+                        history.push("/Profil");
+                        break;
+                    default:
+                        break;
+                }
+            }}
+            showLabels
+            className={classes.root}
+        >
+            <BottomNavigationAction className={classes.icon} icon={<Home/>}/>
+            <BottomNavigationAction className={classes.icon} icon={<User/>}/>
+
+        </BottomNavigation>
+    ) : null;
 };
 
 export default Footer;
