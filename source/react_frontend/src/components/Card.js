@@ -9,6 +9,15 @@ import Coffee from '../icons/coffee.svg';
 import CardActionArea from "@material-ui/core/CardActionArea";
 
 
+const getCaseStudies = () => {
+    return [
+        {id: 12, name: "Schollar barbershop", icon: "Barbershop"},
+        {id: 26, name: "Čistý zúbok", icon: "Zubok"},
+        {id: 31, name: "Honest coffee", icon: "Coffee"}
+    ]
+}
+
+
 const useStyles = makeStyles({
     card: {
         width: 170,
@@ -46,15 +55,15 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
     const classes = useStyles();
 
-    const renderCard = (title, logo) => {
+    const renderCard = (idCase, name, icon) => {
         return (
-            <Card className={classes.card}>
+            <Card id={idCase} className={classes.card}>
                 <CardActionArea>
-                    <CardContent className={classes.content} style={{backgroundImage: `url(${logo})`}}>
+                    <CardContent className={classes.content} style={{backgroundImage: `url(${icon})`}}>
                         <Typography
                             className={classes.title}
                         >
-                            {title}
+                            {name}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -63,11 +72,7 @@ export default function SimpleCard() {
     };
 
 
-    const studies = [
-        {headline: "Schollar barbershop", icon: "Barbershop"},
-        {headline: "Čistý zúbok", icon: "Zubok"},
-        {headline: "Honest coffee", icon: "Coffee"}
-    ];
+    const caseStudies = getCaseStudies();
 
     return (
         <div
@@ -77,7 +82,7 @@ export default function SimpleCard() {
                 whiteSpace: "nowrap",
             }}
         >
-            {studies.map((study) => renderCard(study.headline, study.icon))}
+            {caseStudies.map((caseStudy) => renderCard(caseStudy.id, caseStudy.name, caseStudy.icon))}
         </div>
     );
 }
