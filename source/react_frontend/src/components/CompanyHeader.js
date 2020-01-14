@@ -22,6 +22,9 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: '0px',
         top: 0,
     },
+    toolBar: {
+        padding: '0px'
+    },
     but: {
         fontSize: 20,
         fontWeight: "bold",
@@ -88,7 +91,7 @@ function DenseAppBar() {
     return value >= 0 ? (
         <div>
             <AppBar color='secondary' className={classes.appBar}>
-                <Toolbar>
+                <Toolbar className={classes.toolBar}>
                     <div className={classes.head}>
                         <div className={classes.but}>
                             <IconButton className={classes.but}>

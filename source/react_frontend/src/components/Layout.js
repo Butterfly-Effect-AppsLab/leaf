@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import React from "react";
-import FirmaHeader from "../components/FirmaHeader";
+import FirmaHeader from "./CompanyHeader";
 
 
 
