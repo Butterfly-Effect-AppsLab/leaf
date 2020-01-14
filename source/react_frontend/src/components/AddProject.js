@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import IconButton from '@material-ui/core/IconButton';
 import Rocket from '../icons/rocket-cut.svg'
+import Barbershop from "../icons/barbershop.svg";
+import CardActionArea from "@material-ui/core/CardActionArea";
 
 
 const useStyles = makeStyles({
@@ -17,33 +19,51 @@ const useStyles = makeStyles({
        padding: "10px",
        overflowX: "auto",
        background: "#F9FAFB",
-      // Tento padding sa tyka velkost
+       position: "relative",
    },
    addTitle: {
         fontSize: 20,
         color: "#A6AAB4",
+        fontWeight: "bold",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        whiteSpace: "normal",
+        textAlign: "center",
+        minWidth: "130px",
   },
     card: {
-        width: 150,
-        height: 150,
-        margin: 5,
+        width: 170,
+        height: 170,
         display: "inline-block",
-        padding: "10px",
         overflowX: "auto",
+        margin: 5,
+  },
+      title: {
+        fontSize: 20,
+        margin: 0,
+        fontWeight: "bold",
+        color: "white",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        whiteSpace: "normal",
+        textAlign: "center",
+        minWidth: "130px",
+      },
+      content: {
+        width: 170,
+        height: 170,
         background: "#E17A47",
         backgroundImage: `url(${Rocket})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "150px 150px",
-        backgroundPosition: "left bottom"
-      // Tento padding sa tyka velkost
-
-  },
-  title: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "white",
-        textAlign: "center",
-  },
+        backgroundSize: "170px 170px",
+        backgroundPosition: "left center",
+        position: "relative",
+        padding: 0,
+      },
 });
 export default function AddProject() {
   let helpCount = JSON.parse(localStorage.getItem('numProjects'));
@@ -89,14 +109,16 @@ export default function AddProject() {
       const renderCard = (text) => {
           return (
               <Card className={classes.card}>
-                  <CardContent>
-                      <Typography
-                          className={classes.title}
-                          gutterBottom
-                      >
-                          {text}
-                      </Typography>
-                  </CardContent>
+                  <CardActionArea>
+                      <CardContent className={classes.content}>
+                          <Typography
+                              className={classes.title}
+                              gutterBottom
+                          >
+                              {text}
+                          </Typography>
+                      </CardContent>
+                  </CardActionArea>
               </Card>
           );
       };
@@ -114,7 +136,7 @@ export default function AddProject() {
               {projects.map(project => renderCard(project))}
               <Card className={classes.addCard}>
                   <CardContent>
-                      <IconButton onClick={handleClick} style={{display: 'block', margin: 'auto'}}
+                      <IconButton onClick={handleClick} style={{position: "relative", top: -20, display: 'block', margin: 'auto'}}
                                   aria-label="add-project" color="primary">
                           <AddCircleIcon fontSize="large"/>
                       </IconButton>

@@ -8,7 +8,6 @@ const FirmsPage = () => {
         <div
              style={{
                  background: "#F9FAFB",
-                 height: '100%',
                  width: '100%',
                  marginBottom: "60px"
              }}

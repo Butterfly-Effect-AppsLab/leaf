@@ -5,13 +5,12 @@ const LoginPage = () => {
     return (<div
          style={{
                  background: "#F9FAFB",
-                 height: '100%',
                  width: '100%',
                  color: "#7C7C7C",
-                 marginBOttom: "60px",
+                 marginBottom: "60px",
              }}
         >
-                <div style={{paddingRight: 10, paddingLeft: 10, height: "25%", textAlign: "center"}}>
+                <div style={{paddingRight: 10, paddingLeft: 10, height: "25vh", textAlign: "center"}}>
                     <b style={{fontSize : "32px"}}>Michaela</b>
                 </div>
                 <b style={{paddingRight: 10, paddingLeft: 10, color: "#EFCA59" }}>Na čom sa práve učím</b>

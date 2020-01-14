@@ -26,7 +26,7 @@ const Layout = ({children, history}) => {
             {children}
         {/*</div>*/}
         {
-           history.location.pathname !== '/'  && <Footer history={history}/>
+            (history.location.pathname !== '/' && history.location.pathname !== '/Onboarding') && <Footer history={history}/>
         }    </div>
     )
 };

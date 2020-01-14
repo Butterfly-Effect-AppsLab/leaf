@@ -6,28 +6,40 @@ import React from "react";
 import Barbershop from '../icons/barbershop.svg';
 import Zubok from '../icons/zubok.svg';
 import Coffee from '../icons/coffee.svg';
+import CardActionArea from "@material-ui/core/CardActionArea";
 
 
 const useStyles = makeStyles({
   card: {
-    width: 150,
-    height: 150,
-    margin: 5,
+    width: 170,
+    height: 170,
     display: "inline-block",
-    padding: "10px",
     overflowX: "auto",
-    background: "#EFCA59",
-    backgroundImage: `url(${Barbershop})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "150px 150px",
-    backgroundPosition: "left center",
-      // Tento padding sa tyka velkosti jednotlivych kariet
+    margin: 5,
   },
   title: {
     fontSize: 20,
+    margin: 0,
     fontWeight: "bold",
     color: "white",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    whiteSpace: "normal",
     textAlign: "center",
+    minWidth: "130px",
+  },
+  content: {
+    width: 170,
+    height: 170,
+    background: "#EFCA59",
+    backgroundImage: `url(${Barbershop})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "170px 170px",
+    backgroundPosition: "left center",
+    position: "relative",
+    padding: 0,
   },
 });
 
@@ -37,19 +49,21 @@ export default function SimpleCard() {
   const renderCard = title => {
     return (
           <Card className={classes.card}>
-            <CardContent>
-              <Typography
-                className={classes.title}
-                gutterBottom
-              >
-                {title}
-              </Typography>
-            </CardContent>
+              <CardActionArea>
+              <CardContent className={classes.content}>
+                  <Typography
+                    className={classes.title}
+                    gutterBottom
+                  >
+                    {title}
+                  </Typography>
+              </CardContent>
+              </CardActionArea>
           </Card>
     );
   };
 
-  const headlines = ["Schollar Barbershop", "Čistý zúbok", "Honest Coffee"];
+  const headlines = ["Schollar barbershop", "Čistý zúbok", "Honest coffee"];
   const icons = ["Barbershop", "Zubok", "Coffee"];
 
   return (

@@ -17,6 +17,7 @@ const useStyles = makeStyles( theme => ({
     fontSize: 20,
     fontWeight: "bold",
     color: "white",
+    margin: 0,
   },
 }));
 

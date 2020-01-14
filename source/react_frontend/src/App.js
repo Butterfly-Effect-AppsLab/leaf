@@ -17,17 +17,17 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  return (
-    <div className="App">
-        <MuiThemeProvider theme={theme}>
-          <Router history={history}>
-            <Layout history={history}>
-              <Routes />
-            </Layout>
-          </Router>
-        </MuiThemeProvider>
-    </div>
-  );
+    return (
+        <div className="App">
+            <MuiThemeProvider theme={theme}>
+                <Router history={history}>
+                    <Layout history={history}>
+                        <Routes/>
+                    </Layout>
+                </Router>
+            </MuiThemeProvider>
+        </div>
+    );
 }
 
 export default App;
