@@ -17,7 +17,6 @@ const getCaseStudies = () => {
     ]
 }
 
-
 const useStyles = makeStyles({
     card: {
         width: 170,
