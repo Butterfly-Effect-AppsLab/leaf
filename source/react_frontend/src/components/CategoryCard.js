@@ -6,6 +6,19 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LockIcon from '@material-ui/icons/Lock';
 
+const getStages = () => {
+  return [{id: 1, name: "Zákazníci"},
+          {id: 2, name: "Problém a konkurencia"},
+          {id: 3, name: "Unikátnosť produktu"},
+          {id: 4, name: "Riešenie"},
+          {id: 5, name: "Neférová výhoda"},
+          {id: 6, name: "Zdroj príjmov"},
+          {id: 7, name: "Kľúčové metriky"},
+          {id: 8, name: "Náklady"},
+          {id: 9, name: "Marketingové náklady"}
+  ]
+};
+
 const useStyles = makeStyles({
 
   card: {
@@ -40,9 +53,9 @@ const useStyles = makeStyles({
 export default function CategoryCard() {
   const classes = useStyles();
 
-  const renderCard = title => {
+  const renderCard = ( idStage, name ) => {
     return (
-          <Card className={classes.card}>
+          <Card id={idStage} className={classes.card}>
             <CardActionArea>
             <CardContent>
               <Typography
@@ -50,7 +63,7 @@ export default function CategoryCard() {
                 color="textSecondary"
                 gutterBottom
               >
-                {title}
+                {name}
               </Typography>
               <div>
                   <LockIcon className={classes.lockicon} />
@@ -62,8 +75,7 @@ export default function CategoryCard() {
     );
   };
 
-  const headlines = ["Zákazníci", "Problém a konkurencia", "Unikátnosť produktu", "Riešenie",
-                     "Neférová výhoda", "Zdroj príjmov", "Kľúčové metriky", "Náklady", "Marketingové náklady"];
+  const stages = getStages();
 
   return (
         <div
@@ -73,7 +85,7 @@ export default function CategoryCard() {
             whiteSpace: "nowrap",
           }}
         >
-            {headlines.map(headline => renderCard(headline))}
+            {stages.map(stage => renderCard(stage.id, stage.name))}
         </div>
   );
 }
