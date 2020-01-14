@@ -48,7 +48,7 @@ client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return "You must be logged in to access this content.", 403
+    return "You must be logged in to access this content...", 403
 
 
 @login_manager.user_loader
