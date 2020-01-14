@@ -16,6 +16,7 @@ const useStyles = makeStyles({
         display: "inline-block",
         overflowX: "auto",
         margin: 5,
+
     },
     title: {
         fontSize: 20,
@@ -52,7 +53,6 @@ export default function SimpleCard() {
                     <CardContent className={classes.content} style={{backgroundImage: `url(${logo})`}}>
                         <Typography
                             className={classes.title}
-                            gutterBottom
                         >
                             {title}
                         </Typography>

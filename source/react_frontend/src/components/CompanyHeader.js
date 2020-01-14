@@ -74,6 +74,9 @@ function DenseAppBar() {
                 case "/LcKategorie":
                     setValue(0);
                     break;
+                case "/LCFirma":
+                    setValue(1);
+                    break;
                 default:
                     setValue(-1);
                     break;
