@@ -71,11 +71,14 @@ function DenseAppBar() {
     useEffect(() => {
         const processPathName = pathname => {
             switch (pathname) {
-                case "/LcKategorie":
+                case "/Onboarding":
                     setValue(0);
                     break;
-                case "/LCFirma":
+                case "/":
                     setValue(1);
+                    break;
+                case "/Firmy":
+                    setValue(2);
                     break;
                 default:
                     setValue(-1);
@@ -91,7 +94,7 @@ function DenseAppBar() {
         }
     }, [history]);
 
-    return value >= 0 ? (
+    return value < 0 ? (
         <div>
             <AppBar color='secondary' className={classes.appBar}>
                 <Toolbar className={classes.toolBar}>
