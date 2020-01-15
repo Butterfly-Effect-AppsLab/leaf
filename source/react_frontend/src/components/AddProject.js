@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import IconButton from '@material-ui/core/IconButton';
-import Rocket from '../icons/rocket-cut.svg'
+import Rocket from '../icons/rocket.svg'
 import Barbershop from "../icons/barbershop.svg";
 import CardActionArea from "@material-ui/core/CardActionArea";
 
@@ -59,8 +59,8 @@ const useStyles = makeStyles({
         background: "#E17A47",
         backgroundImage: `url(${Rocket})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "170px 170px",
-        backgroundPosition: "left center",
+        backgroundSize: "160px 160px",
+        backgroundPosition: "-200% 380%",
         position: "relative",
         padding: 0,
       },

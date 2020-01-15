@@ -2,24 +2,22 @@ import React from 'react';
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import {makeStyles} from "@material-ui/core";
-import OnboardingOne from '../icons/onboarding1.svg';
-import OnboardingTwo from '../icons/onboarding2.svg';
-import OnboardingThree from '../icons/onboarding3.svg';
+import OnboardingPic from '../icons/onboarding.svg';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
 
 
 const useStyles = makeStyles({
-    color: {
+    root: {
         height: "100vh",
         background: 'linear-gradient(207.11deg, #EFCA59 0%, #E17A47 98%);',
-
+        fontFamily: "\"Sarabun\", sans-serif",
     },
     image: {
         height: "100vh",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left bottom",
+        backgroundSize: "300%",
     },
     title: {
         fontSize: "32px",
@@ -38,7 +36,14 @@ const useStyles = makeStyles({
         left: "50%",
         transform: "translate(-50%, -50%)",
     },
-
+    skip: {
+        color: "white",
+        position: "absolute",
+        bottom: "5%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        zIndex: 3,
+    },
 });
 
 function Onboarding() {
@@ -47,33 +52,40 @@ function Onboarding() {
         pagination: {
             el: '.swiper-pagination',
         },
-};
-return (
-    <div className={classes.color}>
-        <Swiper {...params}>
-            <div>
-                <Typography className={classes.title}>
-                    Chceš si rozbehnúť vlastný biznis?
-                </Typography>
-                <div className={classes.image} style={{backgroundImage: `url(${OnboardingOne})`}}/>
+    };
+    return (
+        <div className={classes.root}>
+            <div className={classes.image}>
+                <Swiper {...params}>
+                    <div>
+                        <Typography className={classes.title}>
+                            Chceš si rozbehnúť vlastný biznis?
+                        </Typography>
+                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "left bottom"}}/>
+
+                    </div>
+                    <div>
+                        <Typography className={classes.title}>
+                            Poď na to krok za krokom. Growie ťa naučí ako začať.
+                        </Typography>
+                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "center bottom"}}/>
+
+                    </div>
+                    <div>
+                        <Typography className={classes.title}>
+                            A potom ti pomôže naštartovať aj tvoj vlastný projekt.
+                        </Typography>
+                        <Button component={Link} to="/" className={classes.button} variant="outlined" color="primary">
+                            Poď do toho!
+                        </Button>
+                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`,backgroundPosition: "right bottom"}}/>
+
+                    </div>
+                </Swiper>
+                <Button component={Link} to="/" className={classes.skip}>Preskočiť</Button>
             </div>
-            <div>
-                <Typography className={classes.title}>
-                    Poď na to krok za krokom. Growie ťa naučí ako začať.
-                </Typography>
-                <div className={classes.image} style={{backgroundImage: `url(${OnboardingTwo})`}}/>
-            </div>
-            <div>
-                <Typography className={classes.title}>
-                    A potom ti pomôže naštartovať aj tvoj vlastný projekt.
-                </Typography>
-                <Button component={Link} to="/" className={classes.button} variant="outlined" color="primary">
-                    Poď do toho!
-                </Button>
-                <div className={classes.image} style={{backgroundImage: `url(${OnboardingThree})`}}/>
-            </div>
-        </Swiper>
-    </div>
-)
+        </div>
+    )
 }
+
 export default Onboarding;

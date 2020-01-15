@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
             background: "#F9FAFB",
             width: '100%',
             marginBottom: "60px",
-            color: "#7C7C7C"
+            color: "#7C7C7C",
+            height: "100%",
         },
         texts: {
             paddingRight: 10,
