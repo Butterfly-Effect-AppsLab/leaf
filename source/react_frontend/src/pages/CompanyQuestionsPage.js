@@ -10,7 +10,7 @@ const CompanyQuestionsPage = (answer) => {
                         height: '100%',
                         marginTop: '70px',
                         marginBottom: '25px',
-                        background: "#FFFFFF",
+                        background: "#F9FAFB",
                         backgroundImage: `url(${backround_cisty_zubok_white})`,
                         }}
             >

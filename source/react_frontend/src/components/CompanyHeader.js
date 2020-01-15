@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         fontSize: 20,
         fontWeight: "bold",
-        color: "white",
         borderRadius: '0%',
         textAlign: 'center',
         position: 'absolute',
@@ -66,19 +65,37 @@ const useStyles = makeStyles(theme => ({
 function DenseAppBar() {
     const classes = useStyles();
     const [value, setValue] = React.useState(-1);
+    const [textColor, setTextColor] = React.useState("");
+    const [headerColor, setHeaderColor] = React.useState("")
 
 
     useEffect(() => {
         const processPathName = pathname => {
             switch (pathname) {
-                case "/Onboarding":
+                case "/LcKategorie":   //Firma LC
                     setValue(0);
+                    setHeaderColor("secondary");
+                    setTextColor("#FFFFFF");
                     break;
-                case "/":
+                case "/ProjectInfo":    //Projekt vyplnanie
                     setValue(1);
+                    setHeaderColor("primary");
+                    setTextColor("#FFFFFF");
                     break;
-                case "/Firmy":
+                case "/ProjektLcKategorie": //Projekt LC
                     setValue(2);
+                    setHeaderColor("primary");
+                    setTextColor("#FFFFFF");
+                    break;
+                case "/LCFirma":        //Firma Otazky
+                    setValue(3);
+                    setHeaderColor("default");
+                    setTextColor("#EFCA59");
+                    break;
+                case "/Otazky":         //Projekt Otazky
+                    setValue(4);
+                    setHeaderColor("default");
+                    setTextColor("#E17A47");
                     break;
                 default:
                     setValue(-1);
@@ -94,20 +111,20 @@ function DenseAppBar() {
         }
     }, [history]);
 
-    return value < 0 ? (
+    return value >= 0 ? (
         <div>
-            <AppBar color='secondary' className={classes.appBar}>
+            <AppBar color={headerColor} className={classes.appBar}>
                 <Toolbar className={classes.toolBar}>
                     <div className={classes.head}>
-                        <div className={classes.but}>
-                            <IconButton className={classes.but}>
+                        <div className={classes.but} style={{color: textColor}}>
+                            <IconButton className={classes.but} style={{color: textColor}}>
                                 <ArrowBackIosIcon/>
                                 <Typography className={classes.card}>
                                     Späť
                                 </Typography>
                             </IconButton>
                         </div>
-                        <div className={classes.title}>
+                        <div className={classes.title} style={{color: textColor}}>
                             <Typography variant="h6">
                                 Čistý zúbok
                             </Typography>
