@@ -3,8 +3,8 @@
 #------------------------------------------
 
 source/flask_backend/static/react/
-source/flask_backend/templates/index.html
-source/react_frontend/package.json
+# source/flask_backend/templates/index.html
+# source/react_frontend/package.json
 
 
 # Byte-compiled / optimized / DLL files
