@@ -13,8 +13,8 @@ const useStyles = makeStyles(theme => ({
     question: {
         fontStyle: 'normal',
         color: '#7C7C7C',
-        fontWeight: 'bold',
-        FontSize: '21px',
+        // fontWeight: 'bold',
+        // FontSize: '21px',
         textAlign: 'center',
         lineHeight: '27px',
         overflowX: "auto",
