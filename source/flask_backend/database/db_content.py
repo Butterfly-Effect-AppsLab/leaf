@@ -31,7 +31,7 @@ def set_content():
         session.commit()
 
     for num in range(1, 20):
-        user = User(email='user@user.com', password='admin', created_at=datetime.now())
+        user = User(email='user@user.com', name='admin', id_google='123456', created_at=datetime.now())
         session.add(user)
         session.commit()
 

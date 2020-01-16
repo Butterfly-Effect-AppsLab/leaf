@@ -18,6 +18,7 @@ const useStyles = makeStyles({
         height: "100vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "300%",
+        // backgroundImage: `url(${OnboardingPic})`,
     },
     title: {
         fontSize: "32px",
@@ -44,6 +45,9 @@ const useStyles = makeStyles({
         transform: "translate(-50%, -50%)",
         zIndex: 3,
     },
+    swipe: {
+        height: "100vh"
+    }
 });
 
 function Onboarding() {
@@ -55,35 +59,30 @@ function Onboarding() {
     };
     return (
         <div className={classes.root}>
-            <div className={classes.image}>
-                <Swiper {...params}>
-                    <div>
-                        <Typography className={classes.title}>
-                            Chceš si rozbehnúť vlastný biznis?
-                        </Typography>
-                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "left bottom"}}/>
-
-                    </div>
-                    <div>
-                        <Typography className={classes.title}>
-                            Poď na to krok za krokom. Growie ťa naučí ako začať.
-                        </Typography>
-                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "center bottom"}}/>
-
-                    </div>
-                    <div>
-                        <Typography className={classes.title}>
-                            A potom ti pomôže naštartovať aj tvoj vlastný projekt.
-                        </Typography>
-                        <Button component={Link} to="/" className={classes.button} variant="outlined" color="primary">
-                            Poď do toho!
-                        </Button>
-                        <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`,backgroundPosition: "right bottom"}}/>
-
-                    </div>
-                </Swiper>
-                <Button component={Link} to="/" className={classes.skip}>Preskočiť</Button>
-            </div>
+            <Swiper {...params}>
+                <div className={classes.swipe}>
+                    <Typography className={classes.title}>
+                        Chceš si rozbehnúť vlastný biznis?
+                    </Typography>
+                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "left bottom"}}/>
+                </div>
+                <div className={classes.swipe}>
+                    <Typography className={classes.title}>
+                        Poď na to krok za krokom. Growie ťa naučí ako začať.
+                    </Typography>
+                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "center bottom"}}/>
+                </div>
+                <div className={classes.swipe}>
+                    <Typography className={classes.title}>
+                        A potom ti pomôže naštartovať aj tvoj vlastný projekt.
+                    </Typography>
+                    <Button component={Link} to="/" className={classes.button} variant="outlined" color="primary">
+                        Poď do toho!
+                    </Button>
+                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`,backgroundPosition: "right bottom"}}/>
+                </div>
+            </Swiper>
+            <Button component={Link} to="/" className={classes.skip}>Preskočiť</Button>
         </div>
     )
 }
