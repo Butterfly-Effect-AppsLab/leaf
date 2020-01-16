@@ -80,6 +80,77 @@ def get_user_projects(id_user):
     return jsonify(projects)
 
 
+@app.route('/api/v1.0/project-questions/', methods=['GET'])
+# @login_required
+def get_project_stage_questions():
+    id_stage = request.args.get('stage', '')
+    if not id_stage:
+        abort(400)
+
+    questions_data = session.query(ProjectQuestion).filter(ProjectQuestion.id_stage == id_stage)
+    questions = {'questions': {}}
+    for question in questions_data:
+        question_attrs = {
+            'id': question.id,
+            'id_stage': question.id_stage,
+            'question': question.question,
+            'order': question.order,
+            'help': question.help
+        }
+        questions['questions'][question.order] = question_attrs
+
+    return jsonify(questions)
+
+
+@app.route('/api/v1.0/user-project/<int:id_project>/answer/', methods=['GET'])
+# @login_required
+def get_project_answer(id_project):
+    id_question = request.args.get('question', '')
+    if not id_question:
+        abort(400)
+
+    answer_data = session.query(ProjectAnswer).filter(ProjectAnswer.id_question == id_question,
+                                                      ProjectAnswer.id_project == id_project).first()
+
+    if not answer_data:
+        abort(400)
+
+    answer = {'answer': {
+        'id': answer_data.id,
+        'id_project': answer_data.id_project,
+        'id_question': answer_data.id_question,
+        'answer': answer_data.answer,
+        }
+    }
+
+    return jsonify(answer)
+
+
+# https://restfulapi.net/http-methods/#patch
+@app.route('/api/v1.0/user-project/<int:id_project>/answer/<int:id_answer>/', methods=['PATCH'])
+# @login_required
+def patch_project_answer(id_project, id_answer):
+    patch_data = request.json
+    if not patch_data:
+        abort(400)
+    if 'op' not in patch_data:
+        abort(400)
+    if 'value' not in patch_data:
+        abort(400)
+
+    project = session.query(ProjectAnswer).filter(ProjectAnswer.id == id_answer,
+                                                  ProjectAnswer.id_project == id_project).one()
+
+    if patch_data['op'] == 'update':
+        project.answer = patch_data['value']
+        session.commit()
+
+        res = make_response(jsonify({"message": "Answer updated"}), 200)
+        return res
+
+    abort(400)
+
+
 # https://restfulapi.net/http-status-codes/
 @app.route('/api/v1.0/user/<int:id_user>/new-project/', methods=['POST'])
 # @login_required
@@ -120,74 +191,6 @@ def test_post():
     print(request.json)
 
     return make_response(jsonify({'test': 20202020}), 201)
-
-
-@app.route('/api/v1.0/project-questions/', methods=['GET'])
-# @login_required
-def get_project_stage_questions():
-    id_stage = request.args.get('stage', '')
-    if not id_stage:
-        abort(400)
-
-    questions_data = session.query(ProjectQuestion).filter(ProjectQuestion.id_stage == id_stage)
-    questions = {'questions': {}}
-    for question in questions_data:
-        question_attrs = {
-            'id': question.id,
-            'id_stage': question.id_stage,
-            'question': question.question,
-            'order': question.order,
-            'help': question.help
-        }
-        questions['questions'][question.order] = question_attrs
-
-    return jsonify(questions)
-
-
-@app.route('/api/v1.0/user-project/<int:id_project>/answer/', methods=['GET'])
-# @login_required
-def get_project_answer(id_project):
-    id_question = request.args.get('question', '')
-    if not id_question:
-        abort(400)
-
-    answer_data = session.query(ProjectAnswer).filter(ProjectAnswer.id_question == id_question,
-                                                      ProjectAnswer.id_project == id_project).one()
-
-    answer = {'answer': {
-        'id': answer_data.id,
-        'id_project': answer_data.id_project,
-        'id_question': answer_data.id_question,
-        'answer': answer_data.answer,
-        }
-    }
-
-    return jsonify(answer)
-
-
-# https://restfulapi.net/http-methods/#patch
-@app.route('/api/v1.0/user-project/<int:id_project>/answer/<int:id_answer>/', methods=['PATCH'])
-# @login_required
-def patch_project_answer(id_project, id_answer):
-    patch_data = request.json
-    if not patch_data:
-        abort(400)
-    if 'op' not in patch_data:
-        abort(400)
-    if 'value' not in patch_data:
-        abort(400)
-
-    project = session.query(ProjectAnswer).filter(ProjectAnswer.id == id_answer,
-                                                  ProjectAnswer.id_project == id_project).one()
-
-    if patch_data['op'] == 'update':
-        project.answer = patch_data['value']
-        session.commit()
-
-        res = make_response(jsonify({"message": "Answer updated"}), 200)
-        return res
-
-    abort(400)
 
 
 if __name__ == '__main__':

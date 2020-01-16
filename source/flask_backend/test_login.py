@@ -1,6 +1,4 @@
-import json
-import sqlite3
-from flask import Flask, redirect, request, url_for
+from flask import Flask, redirect, request, url_for, json
 from flask_login import (
     LoginManager,
     current_user,
@@ -16,7 +14,7 @@ from database.db_conn import connect
 from database.db_models import User
 from datetime import datetime
 
-# from flask_login import login_required
+# ---------------------------------------------------------------------------------
 
 app = Flask("__main__")
 app.secret_key = os.urandom(24)
@@ -48,7 +46,7 @@ client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return "You must be logged in to access this content...", 403
+    return "You must be logged in to access this content.", 403
 
 
 @login_manager.user_loader
@@ -122,7 +120,7 @@ def callback():
         auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
     )
 
-    # Parse the tokens!
+    # Parse the tokens
     client.parse_request_body_response(json.dumps(token_response.json()))
 
     userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]

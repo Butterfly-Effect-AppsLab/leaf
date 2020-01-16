@@ -26,8 +26,9 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    email = Column(String(128), nullable=False)
-    password = Column(String(64), nullable=False)
+    email = Column(String, nullable=False)
+    name = Column(String)
+    id_google = Column(String)
     created_at = Column(DateTime, nullable=False)
 
     # one to one
@@ -41,8 +42,22 @@ class User(Base):
     # many to many
     tasks = relationship("Task", secondary=user_task_assoc, back_populates="users")
 
+    is_authenticated = True
+
     def __repr__(self):
         return f'<User(email="{self.email}", id="{self.id}")>'
+
+    # def is_authenticated(self):
+    #     return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id_google
 
 
 class UserProfile(Base):
