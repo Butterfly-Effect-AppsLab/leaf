@@ -27,6 +27,9 @@ const Footer = ({history}) => {
                 case "/":
                     setValue(-1);
                     break;
+                case "/Onboarding":
+                    setValue(-1);
+                    break;
                 case "/Firmy":
                     setValue(0);
                     break;

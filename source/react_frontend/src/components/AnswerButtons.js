@@ -10,11 +10,8 @@ const useStyles = makeStyles(theme => ({
         },
     },
     button: {
-        minWidth: "600px",
-        marginTop: "15px",
-        marginBottom: "15px",
-        marginRight: "auto",
-        marginLeft: "auto",
+        minWidth: "85%",
+        margin: "15px",
         border: "2px solid #EFCA59",
         borderRadius: '6px',
         textColor: '#7C7C7C',

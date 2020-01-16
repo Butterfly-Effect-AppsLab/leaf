@@ -11,11 +11,11 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 
 const getCaseStudies = () => {
     return [
-        {id: 12, name: "Schollar barbershop", icon: "Barbershop"},
-        {id: 26, name: "Čistý zúbok", icon: "Zubok"},
-        {id: 31, name: "Honest coffee", icon: "Coffee"}
+        {id: 12, name: "Schollar barbershop", icon: Barbershop, position: "80% 50%"},
+        {id: 26, name: "Čistý zúbok", icon: Zubok, position: "40% 150%"},
+        {id: 31, name: "Honest coffee", icon: Coffee, position: "-80% 50%"},
     ]
-}
+};
 
 const useStyles = makeStyles({
     card: {
@@ -44,8 +44,7 @@ const useStyles = makeStyles({
         height: 170,
         background: "#EFCA59",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "170px 170px",
-        backgroundPosition: "left center",
+        backgroundSize: "auto",
         position: "relative",
         padding: 0,
     },
@@ -54,11 +53,11 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
     const classes = useStyles();
 
-    const renderCard = (idCase, name, icon) => {
+    const renderCard = (idCase, name, icon, position) => {
         return (
             <Card id={idCase} className={classes.card}>
                 <CardActionArea>
-                    <CardContent className={classes.content} style={{backgroundImage: `url(${icon})`}}>
+                    <CardContent className={classes.content} style={{backgroundImage: `url(${icon})`, backgroundPosition: position,}}>
                         <Typography
                             className={classes.title}
                         >
@@ -81,7 +80,7 @@ export default function SimpleCard() {
                 whiteSpace: "nowrap",
             }}
         >
-            {caseStudies.map((caseStudy) => renderCard(caseStudy.id, caseStudy.name, caseStudy.icon))}
+            {caseStudies.map((caseStudy) => renderCard(caseStudy.id, caseStudy.name, caseStudy.icon, caseStudy.position))}
         </div>
     );
 }

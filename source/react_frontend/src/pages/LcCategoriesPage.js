@@ -7,8 +7,8 @@ const LcCategoriesPage = () => {
     return (
         <div
             style={{
-                marginTop: '70px',
-                marginBottom: '25px',
+                marginTop: '80px',
+                marginBottom: '60px',
                 background: "#EFCA59",
                 backgroundImage: `url(${Backround_cisty_zubok})`,
             }}
