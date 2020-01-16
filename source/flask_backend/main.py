@@ -63,7 +63,7 @@ def get_case_studies(id_company):
     return jsonify(case_studies)
 
 
-@app.route('/api/v1.0/user/<int:id_user>/projects/', methods=['GET'])
+@app.route('/api/v1.0/projects/', methods=['GET'])
 # @login_required
 def get_user_projects(id_user):
     projects_data = session.query(UserProject).filter(UserProject.id_user == id_user)
@@ -102,7 +102,7 @@ def get_project_stage_questions():
     return jsonify(questions)
 
 
-@app.route('/api/v1.0/user-project/<int:id_project>/answer/', methods=['GET'])
+@app.route('/api/v1.0/project/<int:id_project>/answer/', methods=['GET'])
 # @login_required
 def get_project_answer(id_project):
     id_question = request.args.get('question', '')
@@ -127,7 +127,7 @@ def get_project_answer(id_project):
 
 
 # https://restfulapi.net/http-methods/#patch
-@app.route('/api/v1.0/user-project/<int:id_project>/answer/<int:id_answer>/', methods=['PATCH'])
+@app.route('/api/v1.0/project/<int:id_project>/answer/<int:id_answer>/', methods=['PATCH'])
 # @login_required
 def patch_project_answer(id_project, id_answer):
     patch_data = request.json
@@ -194,4 +194,4 @@ def test_post():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='localhost', debug=True)

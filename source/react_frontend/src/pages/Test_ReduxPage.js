@@ -1,6 +1,6 @@
 import React from "react";
 //import TodoApp from "../components/Todos/TodoApp";
-import { fetchMockData, setProjectTheme, fetchPostData } from "../redux/actions";
+import { fetchMockData, setProjectTheme, fetchData } from "../redux/actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getStore, getIdUser } from "../redux/selectors";
@@ -50,8 +50,12 @@ const setTheme = ( setProjectTheme, dispatch ) => () => {
   dispatch(setProjectTheme(data));
 };
 
-const testRequest = ( fetchPost ) => () => {
-    fetchPost();
+const testRequest = ( request ) => () => {
+  const requestInfo = {
+    hasHeader: false,
+    url: "http://localhost:5000/api/v1.0/companies/"
+  };
+  request(requestInfo);
 };
 
 const responseGoogle = (response) => {
@@ -64,13 +68,12 @@ const responseGoogle = (response) => {
     cache: 'default'
   };
   console.log(options);
-}
+};
 
 const MainPage = (props) => {
   const data = props.data; 
   const fetchMockData = props.fetchMockData; 
   const setProjectTheme = props.setProjectTheme;
-  const fetchPost = props.fetchPostData;
   console.log('================================')
   const store = data.store;
   console.log('newState: ', store);
@@ -93,7 +96,7 @@ const MainPage = (props) => {
       <button onClick={setTheme(setProjectTheme, props.dispatch)}>
         Set project theme
       </button>
-      <button onClick={testRequest(fetchPost)}>
+      <button onClick={testRequest(props.fetchData)}>
         Get test request
       </button>
       <GoogleLogin
@@ -118,7 +121,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchMockData: bindActionCreators(fetchMockData, dispatch),
-  fetchPostData: bindActionCreators(fetchPostData, dispatch),
+  fetchData: bindActionCreators(fetchData, dispatch),
   setProjectTheme,
   dispatch
 });

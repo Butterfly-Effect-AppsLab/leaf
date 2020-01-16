@@ -1,3 +1,5 @@
+import { API_COMPANIES } from "./urls";
+
 export const FETCH_MOCK_DATA_SUCCESS_C = "FETCH_MOCK_DATA_SUCCESS_C";
 export const FETCH_MOCK_DATA_FAIL_C = "FETCH_MOCK_DATA_FAIL_C";
 export const FETCH_MOCK_DATA_SUCCESS_U = "FETCH_MOCK_DATA_SUCCESS_U";
@@ -26,32 +28,36 @@ const getFailActionType = (dataGroup) => {
 
 /* --------------------------------------------------------------------------------------------*/
 
-export const fetchPostData = () => async dispatch => {
-    const header = 
-    {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            firstParam: 'yourValue',
-            secondParam: 'yourOtherValue',
-        }),
-    };
 
+export const fetchData = (props) => async dispatch => {
+    const header = undefined;
+    if( props.hasHeader ){
+        header = {
+            method: props.method,
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(props.body),
+        };
+    }
+
+    console.log(props);
+    console.log(API_COMPANIES());
     try {
-        const response = await fetch("http://localhost:5000/api/v1.0/test-post/", header);
-        //const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        const response = await fetch(API_COMPANIES(), header);
+        //const response = await fetch(props.url, header);
         const json = await response.json();
         console.log(response);
         console.log(json);
-        //dispatch(fetchMockDataSuccess(json, header));
+        //dispatch(fetchDataSuccess(json, header));
     } catch (err) {
         console.log(err);
-        //dispatch(fetchMockDataFail(header));
+        //dispatch(fetchDataFail(header));
     }
 };
+
+
 
 /* --------------------------------------------------------------------------------------------*/
 
