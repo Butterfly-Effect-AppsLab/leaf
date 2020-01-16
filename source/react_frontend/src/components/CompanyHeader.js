@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: '0px',
         paddingBottom: '0px',
         top: 0,
+        boxShadow: 'none'
     },
     toolBar: {
         padding: '0px'
@@ -44,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         width: '100%',
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: "bold",
         borderRadius: '0%',
         textAlign: 'center',
