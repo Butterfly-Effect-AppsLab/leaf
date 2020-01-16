@@ -11,7 +11,11 @@ import history from '../utils/history';
 
 const useStyles = makeStyles(theme => ({
     spat: {
-        textAlign: "center",
+        display: "inline-block",
+        overflowX: "auto",
+        margin: 5,
+        fontSize: 20,
+        fontWeight: "bold",
     },
     appBar: {
         position: 'fixed',
@@ -21,11 +25,13 @@ const useStyles = makeStyles(theme => ({
         paddingTop: '0px',
         paddingBottom: '0px',
         top: 0,
+        boxShadow: 'none'
     },
     toolBar: {
         padding: '0px'
     },
     but: {
+        textAlign: "center",
         fontSize: 20,
         fontWeight: "bold",
         color: "white",
@@ -33,12 +39,13 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         left: 0,
         top: 0,
+        paddingTop: '5px',
         paddingBottom: '15px',
-        paddingLeft: '10px',
+        paddingLeft: '18px',
     },
     title: {
         width: '100%',
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: "bold",
         borderRadius: '0%',
         textAlign: 'center',
@@ -119,13 +126,13 @@ function DenseAppBar() {
                         <div className={classes.but} style={{color: textColor}}>
                             <IconButton className={classes.but} style={{color: textColor}}>
                                 <ArrowBackIosIcon/>
-                                <Typography className={classes.card}>
+                                <Typography className={classes.spat}>
                                     Späť
                                 </Typography>
                             </IconButton>
                         </div>
-                        <div className={classes.title} style={{color: textColor}}>
-                            <Typography variant="h6">
+                        <div>
+                            <Typography className={classes.title} style={{color: textColor}}>
                                 Čistý zúbok
                             </Typography>
                         </div>

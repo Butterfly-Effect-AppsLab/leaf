@@ -8,10 +8,9 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: '15px',
         marginRight: 'auto',
         marginLeft: 'auto',
-        // maxWidth: '150px',
+        maxWidth: '80%',
     },
     question: {
-        fontStyle: 'normal',
         color: '#7C7C7C',
         fontWeight: 'bold',
         FontSize: '21px',

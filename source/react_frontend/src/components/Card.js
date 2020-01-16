@@ -24,7 +24,8 @@ const useStyles = makeStyles({
         display: "inline-block",
         overflowX: "auto",
         margin: 5,
-
+        fontSize: 20,
+        fontWeight: "bold",
     },
     title: {
         fontSize: 20,
