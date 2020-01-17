@@ -34,7 +34,22 @@ import React from "react";
 
 const useStyles = makeStyles(theme => ({
     typography: {
-        padding: theme.spacing(2),
+        width: 'auto',
+        textAlign: 'center',
+        marginTop: "30px",
+        marginBottom: "30px",
+        marginRight: "auto",
+        marginLeft: "auto",
+        overflowX: "auto",
+    },
+    box: {
+        textAlign: 'center',
+        marginTop: "30px",
+        marginBottom: "30px",
+        marginRight: "auto",
+        marginLeft: "auto",
+        overflowX: "auto",
+        backgroundColor: "transparent",
     },
     answerBox: {
         textAlign: 'center',
@@ -70,7 +85,7 @@ export default function SimplePopover() {
 
     return (
         <div className={classes.answerBox}>
-            <Button className={classes.answerBox} onClick={handleClick}>
+            <Button className={classes.box} onClick={handleClick}>
                 Open Popover
             </Button>
             <Popover
@@ -87,7 +102,7 @@ export default function SimplePopover() {
                     horizontal: 'center',
                 }}
             >
-                <Typography className={classes.typography}>The content of the Popover.</Typography>
+                <Typography>The content of the Popover.</Typography>
             </Popover>
         </div>
     );
