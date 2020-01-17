@@ -7,7 +7,7 @@ import backround_cisty_zubok_white from "../icons/backround_cisty_zubok_white.sv
 
 const CompanyQuestionsPage = (answer) => {
     return (<div style={{
-                        height: '100%',
+                        height: 'auto',
                         marginTop: '70px',
                         marginBottom: '25px',
                         background: "#F9FAFB",

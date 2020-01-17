@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import React from "react";
-import FirmaHeader from "./CompanyHeader";
+import CompanyHeader from "./CompanyHeader";
 
 
 
@@ -15,7 +15,7 @@ const Layout = ({children, history}) => {
                 overflow: "auto",
             }}
         >
-            <FirmaHeader history={history}/>
+            <CompanyHeader history={history}/>
             {children}
             <Footer history={history}/>
         </div>
