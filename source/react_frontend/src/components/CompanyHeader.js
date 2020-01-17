@@ -104,6 +104,11 @@ function DenseAppBar() {
                     setHeaderColor("default");
                     setTextColor("#E17A47");
                     break;
+                case "/ToDo":
+                    setValue(5);  //Projek Tuducka
+                    setHeaderColor("default");
+                    setTextColor("#E17A47");
+                    break;
                 default:
                     setValue(-1);
                     break;

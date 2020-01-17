@@ -15,7 +15,7 @@ const theme = createMuiTheme({
         },
         default: {
             main: '#F9FAFB',
-        }
+        },
     },
     typography: {
         fontFamily: "\"Sarabun\", sans-serif",

@@ -1,31 +1,52 @@
 import React from 'react';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import {makeStyles} from "@material-ui/core";
 
+const useStyles = makeStyles(theme => ({
+    box: {
+        color: '#E17A47',
+    },
+    label: {
+        color: '#7C7C7C',
 
-export default function ToDo() {
-  const [state, setState] = React.useState({
-    checked: false,
-  });
+    },
+    root: {
+        margin: 5,
+        marginLeft: 0,
+    }
 
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
+}));
 
-  return (
-        <FormGroup>
-          <FormControlLabel
+export default function ToDo(props) {
+    const classes = useStyles();
+    const [state, setState] = React.useState({
+        checked: false,
+    });
+    const {label} = props;
+
+    const handleChange = name => event => {
+        setState({...state, [name]: event.target.checked});
+    };
+
+    return (
+        <FormControlLabel
+            classes={{
+                label: classes.label,
+                root: classes.root,
+            }}
             control={
-              <Checkbox
-                checked={state.checked}
-                onChange={handleChange('checked')}
-                value="checked"
-                color="primary"
-              />
+                <Checkbox
+                    className={classes.box}
+                    checked={state.checked}
+                    onChange={handleChange('checked')}
+                    value="checked"
+                    color="primary"
+
+                />
             }
-            label="Urobil si uz toto a toto a toto a toto a toto a toto a toto?"
-          />
-        </FormGroup>
-  );
+            label={label}
+        />
+
+    );
 }

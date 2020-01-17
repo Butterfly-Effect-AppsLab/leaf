@@ -8,7 +8,8 @@ import ProjectInfoPage from './pages/ProjectInfoPage';
 import Test_ReduxPage from './pages/Test_ReduxPage';
 import React from "react";
 import OnboardingPage from "./pages/OnboardingPage";
-import ProfilePage from "./pages/ProfilePage"
+import ProfilePage from "./pages/ProfilePage";
+import ToDoPage from "./pages/ToDoPage";
 
 const Routes = () => (
   <>
@@ -20,6 +21,7 @@ const Routes = () => (
     <Route exact path={"/ProjectInfo"} component={ProjectInfoPage} />
     <Route exact path={"/Onboarding"} component={OnboardingPage} />
     <Route exact path={"/Profil"} component={ProfilePage} />
+    <Route exact path={"/ToDo"} component={ToDoPage} />
     <Route exact path={"/test_redux"} component={Test_ReduxPage} />
   </>
 );

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
             align: "center",
             marginBottom: "60px",
             marginTop: "80px",
-            height: "100%",
+            height: "auto",
             width: "100%",
             margin: 0,
         },
@@ -106,6 +106,7 @@ const ProjectInfo = () => {
                     Rozbehni svoj biznis
                 </Button>
             </div>
+            <br/>
         </div>
     )
 };

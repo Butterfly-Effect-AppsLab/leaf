@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
             width: '100%',
             color: "#7C7C7C",
             marginBottom: "60px",
-            height: "100%",
+            height: "auto",
         },
         profile: {
             paddingRight: 10,
