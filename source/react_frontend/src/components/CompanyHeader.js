@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
         padding: '10px',
         marginTop: '30px',
         textAlign: "center",
-        marginleft: '15px',
+        marginLeft: '15px',
         marginRight: '15px',
         marginBottom: '30px',
         display: 'inline-block',
@@ -81,32 +81,32 @@ function DenseAppBar() {
             switch (pathname) {
                 case "/LcKategorie":   //Firma LC
                     setValue(0);
-                    setHeaderColor("secondary");
+                    setHeaderColor("#EFCA59");
                     setTextColor("#FFFFFF");
                     break;
                 case "/ProjectInfo":    //Projekt vyplnanie
                     setValue(1);
-                    setHeaderColor("primary");
+                    setHeaderColor('#E17A47');
                     setTextColor("#FFFFFF");
                     break;
                 case "/ProjektLcKategorie": //Projekt LC
                     setValue(2);
-                    setHeaderColor("primary");
+                    setHeaderColor('#E17A47');
                     setTextColor("#FFFFFF");
                     break;
                 case "/LCFirma":        //Firma Otazky
                     setValue(3);
-                    setHeaderColor("default");
+                    setHeaderColor('#F9FAFB');
                     setTextColor("#EFCA59");
                     break;
                 case "/Otazky":         //Projekt Otazky
                     setValue(4);
-                    setHeaderColor("default");
+                    setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     break;
                 case "/ToDo":
                     setValue(5);  //Projek Tuducka
-                    setHeaderColor("default");
+                    setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     break;
                 default:
@@ -122,10 +122,9 @@ function DenseAppBar() {
             });
         }
     }, [history]);
-
     return value >= 0 ? (
-        <div>
-            <AppBar color={headerColor} className={classes.appBar}>
+        <div >
+            <AppBar className={classes.appBar} style={{backgroundColor: headerColor}}>
                 <Toolbar className={classes.toolBar}>
                     <div className={classes.head}>
                         <div className={classes.but} style={{color: textColor}}>
