@@ -8,7 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 
 const useStyles = makeStyles(theme => ({
     root: {
-        height: "auto",
+        height: "100%",
         width: "100%",
         marginTop: '80px',
         marginBottom: '60px',

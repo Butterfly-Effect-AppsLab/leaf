@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import history from '../utils/history';
+import InfoIcon from '@material-ui/icons/Info';
 
 //import {headlines} from './Card';
 
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
         display: "inline-block",
         overflowX: "auto",
         margin: 5,
-        fontSize: 20,
+        fontSize: 17,
         fontWeight: "bold",
     },
     appBar: {
@@ -32,16 +33,10 @@ const useStyles = makeStyles(theme => ({
     },
     but: {
         textAlign: "center",
-        fontSize: 20,
         fontWeight: "bold",
-        color: "white",
-        borderRadius: '0%',
         position: 'absolute',
         left: 0,
         top: 0,
-        paddingTop: '5px',
-        paddingBottom: '15px',
-        paddingLeft: '18px',
     },
     title: {
         width: '100%',
@@ -64,6 +59,12 @@ const useStyles = makeStyles(theme => ({
         height: '30px',
         position: 'relative'
     },
+    info: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        paddingTop: '18px',
+    }
 }));
 
 /**
@@ -73,8 +74,8 @@ function DenseAppBar() {
     const classes = useStyles();
     const [value, setValue] = React.useState(-1);
     const [textColor, setTextColor] = React.useState("");
-    const [headerColor, setHeaderColor] = React.useState("")
-
+    const [headerColor, setHeaderColor] = React.useState("");
+    const [showHint, setShowHint] = React.useState(false);
 
     useEffect(() => {
         const processPathName = pathname => {
@@ -103,11 +104,13 @@ function DenseAppBar() {
                     setValue(4);
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
+                    setShowHint(true);
                     break;
                 case "/ToDo":
                     setValue(5);  //Projek Tuducka
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
+                    setShowHint(true);
                     break;
                 default:
                     setValue(-1);
@@ -123,7 +126,7 @@ function DenseAppBar() {
         }
     }, [history]);
     return value >= 0 ? (
-        <div >
+        <div>
             <AppBar className={classes.appBar} style={{backgroundColor: headerColor}}>
                 <Toolbar className={classes.toolBar}>
                     <div className={classes.head}>
@@ -140,11 +143,18 @@ function DenseAppBar() {
                                 Čistý zúbok
                             </Typography>
                         </div>
+                        {showHint === true ? (
+                            <div className={classes.info} style={{color: textColor}}>
+                                <IconButton className={classes.info} style={{color: textColor}}>
+                                    <InfoIcon/>
+                                </IconButton>
+                            </div>
+                        ) : null}
                     </div>
                 </Toolbar>
             </AppBar>
         </div>
     ) : null;
-};
+}
 
 export default DenseAppBar;
