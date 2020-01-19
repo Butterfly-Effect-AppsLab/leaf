@@ -17,9 +17,6 @@ import CardContent from "@material-ui/core/CardContent";
 // const options = ["Každého človeka, ktorý si umýva zuby", "Eco zodpovedných ľudí", "Rodiny"]
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        backgroundColor: theme.transparent
-    },
     typography: {
         width: 'auto',
         textAlign: 'center',
@@ -50,6 +47,13 @@ const useStyles = makeStyles(theme => ({
         borderRadius: '6px',
         width: '100%'
     },
+    buttonOK: {
+        backgroundColor: '#EF3D59',
+        textColor: 'white'
+    },
+    textColor: {
+        textColor: '#EF3D59'
+    }
 }));
 
 export default function TemporaryDrawer() {
@@ -72,18 +76,24 @@ export default function TemporaryDrawer() {
              onClick={toggleDrawer(side, false)}
              onKeyDown={toggleDrawer(side, false)}
         >
-            <Button>
-                Your are star
-            </Button>
-        </div>
-    );
+            <div>
+                <div className={classes.textColor}>Nesprávne</div>
+                    <div>
+                        Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať,
+                        pretože pre príliš všeobecného zákazníka je veľmi náročné prispôsobiť produkt,
+                        dizajn či marketing
+                    </div>
+                    <Button className={classes.buttonOK}>Ok</Button>
+                </div>
+            </div>
+            );
 
-    return (
-        <div className={classes.box}>
-            <Button className={classes.answerOption} onClick={toggleDrawer('bottom', true)}>Odpoved 1</Button>
-            <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                {answer('bottom')}
-            </Drawer>
-        </div>
-    );
-}
+            return (
+            <div>
+                <Button className={classes.answerOption} onClick={toggleDrawer('bottom', true)}>Odpoved</Button>
+                <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                    {answer('bottom')}
+                </Drawer>
+            </div>
+            );
+            }
