@@ -28,6 +28,7 @@ from flask_login import (
 )
 
 app = Flask("__main__")
+app.url_map.strict_slashes = False
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_conn = connect()
@@ -45,8 +46,8 @@ def load_user(user_id):
     return session.query(User).filter(User.id_google == user_id).one()
 
 
-@app.route('/api/v1.0/authentication', methods=['PUT'])
-def authenticate():
+@app.route('/api/v1.0/user', methods=['PUT'])
+def authenticate_user():
     data = request.json
     print('authentication request', data)
     if not data.get("email_verified"):
@@ -138,18 +139,33 @@ def get_case_studies():
     case_studies = {'case_studies': {}}
     for case_study in case_studies_data:
         case_study_attrs = {
-                'id': case_study.id,
-                'id_company': case_study.id_company,
-                'company_name': case_study.company.name,
-                'name': case_study.name,
-                'description': case_study.description,
-                'motivation': case_study.motivation,
-                'unique_value': case_study.unique_value,
-                'revenue': case_study.revenue,
-                'employees_num': case_study.employees_num
+            'id': case_study.id,
+            'id_company': case_study.id_company,
+            'company_name': case_study.company.name,
+            'name': case_study.name,
         }
         case_studies['case_studies'][case_study.id] = case_study_attrs
     return jsonify(case_studies)
+
+
+# https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
+@app.route('/api/v1.0/case-study/<int:id_case_study>', methods=['GET'])
+def get_case_study_info(id_case_study):
+    case_study = session.query(CaseStudy).filter(CaseStudy.id == id_case_study).first()
+
+    if not case_study:
+        abort(400)
+
+    case_study_info = {
+        'id': case_study.id,
+        'description': case_study.description,
+        'motivation': case_study.motivation,
+        'unique_value': case_study.unique_value,
+        'revenue': case_study.revenue,
+        'employees_num': case_study.employees_num
+    }
+
+    return make_response(jsonify(case_study_info), 200)
 
 
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
@@ -242,6 +258,9 @@ def patch_project_answer(id_project, id_answer):
 
     project = session.query(ProjectAnswer).filter(ProjectAnswer.id == id_answer,
                                                   ProjectAnswer.id_project == id_project).first()
+
+    if not project:
+        abort(400)
 
     if patch_data['op'] == 'update':
         project.answer = patch_data['value']

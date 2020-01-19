@@ -1,99 +1,86 @@
-import { API_COMPANIES } from "./urls";
+import * as API from "./urls";
+import fetchData from './fetchData';
 
-export const FETCH_MOCK_DATA_SUCCESS_C = "FETCH_MOCK_DATA_SUCCESS_C";
-export const FETCH_MOCK_DATA_FAIL_C = "FETCH_MOCK_DATA_FAIL_C";
-export const FETCH_MOCK_DATA_SUCCESS_U = "FETCH_MOCK_DATA_SUCCESS_U";
-export const FETCH_MOCK_DATA_FAIL_U = "FETCH_MOCK_DATA_FAIL_U";
-export const FETCH_MOCK_DATA_SUCCESS_P = "FETCH_MOCK_DATA_SUCCESS_P";
-export const FETCH_MOCK_DATA_FAIL_P = "FETCH_MOCK_DATA_FAIL_P";
-export const SET_PROJECT_THEME = "SET_PROJECT_THEME";
+export const GET_USER = "GET_USER";
+export const GET_STAGES = "GET_STAGES";
 
-const getSuccessActionType = (dataGroup) => {
-    let actionType = null;
-    if( ['companies', 'caseStudies'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_SUCCESS_C;
-    else if ( ['user'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_SUCCESS_U;
-    else if ( ['projects'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_SUCCESS_P;
+export const GET_COMPANIES = "GET_COMPANIES";
+export const GET_COMPANY_CASE_STUDIES = "GET_COMPANY_CASE_STUDIES";
+export const GET_CASE_STUDIES = "GET_CASE_STUDIES";
+export const GET_CASE_STUDY_INFO = "GET_CASE_STUDIES";
+export const GET_CASE_STUDY_QUESTIONS = "GET_CASE_STUDY_QUESTIONS";
 
-    return actionType;
-}
+export const GET_QUESTION_ANSWERS = "GET_QUESTION_ANSWERS";
+export const GET_USER_ANSWER = "GET_QUESTION_ANSWERS";
+export const PUT_USER_ANSWER = "GET_QUESTION_ANSWERS";
 
-const getFailActionType = (dataGroup) => {
-    let actionType = null;
-    if( ['companies', 'caseStudies'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_FAIL_C;
-    else if ( ['user'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_FAIL_U;
-    else if ( ['projects'].includes(dataGroup) ) actionType = FETCH_MOCK_DATA_FAIL_P;
+export const GET_PROJECTS = "GET_PROJECTS";
+export const POST_PROJECT = "POST_PROJECTS";
+export const PATCH_PROJECT_NAME = "PATCH_PROJECT_NAME";
+export const PATCH_PROJECT_DESCRIPTION = "PATCH_PROJECT_DESCRIPTION";
+export const PATCH_PROJECT_SPECIALIZATION = "PATCH_PROJECT_SPECIALIZATION";
 
-    return actionType;
-}
+export const GET_PROJECT_STAGE_QUESTIONS = "GET_PROJECT_STAGE_QUESTIONS";
+export const GET_PROJECT_ANSWER = "GET_PROJECT_ANSWER";
+export const PATCH_PROJECT_ANSWER = "PATCH_PROJECT_ANSWER";
 
-/* --------------------------------------------------------------------------------------------*/
+// ----------------------------------------------------------------------
 
-
-export const fetchData = (props) => async dispatch => {
-    const header = undefined;
-    if( props.hasHeader ){
-        header = {
-            method: props.method,
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(props.body),
-        };
-    }
-
-    console.log(props);
-    console.log(API_COMPANIES());
-    try {
-        const response = await fetch(API_COMPANIES(), header);
-        //const response = await fetch(props.url, header);
-        const json = await response.json();
-        console.log(response);
-        console.log(json);
-        //dispatch(fetchDataSuccess(json, header));
-    } catch (err) {
-        console.log(err);
-        //dispatch(fetchDataFail(header));
-    }
+export const getStages = () => {
+    fetchData({
+        actionType: GET_STAGES,
+        apiUrl: API.API_STAGES(),
+        hasHeader: false
+    });
 };
 
-
-
-/* --------------------------------------------------------------------------------------------*/
-
-export const fetchMockData = (apiPath, header) => async dispatch => {
-    try {
-        //const response = await fetch("http://localhost:5000/api/v1.0/companies/");
-        const response = await fetch("http://localhost:3000/" + apiPath);
-        const json = await response.json();
-        dispatch(fetchMockDataSuccess(json, header));
-    } catch (err) {
-        console.log(err);
-        dispatch(fetchMockDataFail(header));
-    }
+export const getCompanies = () => {
+    fetchData({
+        actionType: GET_COMPANIES,
+        apiUrl: API.API_COMPANIES(),
+        hasHeader: false
+    });
 };
 
-export const fetchMockDataSuccess = (json, header) => {
-    const type = getSuccessActionType(header.dataGroup);
-    return({
-        type: type,
-        payload: json,
-        header: header
-})};
+export const getCaseStudies = () => {
+    fetchData({
+        actionType: GET_CASE_STUDIES,
+        apiUrl: API.API_CASE_STUDIES(),
+        hasHeader: false
+    });
+};
 
-export const fetchMockDataFail = (header) => {
-    const type = getFailActionType(header.dataGroup);
-    return ({
-    type: type
-});
-}
+export const getCaseStudyInfo = (idCaseStudy) => {
+    fetchData({
+        actionType: GET_CASE_STUDY_INFO,
+        apiUrl: API.API_CASE_STUDY_INFO(idCaseStudy),
+        hasHeader: false
+    });
+};
 
-export const setProjectTheme = (data) => {
-    return ({
-        type: SET_PROJECT_THEME,
-        payload: { 
-            id: data.id,
-            theme: data.theme
-            }
+export const setProject = (props) => {
+    fetchData({
+        actionType: POST_PROJECT,
+        apiUrl: API.API_PROJECTS(),
+        hasHeader: true,
+        requestBody: {
+            name: props.projectName, 
+            description: props.projectDescription, 
+            specialization: props.projectSpecialization
+        },
+        requestMethod = 'POST'
+    })
+};
+
+export const setProjectName = (props) => {
+    fetchData({
+        actionType: PATCH_PROJECT_NAME,
+        apiUrl: API.API_PROJECT(props.idProject),
+        hasHeader: true,
+        requestBody: {
+            op: 'update', 
+            value: props.theme
+        },
+        requestMethod = 'PATCH'
     })
 };

@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
-import companies from "./companies";
+import caseStudies from "./caseStudies";
 import user from "./user";
 import projects from "./projects";
-//import React from "react";
+import constants from "./constants";
 
-export default combineReducers({ companies, user, projects });
+export default combineReducers({ 
+    user: user,
+    case_studies: caseStudies, 
+    projects: projects, 
+    constants: constants 
+});
