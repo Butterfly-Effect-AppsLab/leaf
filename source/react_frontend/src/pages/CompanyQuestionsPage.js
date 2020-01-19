@@ -1,4 +1,4 @@
-import CompanyLCquestion from "../components/CompanyLCquestion";
+
 import QuestionSwipe from "../components/QuestionSwipe";
 import 'swiper/css/swiper.css';
 import React from "react";
@@ -13,7 +13,6 @@ const CompanyQuestionsPage = (answer) => {
                         backgroundImage: `url(${backround_cisty_zubok_white})`,
                         }}
             >
-                <CompanyLCquestion/>
                 <QuestionSwipe/>
             </div>
     )

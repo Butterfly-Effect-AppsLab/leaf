@@ -1,4 +1,5 @@
 import React from 'react';
+import CompanyLCquestion from "../components/CompanyLCquestion";
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -53,8 +54,13 @@ const useStyles = makeStyles(theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: "transparent",
-        boxShadow: 'none'
-    }
+        boxShadow: 'none',
+        paddingTop: '30px'
+    },
+    indicator: {
+        backgroundColor: '#7C7C7C',
+        borderRadius: '10px',
+    },
 }));
 
 export default function ScrollableTabsButtonAuto() {
@@ -68,11 +74,14 @@ export default function ScrollableTabsButtonAuto() {
     return (
         <div className={classes.root}>
             <div className={classes.questions}>
-                <AppBar position="static" color="default" className={classes.appBar}>
+
+                <AppBar position="static" className={classes.appBar}>
                     <Tabs
+                        classes={{
+                            indicator: classes.indicator,
+                        }}
                         value={value}
                         onChange={handleChange}
-                        indicatorColor="secondary"
                         textColor="#7C7C7C"
                         variant="scrollable"
                         scrollButtons="auto"
@@ -83,6 +92,7 @@ export default function ScrollableTabsButtonAuto() {
                         <Tab label="Otázka 3" {...a11yProps(2)} />
                     </Tabs>
                 </AppBar>
+                <CompanyLCquestion/>
             </div>
             <TabPanel value={value} index={0}>
                 <AnswerButtons/>

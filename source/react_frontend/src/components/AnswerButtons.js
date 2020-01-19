@@ -1,5 +1,6 @@
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Typography from "@material-ui/core/Typography";
 import React from "react";
 import Drawer from '@material-ui/core/Drawer';
 
@@ -14,44 +15,65 @@ import Drawer from '@material-ui/core/Drawer';
 // const options = ["Každého človeka, ktorý si umýva zuby", "Eco zodpovedných ľudí", "Rodiny"]
 
 const useStyles = makeStyles(theme => ({
-    typography: {
-        width: 'auto',
-        textAlign: 'center',
-        marginTop: "30px",
-        marginBottom: "30px",
-        marginRight: "auto",
-        marginLeft: "auto",
-        overflowX: "auto"
-    },
-    box: {
-        textAlign: 'center',
-        marginTop: "30px",
-        marginBottom: "60px",
-        marginRight: "auto",
-        marginLeft: "auto",
-        overflowX: "auto",
-        backgroundColor: "transparent",
-    },
-    answerOption: {
-        textAlign: 'center',
-        marginTop: "30px",
-        marginBottom: "30px",
-        marginRight: "auto",
-        marginLeft: "auto",
-        overflowX: "auto",
-        backgroundColor: "transparent",
-        border: '3px solid #EFCA59',
-        borderRadius: '6px',
-        width: '100%'
-    },
-    buttonOK: {
-        backgroundColor: '#EF3D59',
-        textColor: 'white'
-    },
-    textColor: {
-        textColor: '#EF3D59'
-    }
-}));
+        typography: {
+            width: 'auto',
+            textAlign: 'center',
+            marginTop: "30px",
+            marginBottom: "30px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            overflowX: "auto"
+        },
+        box: {
+            textAlign: 'center',
+            marginTop: "30px",
+            marginBottom: "60px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            overflowX: "auto",
+            backgroundColor: "transparent",
+            border: '3px solid #EFCA59',
+            borderRadius: '6px',
+            maxWidth: '80%',
+        },
+        answerOption: {
+            textAlign: 'center',
+            marginTop: "25px",
+            marginBottom: "30px",
+            marginRight: "5px",
+            marginLeft: "5px",
+            overflowX: "auto",
+        },
+        paper: {
+            backgroundColor: 'white',
+            color: '#7C7C7C',
+            width: '80%',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            borderRadius: '6px',
+        },
+        textColor: {
+            color: '#EF3D59',
+            fontWeight: 'bold',
+            fontSize: '17px',
+        },
+        answer: {
+            margin: '15px 15px 15px 15px'
+        },
+        label: {
+            backgroundColor: '#EF3D59',
+            borderRadius: '6px',
+            textAlign: 'center',
+            padding: '5px 42px 5px 42px',
+            marginTop: '5px',
+            color: 'white'
+        },
+        questionText: {
+            fontSize: '14px',
+            color: '#7C7C7C',
+        }
+    }))
+;
 
 export default function TemporaryDrawer() {
     const classes = useStyles();
@@ -68,29 +90,36 @@ export default function TemporaryDrawer() {
     };
 
     const answer = side => (
-        <div className={classes.box}
-             role="presentation"
-             onClick={toggleDrawer(side, false)}
-             onKeyDown={toggleDrawer(side, false)}
+        <div
+            role="presentation"
+            onClick={toggleDrawer(side, false)}
+            onKeyDown={toggleDrawer(side, false)}
         >
-            <div>
-                <div className={classes.textColor}>Nesprávne</div>
-                    <div>
-                        Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať,
-                        pretože pre príliš všeobecného zákazníka je veľmi náročné prispôsobiť produkt,
-                        dizajn či marketing
-                    </div>
-                    <Button className={classes.buttonOK}>Ok</Button>
+            <div className={classes.answerOption}>
+                <Typography className={classes.textColor}>Nesprávne</Typography>
+                <div className={classes.answer}>
+                    Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať,
+                    pretože pre príliš všeobecného zákazníka je veľmi náročné prispôsobiť produkt,
+                    dizajn či marketing
                 </div>
+                <Button
+                    classes={{
+                        label: classes.label,
+                    }}>Ok</Button>
             </div>
-            );
+        </div>
+    );
 
-            return (
-            <div>
-                <Button className={classes.answerOption} onClick={toggleDrawer('bottom', true)}>Odpoved</Button>
-                <Drawer anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                    {answer('bottom')}
-                </Drawer>
-            </div>
-            );
-            }
+    return (
+        <div className={classes.box}>
+            <Button onClick={toggleDrawer('bottom', true)}>Odpoved</Button>
+            <Drawer
+                classes={{
+                    paper: classes.paper,
+                }}
+                anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                {answer('bottom')}
+            </Drawer>
+        </div>
+    );
+}
