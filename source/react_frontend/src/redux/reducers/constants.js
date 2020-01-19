@@ -1,6 +1,6 @@
 import {
     GET_STAGES,
-    GET_PROJECT_QUESTIONS,
+    GET_PROJECT_STAGE_QUESTIONS,
 } from "../actions";
 
 const initialState = {};
@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
             }
         }
 
-        case GET_PROJECT_QUESTIONS: {
+        case GET_PROJECT_STAGE_QUESTIONS: {
             return {
                 ...state,
                 project_questions: action.payload

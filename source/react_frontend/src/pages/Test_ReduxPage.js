@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 //import TodoApp from "../components/Todos/TodoApp";
 import { fetchMockData, setProjectTheme, fetchData } from "../redux/actions";
 import { bindActionCreators } from "redux";
@@ -106,7 +106,7 @@ const MainPage = (props) => {
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
       />
-      {/*ziskat projekty, doplnit moj, vypisat cely store*/}
+      {/*ziskat projekty, doplnit moj, vypisat cely store*//*}
     </div>
   );
 };
@@ -128,3 +128,4 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
 
+*/

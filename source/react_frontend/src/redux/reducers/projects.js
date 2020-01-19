@@ -1,17 +1,17 @@
+
 import {
-    FETCH_MOCK_DATA_SUCCESS_P,
-    FETCH_MOCK_DATA_FAIL_P,
-    SET_PROJECT_THEME
+    GET_PROJECTS,
+    PATCH_PROJECT_NAME
 } from "../actions";
 
 const initialState = {};
 
-const setProjectTheme = (state, idProject, theme) => {
+const setProjectName = (state, idProject, name) => {
     const newState = {
         ...state,
         [idProject]: {
             ...state[idProject],
-            theme: theme
+            name: name
         }
     };
 
@@ -20,27 +20,14 @@ const setProjectTheme = (state, idProject, theme) => {
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case FETCH_MOCK_DATA_SUCCESS_P: {
-            const data = action.payload;
-            const dataGroup = action.header.dataGroup
-            
-            if(dataGroup === 'projects'){
-                const projects = data.projects;
-                return projects;
-            }
-
-            break;
+        case GET_PROJECTS: {
+            return action.payload;
         }
 
-        case FETCH_MOCK_DATA_FAIL_P:
-            return state;
+        case PATCH_PROJECT_NAME: {
+            return setProjectName(state, action.idProject, action.payload);
+        }
 
-        case SET_PROJECT_THEME:
-            const data = action.payload;
-            const idProject = data.id;
-            const theme = data.theme;
-            return setProjectTheme(state, idProject, theme);
-        
         default:
             return state;
     };

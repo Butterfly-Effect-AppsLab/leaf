@@ -1,5 +1,5 @@
 import * as API from "./urls";
-import fetchData from './fetchData';
+import { fetchData } from './fetchData';
 
 export const GET_USER = "GET_USER";
 export const GET_STAGES = "GET_STAGES";
@@ -28,7 +28,7 @@ export const PATCH_PROJECT_ANSWER = "PATCH_PROJECT_ANSWER";
 
 export const getStages = () => {
     fetchData({
-        actionType: GET_STAGES,
+        type: GET_STAGES,
         apiUrl: API.API_STAGES(),
         hasHeader: false
     });
@@ -36,7 +36,7 @@ export const getStages = () => {
 
 export const getCompanies = () => {
     fetchData({
-        actionType: GET_COMPANIES,
+        type: GET_COMPANIES,
         apiUrl: API.API_COMPANIES(),
         hasHeader: false
     });
@@ -44,7 +44,7 @@ export const getCompanies = () => {
 
 export const getCaseStudies = () => {
     fetchData({
-        actionType: GET_CASE_STUDIES,
+        type: GET_CASE_STUDIES,
         apiUrl: API.API_CASE_STUDIES(),
         hasHeader: false
     });
@@ -52,7 +52,7 @@ export const getCaseStudies = () => {
 
 export const getCaseStudyInfo = (idCaseStudy) => {
     fetchData({
-        actionType: GET_CASE_STUDY_INFO,
+        type: GET_CASE_STUDY_INFO,
         apiUrl: API.API_CASE_STUDY_INFO(idCaseStudy),
         hasHeader: false
     });
@@ -60,7 +60,7 @@ export const getCaseStudyInfo = (idCaseStudy) => {
 
 export const setProject = (props) => {
     fetchData({
-        actionType: POST_PROJECT,
+        type: POST_PROJECT,
         apiUrl: API.API_PROJECTS(),
         hasHeader: true,
         requestBody: {
@@ -68,19 +68,19 @@ export const setProject = (props) => {
             description: props.projectDescription, 
             specialization: props.projectSpecialization
         },
-        requestMethod = 'POST'
+        requestMethod: 'POST'
     })
 };
 
 export const setProjectName = (props) => {
     fetchData({
-        actionType: PATCH_PROJECT_NAME,
+        type: PATCH_PROJECT_NAME,
         apiUrl: API.API_PROJECT(props.idProject),
         hasHeader: true,
         requestBody: {
             op: 'update', 
             value: props.theme
         },
-        requestMethod = 'PATCH'
+        requestMethod: 'PATCH'
     })
 };
