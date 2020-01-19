@@ -1,6 +1,6 @@
 import {
-    GET_COMPANIES,
     GET_CASE_STUDIES,
+    GET_CASE_STUDY_INFO,
 } from "../actions";
 
 const initialState = {};
