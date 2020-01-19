@@ -1,0 +1,12 @@
+CompanyHeader - Nazov vlastneho projekt
+                Nazov fiktivnej firmy
+                Nazvy stagov (zakaznici,....)
+
+Answer Button - state Spravna / Nespravna odpoved
+              - content odpovedi
+
+QuestionSwipe - Otazka 1 , 2 , 3, .... (pocet tych otazok) (pre jednotlive firmy a stage)
+                konkretny content odpovedi pre otazky
+
+
+

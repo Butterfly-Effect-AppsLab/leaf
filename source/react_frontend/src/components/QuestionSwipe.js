@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     questions: {
         width: 'max-content',
         marginLeft: 'auto',
-        marginRight: 'auto',
+        marginRight: 'auto'
     },
     root: {
         flexGrow: 1,
@@ -72,8 +72,8 @@ export default function ScrollableTabsButtonAuto() {
                     <Tabs
                         value={value}
                         onChange={handleChange}
-                        indicatorColor="primary"
-                        textColor="primary"
+                        indicatorColor="secondary"
+                        textColor="#7C7C7C"
                         variant="scrollable"
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
@@ -86,10 +86,17 @@ export default function ScrollableTabsButtonAuto() {
             </div>
             <TabPanel value={value} index={0}>
                 <AnswerButtons/>
+                <AnswerButtons/>
+                <AnswerButtons/>
             </TabPanel>
             <TabPanel value={value} index={1}>
+                <AnswerButtons/>
+                <AnswerButtons/>
+                <AnswerButtons/>
             </TabPanel>
             <TabPanel value={value} index={2}>
+                <AnswerButtons/>
+                <AnswerButtons/>
                 <AnswerButtons/>
             </TabPanel>
         </div>
