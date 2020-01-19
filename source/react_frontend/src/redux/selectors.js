@@ -23,3 +23,6 @@ export const getIdUser = store =>
 
 export const hasCaseStudies = store => 
     isEmpty(store.case_studies);
+
+export const hasProjects = store => 
+    isEmpty(store.case_studies);

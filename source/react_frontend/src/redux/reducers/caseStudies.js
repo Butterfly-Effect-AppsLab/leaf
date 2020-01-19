@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
     switch (action.type) {
 
         case GET_CASE_STUDIES: {
-            return caseStudies
+            return action.payload
         }
 
         case GET_CASE_STUDY_INFO: {
