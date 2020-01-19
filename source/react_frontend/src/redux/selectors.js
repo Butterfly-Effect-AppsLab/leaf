@@ -22,7 +22,9 @@ export const getIdUser = store =>
     getUser(store) ? store.user.id : null;
 
 export const hasCaseStudies = store => 
-    isEmpty(store.case_studies);
+    !isEmpty(store.case_studies);
 
 export const hasProjects = store => 
     isEmpty(store.case_studies);
+
+export const getCaseStudies = store => store.case_studies;

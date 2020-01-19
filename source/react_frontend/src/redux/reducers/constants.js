@@ -1,12 +1,14 @@
 import {
     GET_STAGES,
     GET_PROJECT_STAGE_QUESTIONS,
+    FETCH_DATA_FAIL
 } from "../actions";
 
 const initialState = {};
 
 
 export default function(state = initialState, action) {
+
     switch (action.type) {
 
         case GET_STAGES: {
@@ -21,6 +23,10 @@ export default function(state = initialState, action) {
                 ...state,
                 project_questions: action.payload
             }
+        }
+
+        case FETCH_DATA_FAIL: {
+            return state
         }
 
         default:

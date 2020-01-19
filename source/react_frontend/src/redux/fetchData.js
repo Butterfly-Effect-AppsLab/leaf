@@ -19,25 +19,27 @@ export const fetchData = (props) => async dispatch => {
 
     try {
         
-        const response = await fetch(props.url, header);
+        const response = await fetch(props.apiUrl, header);
         const payload = await response.json();
-        
-        dispatch(fetchDataSuccess(payload, props.actionType));
+        dispatch(fetchDataSuccess(props.type, payload));
 
     } catch (err) {
-        
         console.log(err);
-        //dispatch(fetckDataFail(header));
+        dispatch(fetchDataFail());
     }
 };
 
-export const fetchDataSuccess = (_actionType, _payload) => {
+
+const fetchDataSuccess = (_type, _payload) => {
     return {
-        actionType: _actionType,
+        type: _type,
         payload: _payload,
     }
 };
 
-export const fetckDataFail = (header) => {
-    return false 
+
+const fetchDataFail = () => {
+    return {
+        type: 'FETCH_DATA_FAIL',
+    }
 }

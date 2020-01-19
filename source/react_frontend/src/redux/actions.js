@@ -24,9 +24,11 @@ export const GET_PROJECT_STAGE_QUESTIONS = "GET_PROJECT_STAGE_QUESTIONS";
 export const GET_PROJECT_ANSWER = "GET_PROJECT_ANSWER";
 export const PATCH_PROJECT_ANSWER = "PATCH_PROJECT_ANSWER";
 
+export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
+
 // ----------------------------------------------------------------------
 
-export const getStages = () => {
+export const actionGetStages = () => {
     fetchData({
         type: GET_STAGES,
         apiUrl: API.API_STAGES(),
@@ -34,7 +36,7 @@ export const getStages = () => {
     });
 };
 
-export const getCompanies = () => {
+export const actionGetCompanies = () => {
     fetchData({
         type: GET_COMPANIES,
         apiUrl: API.API_COMPANIES(),
@@ -42,15 +44,16 @@ export const getCompanies = () => {
     });
 };
 
-export const getCaseStudies = () => {
-    fetchData({
+export const actionGetCaseStudies = () => dispatch => {
+    dispatch(fetchData({
         type: GET_CASE_STUDIES,
         apiUrl: API.API_CASE_STUDIES(),
         hasHeader: false
-    });
+    })
+    )
 };
 
-export const getCaseStudyInfo = (idCaseStudy) => {
+export const actionGetCaseStudyInfo = (idCaseStudy) => {
     fetchData({
         type: GET_CASE_STUDY_INFO,
         apiUrl: API.API_CASE_STUDY_INFO(idCaseStudy),
@@ -58,7 +61,7 @@ export const getCaseStudyInfo = (idCaseStudy) => {
     });
 };
 
-export const setProject = (props) => {
+export const actionSetProject = (props) => {
     fetchData({
         type: POST_PROJECT,
         apiUrl: API.API_PROJECTS(),
@@ -72,7 +75,7 @@ export const setProject = (props) => {
     })
 };
 
-export const setProjectName = (props) => {
+export const actionSetProjectName = (props) => {
     fetchData({
         type: PATCH_PROJECT_NAME,
         apiUrl: API.API_PROJECT(props.idProject),

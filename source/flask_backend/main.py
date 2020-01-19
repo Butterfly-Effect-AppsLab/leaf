@@ -135,8 +135,9 @@ def get_companies():
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
 @app.route('/api/v1.0/case-studies', methods=['GET'])
 def get_case_studies():
+    print('request na case studies')
     case_studies_data = session.query(CaseStudy)
-    case_studies = {'case_studies': {}}
+    case_studies = {}
     for case_study in case_studies_data:
         case_study_attrs = {
             'id': case_study.id,
@@ -144,7 +145,7 @@ def get_case_studies():
             'company_name': case_study.company.name,
             'name': case_study.name,
         }
-        case_studies['case_studies'][case_study.id] = case_study_attrs
+        case_studies[case_study.id] = case_study_attrs
     return jsonify(case_studies)
 
 

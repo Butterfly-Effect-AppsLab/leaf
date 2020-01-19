@@ -19,6 +19,7 @@ const setProjectName = (state, idProject, name) => {
 }
 
 export default function(state = initialState, action) {
+
     switch (action.type) {
         case GET_PROJECTS: {
             return action.payload;
