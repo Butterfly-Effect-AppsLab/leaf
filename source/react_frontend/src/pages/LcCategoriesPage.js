@@ -11,12 +11,11 @@ const LcCategoriesPage = () => {
                 marginBottom: '60px',
                 background: "#EFCA59",
                 backgroundImage: `url(${Backround_cisty_zubok})`,
+                height: "100%",
             }}
         >
-            <body >
                 <CategoryCard />
                 <br />
-            </body>
         </div>)
 };
 

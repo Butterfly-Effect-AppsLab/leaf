@@ -39,6 +39,9 @@ function a11yProps(index) {
     };
 }
 
+
+const questions = ["Akého zákazníka si podľa teba vytipovala spoločnosť Čistý zúbok?", "Akého zákazníka si podľa teba vytipovala spoločnosť Čistý zúbok?", "Koho si Čistý zúbok zvolil ako prvých \"skúšobných\" zákazníkov?"];
+
 const useStyles = makeStyles(theme => ({
     questions: {
         width: 'max-content',
@@ -66,9 +69,18 @@ const useStyles = makeStyles(theme => ({
 export default function ScrollableTabsButtonAuto() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    let questionNum = 0;
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+    };
+
+    const renderTab = (question) => {
+        questionNum = questionNum + 1;
+        return (
+            <Tab label={"Otázka " + questionNum}/>
+        )
+
     };
 
     return (
@@ -87,9 +99,7 @@ export default function ScrollableTabsButtonAuto() {
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
                     >
-                        <Tab label="Otázka 1" {...a11yProps(0)} />
-                        <Tab label="Otázka 2" {...a11yProps(1)} />
-                        <Tab label="Otázka 3" {...a11yProps(2)} />
+                        {questions.map(question => renderTab(question))}
                     </Tabs>
                 </AppBar>
                 <CompanyLCquestion/>
