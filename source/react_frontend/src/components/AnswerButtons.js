@@ -4,15 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import React from "react";
 import Drawer from '@material-ui/core/Drawer';
 
-// const renderButton = answer => {
-//     return (
-//         <Button className={classes.button}>
-//             {answer}
-//         </Button>
-//     );
-// };
-
-// const options = ["Každého človeka, ktorý si umýva zuby", "Eco zodpovedných ľudí", "Rodiny"]
+const answerOptions = ["Každého človeka, ktorý si umýva zuby?", "Eco zodpovedných ľudí?", "Rodiny?"]
 
 const useStyles = makeStyles(theme => ({
         typography: {
@@ -75,7 +67,7 @@ const useStyles = makeStyles(theme => ({
     }))
 ;
 
-export default function TemporaryDrawer() {
+export default function AnswerButtons() {
     const classes = useStyles();
     const [state, setState] = React.useState({
         bottom: false,
@@ -110,16 +102,22 @@ export default function TemporaryDrawer() {
         </div>
     );
 
-    return (
-        <div className={classes.box}>
-            <Button onClick={toggleDrawer('bottom', true)}>Odpoved</Button>
-            <Drawer
-                classes={{
-                    paper: classes.paper,
-                }}
-                anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                {answer('bottom')}
-            </Drawer>
-        </div>
-    );
-}
+    const renderAnswerOption = answerOption => {
+        return (
+            <div className={classes.box}>
+                <Button onClick={toggleDrawer('bottom', true)}>{answerOption}</Button>
+                <Drawer
+                    classes={{
+                        paper: classes.paper,
+                    }}
+                    anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
+                    {answer('bottom')}
+                </Drawer>
+            </div>
+        );
+    };
+        return (
+            answerOptions.map(answerOption => renderAnswerOption(answerOption))
+        )
+
+};

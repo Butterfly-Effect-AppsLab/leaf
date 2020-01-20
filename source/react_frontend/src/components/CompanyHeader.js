@@ -39,12 +39,13 @@ const useStyles = makeStyles(theme => ({
         top: 0,
     },
     title: {
-        width: '100%',
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         fontSize: 23,
         fontWeight: "bold",
         borderRadius: '0%',
         textAlign: 'center',
-        position: 'absolute',
         paddingBottom: '15px',
     },
     head: {

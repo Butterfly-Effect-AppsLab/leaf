@@ -96,17 +96,10 @@ export default function ScrollableTabsButtonAuto() {
             </div>
             <TabPanel value={value} index={0}>
                 <AnswerButtons/>
-                <AnswerButtons/>
-                <AnswerButtons/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <AnswerButtons/>
-                <AnswerButtons/>
-                <AnswerButtons/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <AnswerButtons/>
-                <AnswerButtons/>
                 <AnswerButtons/>
             </TabPanel>
         </div>
