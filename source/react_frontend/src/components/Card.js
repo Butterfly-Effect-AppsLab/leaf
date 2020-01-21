@@ -60,25 +60,28 @@ const useStyles = makeStyles({
 
 const SimpleCard = (props) => {
     const [dataLoaded, setDataLoaded] = useState(false);
-    const [caseStudies, setCaseStudies] = useState(props.data.caseStudies);
-    const [hasCaseStudies, setHasCaseStudies] = useState(props.data.hasCaseStudies);
+    //const [caseStudies, setCaseStudies] = useState(props.data.caseStudies);
+    //const [hasCaseStudies, setHasCaseStudies] = useState(props.data.hasCaseStudies);
+
+    // priradit props do premennych
 
     const classes = useStyles();
-
+    
     useEffect(() => {
-        setCaseStudies(props.data.caseStudies);
-        setHasCaseStudies(props.data.hasCaseStudies)
+        props.actionGetCaseStudies(props.dispatch)
     },
-        [caseStudies, hasCaseStudies]
+        []
     );
-
+    
+    /*
     if (!dataLoaded) {
         if (!props.hasCaseStudies) {
             props.actionGetCaseStudies(props.dispatch);
         }
         setDataLoaded(true);
     }
-
+    */
+    console.log(props.data.caseStudies);
     const renderCard = (idCase, name/*, icon, position*/) => {
         return (
             <Card id={idCase} className={classes.card}>
@@ -95,8 +98,8 @@ const SimpleCard = (props) => {
         );
     };
 
-    if (hasCaseStudies) {
-
+    if (props.data.hasCaseStudies) {
+        
         return (
             <div
                 style={{
@@ -106,15 +109,15 @@ const SimpleCard = (props) => {
                 }}
             >
                 {
-                    Object.keys(caseStudies).map(
-                        (id) => renderCard(id, caseStudies[id].name/*, caseStudy[id].icon, caseStudy[id].position*/)
+                    Object.keys(props.data.caseStudies).map(
+                        (id) => renderCard(id, props.data.caseStudies[id].name/*, caseStudy[id].icon, caseStudy[id].position*/)
                     )
                 }
             </div>
         );
     }
     else {
-        return <></>
+        return null
     }
 }
 

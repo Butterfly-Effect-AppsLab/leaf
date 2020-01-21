@@ -50,7 +50,7 @@ const setTheme = ( setProjectTheme, dispatch ) => () => {
   dispatch(setProjectTheme(data));
 };
 
-const testRequest = ( request ) => () => {
+const testRequest = ( request ) => {
   const requestInfo = {
     hasHeader: false,
     url: "http://localhost:5000/api/v1.0/companies/"
@@ -96,7 +96,7 @@ const MainPage = (props) => {
       <button onClick={setTheme(setProjectTheme, props.dispatch)}>
         Set project theme
       </button>
-      <button onClick={testRequest(props.fetchData)}>
+      <button onClick={ () => {testRequest(props.fetchData)}}>
         Get test request
       </button>
       <GoogleLogin
@@ -106,7 +106,7 @@ const MainPage = (props) => {
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
       />
-      {/*ziskat projekty, doplnit moj, vypisat cely store*//*}
+      
     </div>
   );
 };

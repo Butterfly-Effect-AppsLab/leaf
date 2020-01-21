@@ -44,6 +44,10 @@ export const actionGetCompanies = () => {
     });
 };
 
+
+
+
+
 export const actionGetCaseStudies = () => dispatch => {
     dispatch(fetchData({
         type: GET_CASE_STUDIES,
@@ -52,6 +56,11 @@ export const actionGetCaseStudies = () => dispatch => {
     })
     )
 };
+
+
+
+
+
 
 export const actionGetCaseStudyInfo = (idCaseStudy) => {
     fetchData({
