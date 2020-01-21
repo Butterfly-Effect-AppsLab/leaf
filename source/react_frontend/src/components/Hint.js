@@ -36,7 +36,6 @@ const useStyles = makeStyles({
         background: "#46B29D",
         color: "white",
         width: "130px",
-        align: "center",
         marginBottom: "5%",
     },
 });
@@ -48,7 +47,7 @@ export default function Hint(props) {
     const classes = useStyles();
 
     const fullList = () => (
-        <div id={"BLABLABLA"}
+        <div
              role="presentation"
         >
             <h1 className={classes.hintHeader}>Nápoveda</h1>
@@ -66,7 +65,6 @@ export default function Hint(props) {
             </Button>
         </div>
     );
-    console.log(open);
     return (
         <div>
             <Drawer
