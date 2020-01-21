@@ -1,8 +1,11 @@
+
 from sqlalchemy import (Column, String, Integer, Boolean, DateTime, ForeignKey,
                         desc, UniqueConstraint, func, Table)
 from sqlalchemy.event import listens_for
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+# import sys
+# sys.path.append('../')
 from database.db_conn import connect
 
 
@@ -302,28 +305,28 @@ class Task(Base):
 if __name__ == '__main__':
     db_conn = connect()
 
-    user_spec_assoc.drop(db_conn)
-    user_task_assoc.drop(db_conn)
-    user_case_assoc.drop(db_conn)
-
-    Base.metadata.drop_all(bind=db_conn, tables=[
-        UserProject.__table__,
-        UserProfile.__table__,
-        User.__table__,
-
-        Specialization.__table__,
-        Company.__table__,
-        CaseStudyAnswer.__table__,
-        CaseStudyQuestion.__table__,
-        CaseStudy.__table__,
-
-        ProjectAnswer.__table__,
-        ProjectQuestion.__table__,
-        BusinessModelStage.__table__,
-
-        ProjectPhase.__table__,
-        Task.__table__,
-    ])
+    # user_spec_assoc.drop(db_conn)
+    # user_task_assoc.drop(db_conn)
+    # user_case_assoc.drop(db_conn)
+    #
+    # Base.metadata.drop_all(bind=db_conn, tables=[
+    #     UserProject.__table__,
+    #     UserProfile.__table__,
+    #     User.__table__,
+    #
+    #     Specialization.__table__,
+    #     Company.__table__,
+    #     CaseStudyAnswer.__table__,
+    #     CaseStudyQuestion.__table__,
+    #     CaseStudy.__table__,
+    #
+    #     ProjectAnswer.__table__,
+    #     ProjectQuestion.__table__,
+    #     BusinessModelStage.__table__,
+    #
+    #     ProjectPhase.__table__,
+    #     Task.__table__,
+    # ])
 
     Session = sessionmaker(db_conn)
     session = Session()

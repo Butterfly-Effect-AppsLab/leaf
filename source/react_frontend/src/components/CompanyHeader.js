@@ -7,6 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import history from '../utils/history';
 import InfoIcon from '@material-ui/icons/Info';
+import Drawer from '@material-ui/core/Drawer';
+import Button from "@material-ui/core/Button";
+import Hint from '../components/Hint';
+
 
 //import {headlines} from './Card';
 
@@ -39,12 +43,13 @@ const useStyles = makeStyles(theme => ({
         top: 0,
     },
     title: {
-        width: '100%',
+        width: '80%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
         fontSize: 23,
         fontWeight: "bold",
         borderRadius: '0%',
         textAlign: 'center',
-        position: 'absolute',
         paddingBottom: '15px',
     },
     head: {
@@ -64,7 +69,13 @@ const useStyles = makeStyles(theme => ({
         right: 0,
         top: 0,
         paddingTop: '18px',
-    }
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
 }));
 
 /**
@@ -76,6 +87,13 @@ function DenseAppBar() {
     const [textColor, setTextColor] = React.useState("");
     const [headerColor, setHeaderColor] = React.useState("");
     const [showHint, setShowHint] = React.useState(false);
+    const [openHint, setOpenHint] = React.useState(false);
+
+
+    const handleClick = () => {
+        setOpenHint(true);
+        console.log(openHint);
+    };
 
     useEffect(() => {
         const processPathName = pathname => {
@@ -95,19 +113,24 @@ function DenseAppBar() {
                     setHeaderColor('#E17A47');
                     setTextColor("#FFFFFF");
                     break;
-                case "/LCFirma":        //Firma Otazky
+                case "/FirmaInfo": //Firma Description
                     setValue(3);
+                    setHeaderColor("#EFCA59");
+                    setTextColor("#FFFFFF");
+                    break;
+                case "/LCFirma":        //Firma Otazky
+                    setValue(4);
                     setHeaderColor('#F9FAFB');
                     setTextColor("#EFCA59");
                     break;
                 case "/Otazky":         //Projekt Otazky
-                    setValue(4);
+                    setValue(5);
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     setShowHint(true);
                     break;
                 case "/ToDo":
-                    setValue(5);  //Projek Tuducka
+                    setValue(6);  //Projek Tuducka
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     setShowHint(true);
@@ -124,7 +147,9 @@ function DenseAppBar() {
                 processPathName(location.pathname);
             });
         }
-    }, [history]);
+    });
+
+
     return value >= 0 ? (
         <div>
             <AppBar className={classes.appBar} style={{backgroundColor: headerColor}}>
@@ -145,7 +170,8 @@ function DenseAppBar() {
                         </div>
                         {showHint === true ? (
                             <div className={classes.info} style={{color: textColor}}>
-                                <IconButton className={classes.info} style={{color: textColor}}>
+                                <IconButton onClick={handleClick} className={classes.info}
+                                            style={{color: textColor}}>
                                     <InfoIcon/>
                                 </IconButton>
                             </div>
@@ -153,6 +179,7 @@ function DenseAppBar() {
                     </div>
                 </Toolbar>
             </AppBar>
+            <Hint open={openHint} onClose={()=>{setOpenHint(false)}} />
         </div>
     ) : null;
 }

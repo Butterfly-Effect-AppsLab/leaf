@@ -1,18 +1,7 @@
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Typography from "@material-ui/core/Typography";
 import React from "react";
-import Drawer from '@material-ui/core/Drawer';
-
-// const renderButton = answer => {
-//     return (
-//         <Button className={classes.button}>
-//             {answer}
-//         </Button>
-//     );
-// };
-
-// const options = ["Každého človeka, ktorý si umýva zuby", "Eco zodpovedných ľudí", "Rodiny"]
+import Explanation from './Explanation'
 
 const useStyles = makeStyles(theme => ({
         typography: {
@@ -35,91 +24,42 @@ const useStyles = makeStyles(theme => ({
             border: '3px solid #EFCA59',
             borderRadius: '6px',
             maxWidth: '80%',
-        },
-        answerOption: {
-            textAlign: 'center',
-            marginTop: "25px",
-            marginBottom: "30px",
-            marginRight: "5px",
-            marginLeft: "5px",
-            overflowX: "auto",
-        },
-        paper: {
-            backgroundColor: 'white',
-            color: '#7C7C7C',
-            width: '80%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            borderRadius: '6px',
-        },
-        textColor: {
-            color: '#EF3D59',
-            fontWeight: 'bold',
-            fontSize: '17px',
-        },
-        answer: {
-            margin: '15px 15px 15px 15px'
-        },
-        label: {
-            backgroundColor: '#EF3D59',
-            borderRadius: '6px',
-            textAlign: 'center',
-            padding: '5px 42px 5px 42px',
-            marginTop: '5px',
-            color: 'white'
-        },
-        questionText: {
-            fontSize: '14px',
-            color: '#7C7C7C',
         }
     }))
 ;
 
-export default function TemporaryDrawer() {
+export default function AnswerButtons(props) {
+    const answers = props.answers;
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        bottom: false,
-    });
+    const [openExplanation, setOpenExplanation] = React.useState(false);
+    const [chosenAnswer, setChosenAnswer] = React.useState({});
 
-    const toggleDrawer = (side, open) => event => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-
-        setState({...state, [side]: open});
+    const handleClick = (answer) => {
+        setOpenExplanation(true);
+        setChosenAnswer(answer);
     };
 
-    const answer = side => (
-        <div
-            role="presentation"
-            onClick={toggleDrawer(side, false)}
-            onKeyDown={toggleDrawer(side, false)}
-        >
-            <div className={classes.answerOption}>
-                <Typography className={classes.textColor}>Nesprávne</Typography>
-                <div className={classes.answer}>
-                    Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať,
-                    pretože pre príliš všeobecného zákazníka je veľmi náročné prispôsobiť produkt,
-                    dizajn či marketing
-                </div>
-                <Button
-                    classes={{
-                        label: classes.label,
-                    }}>Ok</Button>
-            </div>
-        </div>
-    );
+    const renderExplanation = (answer, openExplanation) => {
+        if (openExplanation) {
+            return (
+                <Explanation explanation={answer.explanation} isCorrect={answer.isCorrect} open={openExplanation}
+                             onClose={() => {
+                              setOpenExplanation(false)
+                          }}/>
+            )
+        }
+        return null
+    };
 
     return (
-        <div className={classes.box}>
-            <Button onClick={toggleDrawer('bottom', true)}>Odpoved</Button>
-            <Drawer
-                classes={{
-                    paper: classes.paper,
-                }}
-                anchor="bottom" open={state.bottom} onClose={toggleDrawer('bottom', false)}>
-                {answer('bottom')}
-            </Drawer>
-        </div>
-    );
-}
+        answers.map((answer) => (
+            <div className={classes.box}>
+                <Button onClick={() => {
+                    handleClick(answer)
+                }}>{answer.answerText}</Button>
+                {renderExplanation(chosenAnswer, openExplanation)}
+            </div>
+        ))
+    )
+
+};

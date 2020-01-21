@@ -63,6 +63,77 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+const questions = [
+    {
+        id: 1,
+        questionId: 1,
+        questionText: "Akého zákazníka si podľa teba vytipovala spoločnosť Čistý zúbok?",
+        answers: [
+            {
+                answerText: "Každého človeka, ktorý si umýva zuby",
+                isCorrect: false,
+                explanation: "Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať, pretože pre príliš všebecného zákazníka je veľmi náročné prispôsobiť produkt, dizajn či marketing."
+            },
+            {
+                answerText: "Eco zodpovedných ľudí",
+                isCorrect: false,
+                explanation: "Eko zodpovední ľudia sú tiež zákazníkmi Čistého zúbka. Na trhu však už existuje viacero alternatív eko zubných kefiek. Odlišnosťou Čistého zúbka je predplatné. Skús vybrať zákazníka, pre ktorého je dôležitá včasná automatická výmena kefiek."
+            },
+            {
+                answerText: "Rodiny",
+                isCorrect: true,
+                explanation: "Pracujúci rodičia v záplave svojich povinností zabúdajú sledovať stav zubných kefiek členov svojej rodiny, preto pravidlená automatická zásielka eko zubných kefiek je pre nich skvelým riešením."
+            }
+        ]
+
+
+    },
+    {
+        id: 1,
+        questionId: 2,
+        questionText: "Koho si Čistý zúbok zvolil ako prvých \"skúšobných\" zákazníkov?",
+        answers: [
+            {
+                answerText: "Náhodných prvých zákazníkov, ktorí si produkt objednali",
+                isCorrect: false,
+                explanation: "Prvých zákazníkov, tzv. \"lastovičky\" je potrebné si vybrať vopred. Musia sa zhodovať s vytipovaným zákazníkom, pre ktorého je produkt prispôsobovaný."
+            }, {
+                answerText: "Zákazníkov z mesta, kde firma vznikla",
+                isCorrect: true,
+                explanation: "Lastovičky, resp. prví zákazníci by mali byť ľahko dostupní kvôli čo najnižším nákladom na marketing a tiež totožní s typom cieľového zákazníka. Sú to zákazníci, ktorí poskytujú hodnotenie produktu pred oficiálnym spustením predaja."
+            },
+            {
+                answerText: "Cielene vybraných zákazníkov, ktorí prejavili záujem o predplatenú službu",
+                isCorrect: false,
+                explanation: "Lastovičky, ako voláme prvých zákazníkov, dávajú spätnú väzbu na pripravovaný produkt vo fáze, kedy je možné ešte produkt na základe ich hodnotenia prispôsobiť. Preto by to nemali byť zákazníci, ktorí prejavia záujem o produkt už v jeho finálnej podobe."
+            }
+        ]
+    },
+    {
+        id: 1,
+        questionId: 3,
+        questionText: "Označ všetkých zákazníkov spoločnosti Čistý zúbok. (viacero správnych odpovedí)",
+        answers: [
+            {
+                answerText: "Zamestnaní rodičia",
+                isCorrect: true,
+                explanation: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
+            },
+            {
+                answerText: "Environmentálne zodpovední ľudia",
+                isCorrect: true,
+                explanation: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
+            },
+            {
+                answerText: "Deti zamestnaných rodičov",
+                isCorrect: false,
+                explanation: "Deti sú používateľmi produktu, nie však zákazníkmi. Používateľ produkt používa, ale nie je schopný či ochotný zaň platiť. Zákazníci sú ich rodičia, ktorí za produkt zaplatili."
+            }
+        ]
+    }
+];
+
+
 export default function ScrollableTabsButtonAuto() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -71,6 +142,12 @@ export default function ScrollableTabsButtonAuto() {
         setValue(newValue);
     };
 
+    const renderTab = (question, questionId) => {
+        return (
+            <Tab label={"Otázka " + String(questionId)} {...a11yProps(question.id)}/>
+        )
+
+    };
     return (
         <div className={classes.root}>
             <div className={classes.questions}>
@@ -87,28 +164,16 @@ export default function ScrollableTabsButtonAuto() {
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
                     >
-                        <Tab label="Otázka 1" {...a11yProps(0)} />
-                        <Tab label="Otázka 2" {...a11yProps(1)} />
-                        <Tab label="Otázka 3" {...a11yProps(2)} />
+                        {questions.map((question) => renderTab(question.questionText, question.questionId))}
                     </Tabs>
                 </AppBar>
-                <CompanyLCquestion/>
             </div>
-            <TabPanel value={value} index={0}>
-                <AnswerButtons/>
-                <AnswerButtons/>
-                <AnswerButtons/>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <AnswerButtons/>
-                <AnswerButtons/>
-                <AnswerButtons/>
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                <AnswerButtons/>
-                <AnswerButtons/>
-                <AnswerButtons/>
-            </TabPanel>
+            {questions.map((question, index) => (
+                <TabPanel value={value} index={index}>
+                    <CompanyLCquestion text={question.questionText}/>
+                    <AnswerButtons answers={question.answers}/>
+                </TabPanel>
+            ))}
         </div>
     );
 }

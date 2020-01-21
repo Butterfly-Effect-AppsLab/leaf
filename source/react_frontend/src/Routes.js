@@ -10,6 +10,7 @@ import React from "react";
 import OnboardingPage from "./pages/OnboardingPage";
 import ProfilePage from "./pages/ProfilePage";
 import ToDoPage from "./pages/ToDoPage";
+import CaseStudyInfoPage from "./pages/CaseStudyInfoPage";
 
 const Routes = () => (
   <>
@@ -22,6 +23,7 @@ const Routes = () => (
     <Route exact path={"/Onboarding"} component={OnboardingPage} />
     <Route exact path={"/Profil"} component={ProfilePage} />
     <Route exact path={"/ToDo"} component={ToDoPage} />
+    <Route exact path={"/FirmaInfo"} component={CaseStudyInfoPage} />
     <Route exact path={"/test_redux"} component={Test_ReduxPage} />
   </>
 );
