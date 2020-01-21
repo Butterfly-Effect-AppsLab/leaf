@@ -4,20 +4,21 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        '& .MuiTextField-root': {
-            width: '95%',
-        },
+            width: '80%',
+            marginTop: '15px',
+            marginRight: 'auto',
+            marginLeft: 'auto'
     },
     background: {
         boxShadow: "0px 4px 26px rgba(0, 0, 0, 0.06)",
-        background: "rgba(255, 255, 255, 0.5)",
-        border: "3px solid #E17A47",
-        borderRadius: "8px"
+        background: "transparent",
+        borderRadius: "8px",
+        width: "100%",
+
     },
     outline: {
         borderColor: "#E17A47",
     }
-
 }));
 
 export default function MultilineTextField(props) {
@@ -30,11 +31,8 @@ export default function MultilineTextField(props) {
         setValue(event.target.value);
     };
 
-
     return (
         <form className={classes.root} noValidate autoComplete="off">
-
-
             <TextField
                 id="outlined-textarea"
                 placeholder={field_name}
@@ -48,9 +46,7 @@ export default function MultilineTextField(props) {
                 InputProps={{
                     classes: {notchedOutline: classes.outline},
                 }}
-
             />
-
         </form>
     );
 }

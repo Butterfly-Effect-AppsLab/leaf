@@ -1,19 +1,23 @@
-import AnswerField from "../components/AnswerField";
-import ToDo from "../components/ToDo";
 import React from "react";
+import ProjectQuestionSwipe from "../components/ProjectQuestionSwipe";
+import MyProjectButtons from "../components/MyProjectButtons";
+import background_projekt_orange from "../icons/background_projekt_orange.svg";
+
+
 
 const MyQuestionsPage = () => {
     return (
-        <div id="Q&A" align="center">
-            <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</h1>
-            <br />
-            <AnswerField/>
-            <br />
-            <ToDo/>
-            <ToDo/>
-            <ToDo/>
-
-        </div>
+        <div style={{
+                        height: '100%',
+                        marginTop: '70px',
+                        marginBottom: '25px',
+                        background: "#F9FAFB",
+                        backgroundImage: `url(${background_projekt_orange})`,
+                        }}
+            >
+                <ProjectQuestionSwipe/>
+                <MyProjectButtons/>
+            </div>
     )
 };
 
