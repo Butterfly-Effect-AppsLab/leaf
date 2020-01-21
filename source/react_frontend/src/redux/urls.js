@@ -27,7 +27,7 @@ export const API_COMPANY_CASE_STUDIES = (idCompany) =>
 
 /* GET */
 export const API_CASE_STUDY_INFO = (idCaseStudy) => 
-    HOST + API_VERSION + "/case-study/" + idCaseStudy;
+    HOST + API_VERSION + "/case-study-info/" + idCaseStudy;
 
 /* GET */
 export const API_CASE_STUDY_STAGE_QUESTIONS = (idCaseStudy, idStage) => 
@@ -37,9 +37,13 @@ export const API_CASE_STUDY_STAGE_QUESTIONS = (idCaseStudy, idStage) =>
 export const API_QUESTION_CHOICES = (idQuestion) => 
     HOST + API_VERSION + "/question/" + idQuestion + "/choices";
 
-/* GET, PUT */
-export const API_USER_CHOICE = (idQuestion) => 
-    HOST + API_VERSION + "/question/" + idQuestion + "/choice";
+/* GET, PUT, DELETE */
+export const API_USER_CASE_STUDY_CHOICE = (idChoice) => 
+    HOST + API_VERSION + "/user-case-study-choice/" + idChoice;   // ?? prerobit? - nasledne uprav v db
+
+/* GET, PUT, DELETE */
+export const API_USER_CASE_STUDY = (idCaseStudy) => 
+    HOST + API_VERSION + "/user-case-study/" + idCaseStudy;  // ?? ako vyriesit get pre zoznam a put pre rozpracovany/hotovy
 
 /*--------------------------------------------------------------------------*/
 
