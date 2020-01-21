@@ -26,7 +26,7 @@ export const API_COMPANY_CASE_STUDIES = (idCompany) =>
     HOST + API_VERSION + "/company/" + idCompany + "/case-studies";
 
 /* GET */
-export const API_CASE_STUDY_DETAIL = (idCaseStudy) => 
+export const API_CASE_STUDY_INFO = (idCaseStudy) => 
     HOST + API_VERSION + "/case-study/" + idCaseStudy;
 
 /* GET */

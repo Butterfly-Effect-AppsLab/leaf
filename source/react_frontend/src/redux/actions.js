@@ -28,25 +28,14 @@ export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
 
 // ----------------------------------------------------------------------
 
-export const actionGetStages = () => {
-    fetchData({
+export const actionGetStages = () => dispatch => {
+    dispatch(fetchData({
         type: GET_STAGES,
         apiUrl: API.API_STAGES(),
         hasHeader: false
-    });
+    })
+    )
 };
-
-export const actionGetCompanies = () => {
-    fetchData({
-        type: GET_COMPANIES,
-        apiUrl: API.API_COMPANIES(),
-        hasHeader: false
-    });
-};
-
-
-
-
 
 export const actionGetCaseStudies = () => dispatch => {
     dispatch(fetchData({
@@ -62,6 +51,14 @@ export const actionGetCaseStudies = () => dispatch => {
 
 
 
+export const actionGetCompanies = () => {
+    fetchData({
+        type: GET_COMPANIES,
+        apiUrl: API.API_COMPANIES(),
+        hasHeader: false
+    });
+};
+
 export const actionGetCaseStudyInfo = (idCaseStudy) => {
     fetchData({
         type: GET_CASE_STUDY_INFO,
@@ -76,8 +73,8 @@ export const actionSetProject = (props) => {
         apiUrl: API.API_PROJECTS(),
         hasHeader: true,
         requestBody: {
-            name: props.projectName, 
-            description: props.projectDescription, 
+            name: props.projectName,
+            description: props.projectDescription,
             specialization: props.projectSpecialization
         },
         requestMethod: 'POST'
@@ -90,7 +87,7 @@ export const actionSetProjectName = (props) => {
         apiUrl: API.API_PROJECT(props.idProject),
         hasHeader: true,
         requestBody: {
-            op: 'update', 
+            op: 'UPDATE',
             value: props.theme
         },
         requestMethod: 'PATCH'

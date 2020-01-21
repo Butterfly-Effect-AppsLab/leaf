@@ -43,4 +43,4 @@ const fetchDataFail = () => {
         type: 'FETCH_DATA_FAIL',
     }
 }
-// v pripade ze chceme pouzit pri hlaske data zo storu
+// v pripade ze chceme pouzit pri chybovej hlaske data o chybe zo store-u

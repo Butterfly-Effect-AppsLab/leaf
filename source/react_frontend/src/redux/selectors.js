@@ -27,4 +27,7 @@ export const hasCaseStudies = store =>
 export const hasProjects = store => 
     isEmpty(store.case_studies);
 
-export const getCaseStudies = store => store.case_studies;  // posli null ak nema data
+
+export const getCaseStudies = store => {
+    return isEmpty(store.case_studies) ? null : store.case_studies;
+}
