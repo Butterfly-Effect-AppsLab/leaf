@@ -72,17 +72,17 @@ const questions = [
             {
                 answerText: "Každého človeka, ktorý si umýva zuby",
                 isCorrect: false,
-                feedback: "Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať, pretože pre príliš všebecného zákazníka je veľmi náročné prispôsobiť produkt, dizajn či marketing."
+                explanation: "Pri tvorbe produktu je veľmi dôležité si zákazníka čo najviac vyšpecifikovať, pretože pre príliš všebecného zákazníka je veľmi náročné prispôsobiť produkt, dizajn či marketing."
             },
             {
                 answerText: "Eco zodpovedných ľudí",
                 isCorrect: false,
-                feedback: "Eko zodpovední ľudia sú tiež zákazníkmi Čistého zúbka. Na trhu však už existuje viacero alternatív eko zubných kefiek. Odlišnosťou Čistého zúbka je predplatné. Skús vybrať zákazníka, pre ktorého je dôležitá včasná automatická výmena kefiek."
+                explanation: "Eko zodpovední ľudia sú tiež zákazníkmi Čistého zúbka. Na trhu však už existuje viacero alternatív eko zubných kefiek. Odlišnosťou Čistého zúbka je predplatné. Skús vybrať zákazníka, pre ktorého je dôležitá včasná automatická výmena kefiek."
             },
             {
                 answerText: "Rodiny",
                 isCorrect: true,
-                feedback: "Pracujúci rodičia v záplave svojich povinností zabúdajú sledovať stav zubných kefiek členov svojej rodiny, preto pravidlená automatická zásielka eko zubných kefiek je pre nich skvelým riešením."
+                explanation: "Pracujúci rodičia v záplave svojich povinností zabúdajú sledovať stav zubných kefiek členov svojej rodiny, preto pravidlená automatická zásielka eko zubných kefiek je pre nich skvelým riešením."
             }
         ]
 
@@ -96,16 +96,16 @@ const questions = [
             {
                 answerText: "Náhodných prvých zákazníkov, ktorí si produkt objednali",
                 isCorrect: false,
-                feedback: "Prvých zákazníkov, tzv. \"lastovičky\" je potrebné si vybrať vopred. Musia sa zhodovať s vytipovaným zákazníkom, pre ktorého je produkt prispôsobovaný."
+                explanation: "Prvých zákazníkov, tzv. \"lastovičky\" je potrebné si vybrať vopred. Musia sa zhodovať s vytipovaným zákazníkom, pre ktorého je produkt prispôsobovaný."
             }, {
                 answerText: "Zákazníkov z mesta, kde firma vznikla",
                 isCorrect: true,
-                feedback: "astovičky, resp. prví zákazníci by mali byť ľahko dostupní kvôli čo najnižším nákladom na marketing a tiež totožní s typom cieľového zákazníka. Sú to zákazníci, ktorí poskytujú hodnotenie produktu pred oficiálnym spustením predaja."
+                explanation: "Lastovičky, resp. prví zákazníci by mali byť ľahko dostupní kvôli čo najnižším nákladom na marketing a tiež totožní s typom cieľového zákazníka. Sú to zákazníci, ktorí poskytujú hodnotenie produktu pred oficiálnym spustením predaja."
             },
             {
                 answerText: "Cielene vybraných zákazníkov, ktorí prejavili záujem o predplatenú službu",
                 isCorrect: false,
-                feedback: "Lastovičky, ako voláme prvých zákazníkov, dávajú spätnú väzbu na pripravovaný produkt vo fáze, kedy je možné ešte produkt na základe ich hodnotenia prispôsobiť. Preto by to nemali byť zákazníci, ktorí prejavia záujem o produkt už v jeho finálnej podobe."
+                explanation: "Lastovičky, ako voláme prvých zákazníkov, dávajú spätnú väzbu na pripravovaný produkt vo fáze, kedy je možné ešte produkt na základe ich hodnotenia prispôsobiť. Preto by to nemali byť zákazníci, ktorí prejavia záujem o produkt už v jeho finálnej podobe."
             }
         ]
     },
@@ -117,17 +117,17 @@ const questions = [
             {
                 answerText: "Zamestnaní rodičia",
                 isCorrect: true,
-                feedback: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
+                explanation: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
             },
             {
                 answerText: "Environmentálne zodpovední ľudia",
                 isCorrect: true,
-                feedback: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
+                explanation: "Aj napriek tomu, že nie sú primárným zákazníkom eko kefiek, sú za produkt ochotní zaplatiť."
             },
             {
                 answerText: "Deti zamestnaných rodičov",
                 isCorrect: false,
-                feedback: "Deti sú používateľmi produktu, nie však zákazníkmi. Používateľ produkt používa, ale nie je schopný či ochotný zaň platiť. Zákazníci sú ich rodičia, ktorí za produkt zaplatili."
+                explanation: "Deti sú používateľmi produktu, nie však zákazníkmi. Používateľ produkt používa, ale nie je schopný či ochotný zaň platiť. Zákazníci sú ich rodičia, ktorí za produkt zaplatili."
             }
         ]
     }

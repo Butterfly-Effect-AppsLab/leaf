@@ -5,19 +5,19 @@ import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
-    feedback: {
+    explanation: {
         borderRadius: "21px",
         textAlign: "center",
         marginLeft: "5%",
         marginRight: "5%",
     },
-    feedbackHeader: {
+    explanationHeader: {
         fontSize: "17px",
         marginBottom: "5%",
         marginTop: "5%",
         textAlign: "center",
     },
-    feedbackText: {
+    explanationText: {
         marginLeft: "10%",
         marginRight: "10%",
         marginBottom: "10%",
@@ -31,26 +31,33 @@ const useStyles = makeStyles({
     },
 });
 
-export default function Feedback(props) {
+export default function Explanation(props) {
     const open = props.open;
     const isCorrect = props.isCorrect;
-    const feedback = props.feedback;
+    const explanation = props.explanation;
     const classes = useStyles();
     const color = {incorrect: "#EF3D59", correct: "#46B29D"};
+    const title = {incorrect: "Nápoveda", correct: "Správne"};
+
 
     const setColor = (isCorrect) => {
         if (isCorrect === true) {
             return (color.correct);
         } else return (color.incorrect);
     };
+    const setTitle = (isCorrect) => {
+        if (isCorrect === true) {
+            return (title.correct);
+        } else return (title.incorrect);
+    };
 
     const fullList = () => (
         <div role="presentation">
-            <h1 className={classes.feedbackHeader} style={{color: setColor({isCorrect})}}>Nápoveda</h1>
-            <Typography className={classes.feedbackText}>
-                {feedback}
+            <h1 className={classes.explanationHeader} style={{color: setColor(isCorrect)}}>{setTitle(isCorrect)}</h1>
+            <Typography className={classes.explanationText}>
+                {explanation}
             </Typography>
-            <Button variant="contained" className={classes.button} style={{background: setColor({isCorrect})}}
+            <Button variant="contained" className={classes.button} style={{background: setColor(isCorrect)}}
                     onClick={() => {
                         props.onClose()
                     }}> {/*volanie az po kliku*/}
@@ -66,7 +73,7 @@ export default function Feedback(props) {
                 anchor="bottom"
                 open={open}
                 classes={{
-                    paper: classes.feedback,
+                    paper: classes.explanation,
                 }}>
                 {fullList()}
             </Drawer>

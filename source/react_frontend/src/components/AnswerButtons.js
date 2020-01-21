@@ -1,7 +1,7 @@
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import React from "react";
-import Feedback from './Feedback'
+import Explanation from './Explanation'
 
 const useStyles = makeStyles(theme => ({
         typography: {
@@ -31,16 +31,33 @@ const useStyles = makeStyles(theme => ({
 export default function AnswerButtons(props) {
     const answers = props.answers;
     const classes = useStyles();
-    const [openFeedback, setOpenFeedback] = React.useState(false);
+    const [openExplanation, setOpenExplanation] = React.useState(false);
+    const [chosenAnswer, setChosenAnswer] = React.useState({});
+
+    const handleClick = (answer) => {
+        setOpenExplanation(true);
+        setChosenAnswer(answer);
+    };
+
+    const renderExplanation = (answer, openExplanation) => {
+        if (openExplanation) {
+            return (
+                <Explanation explanation={answer.explanation} isCorrect={answer.isCorrect} open={openExplanation}
+                             onClose={() => {
+                              setOpenExplanation(false)
+                          }}/>
+            )
+        }
+        return null
+    };
 
     return (
         answers.map((answer) => (
             <div className={classes.box}>
-                <Button onClick={() => {setOpenFeedback(true)}}>{answer.answerText}</Button>
-                    <Feedback feedback={answer.feedback} isCorrect={answer.isCorrect} open={openFeedback}
-                              onClose={() => {
-                                  setOpenFeedback(false)
-                              }}/>
+                <Button onClick={() => {
+                    handleClick(answer)
+                }}>{answer.answerText}</Button>
+                {renderExplanation(chosenAnswer, openExplanation)}
             </div>
         ))
     )
