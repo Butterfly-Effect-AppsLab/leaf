@@ -174,13 +174,13 @@ def get_case_study_info(id_case_study):
 # @login_required
 def get_stages():
     stages_data = session.query(BusinessModelStage)
-    stages = {'stages': {}}
+    stages = {}
     for stage in stages_data:
         stage_attrs = {
             'id': stage.id,
             'name': stage.name
         }
-        stages['stages'][stage.id] = stage_attrs
+        stages[stage.id] = stage_attrs
 
     return jsonify(stages)
 

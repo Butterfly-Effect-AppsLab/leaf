@@ -8,11 +8,11 @@ import Barbershop from '../icons/barbershop.svg';
 import Zubok from '../icons/zubok.svg';
 import Coffee from '../icons/coffee.svg';
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actionGetCaseStudies } from "../redux/actions";
-import { hasCaseStudies, getCaseStudies } from "../redux/selectors";
+import { getCaseStudies } from "../redux/selectors";
 
 /*
 const getCaseStudies = () => {

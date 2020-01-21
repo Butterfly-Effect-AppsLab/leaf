@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea"
@@ -6,7 +6,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LockIcon from '@material-ui/icons/Lock';
 
-const getStages = () => {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actionGetStages } from "../redux/actions";
+import { getStages } from "../redux/selectors";
+
+/*const getStages = () => {
     return [{id: 1, name: "Zákazníci"},
         {id: 2, name: "Problém a konkurencia"},
         {id: 3, name: "Unikátnosť produktu"},
@@ -17,7 +22,7 @@ const getStages = () => {
         {id: 8, name: "Náklady"},
         {id: 9, name: "Marketingové náklady"}
     ]
-};
+};*/
 
 const useStyles = makeStyles({
 
@@ -50,8 +55,15 @@ const useStyles = makeStyles({
     }
 });
 
-export default function CategoryCard() {
+const CategoryCard = (props) => {
+    const stages = props.data.stages;
     const classes = useStyles();
+
+    useEffect(() => {
+        props.actionGetStages(props.dispatch)
+    },
+        []
+    );
 
     const renderCard = (idStage, name) => {
         return (
@@ -74,17 +86,35 @@ export default function CategoryCard() {
         );
     };
 
-    const stages = getStages();
+    if( stages ){
+        return (
+            <div
+                style={{
+                    overflowX: "auto",
+                    overflowY: "hidden",
+                    whiteSpace: "nowrap",
+                }}
+            >
+                {Object.keys(stages).sort().map(id => renderCard(id, stages[id].name))}
+            </div>
+        );
+    }
+    else {
+        return null
+    }
+};
 
-    return (
-        <div
-            style={{
-                overflowX: "auto",
-                overflowY: "hidden",
-                whiteSpace: "nowrap",
-            }}
-        >
-            {stages.map(stage => renderCard(stage.id, stage.name))}
-        </div>
-    );
-}
+
+const mapStateToProps = state => {
+    const data = {
+        stages: getStages(state)
+    };
+    return { data };
+};
+
+const mapDispatchToProps = dispatch => ({
+    actionGetStages: bindActionCreators(actionGetStages, dispatch),
+    dispatch
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryCard);
