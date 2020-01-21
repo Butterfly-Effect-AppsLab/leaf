@@ -1,10 +1,6 @@
-# import sys
-# sys.path.append('../')
 from database.db_models import *
 from database.db_conn import connect
 from datetime import datetime
-
-
 
 
 def set_content():

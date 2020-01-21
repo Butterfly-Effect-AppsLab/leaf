@@ -1,11 +1,8 @@
-
 from sqlalchemy import (Column, String, Integer, Boolean, DateTime, ForeignKey,
                         desc, UniqueConstraint, func, Table)
 from sqlalchemy.event import listens_for
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-# import sys
-# sys.path.append('../')
 from database.db_conn import connect
 
 
@@ -14,7 +11,12 @@ Base = declarative_base()
 
 user_case_assoc = Table('user_case_assoc', Base.metadata,
                         Column('id_user', Integer, ForeignKey('users.id')),
-                        Column('id_case', Integer, ForeignKey('case_studies.id')))
+                        Column('id_case', Integer, ForeignKey('case_studies.id')),
+                        Column('accomplished', Boolean))
+
+user_case_question_assoc = Table('user_case_question_assoc', Base.metadata,
+                                 Column('id_user', Integer, ForeignKey('users.id')),
+                                 Column('id_case', Integer, ForeignKey('case_study_questions.id')))
 
 user_spec_assoc = Table('user_spec_assoc', Base.metadata,
                         Column('id_user', Integer, ForeignKey('users.id')),
@@ -197,7 +199,7 @@ class CaseStudyQuestion(Base):
     # many to one
     business_model_stage = relationship("BusinessModelStage", back_populates="case_study_questions")
     # one to many
-    answers = relationship("CaseStudyAnswer", back_populates="question")
+    choices = relationship("QuestionChoice", back_populates="question")
     # many to one
     case_study = relationship("CaseStudy", back_populates="questions")
 
@@ -205,22 +207,22 @@ class CaseStudyQuestion(Base):
         return f'<CaseStudy(id_company="{self.id_case_study}", id_stage="{self.id_stage}")>'
 
 
-class CaseStudyAnswer(Base):
-    __tablename__ = 'case_study_answers'
+class QuestionChoice(Base):
+    __tablename__ = 'question_choices'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_question = Column(Integer, ForeignKey('case_study_questions.id'), nullable=False)
-    answer = Column(String, nullable=False)
+    choice = Column(String, nullable=False)
     explanation = Column(String, nullable=False)
     is_right = Column(Boolean, nullable=False)
 
-    __table_args__ = (UniqueConstraint('id_question', 'answer', name='_uc_case_study_answer'),)
+    __table_args__ = (UniqueConstraint('id_question', 'choice', name='_uc_question_choice'),)
 
     # many to one
-    question = relationship("CaseStudyQuestion", back_populates="answers")
+    question = relationship("CaseStudyQuestion", back_populates="choices")
 
     def __repr__(self):
-        return f'<CaseStudy(answer="{self.answer}", explanation="{self.explanation}", is_right="{self.is_right}")>'
+        return f'<QuestionChoice(choice="{self.choice}", explanation="{self.explanation}", is_right="{self.is_right}")>'
 
 
 class Specialization(Base):
@@ -305,28 +307,29 @@ class Task(Base):
 if __name__ == '__main__':
     db_conn = connect()
 
-    # user_spec_assoc.drop(db_conn)
-    # user_task_assoc.drop(db_conn)
-    # user_case_assoc.drop(db_conn)
-    #
-    # Base.metadata.drop_all(bind=db_conn, tables=[
-    #     UserProject.__table__,
-    #     UserProfile.__table__,
-    #     User.__table__,
-    #
-    #     Specialization.__table__,
-    #     Company.__table__,
-    #     CaseStudyAnswer.__table__,
-    #     CaseStudyQuestion.__table__,
-    #     CaseStudy.__table__,
-    #
-    #     ProjectAnswer.__table__,
-    #     ProjectQuestion.__table__,
-    #     BusinessModelStage.__table__,
-    #
-    #     ProjectPhase.__table__,
-    #     Task.__table__,
-    # ])
+    user_spec_assoc.drop(db_conn)
+    user_task_assoc.drop(db_conn)
+    user_case_assoc.drop(db_conn)
+    user_case_question_assoc.drop(db_conn)
+
+    Base.metadata.drop_all(bind=db_conn, tables=[
+        UserProject.__table__,
+        UserProfile.__table__,
+        User.__table__,
+
+        Specialization.__table__,
+        Company.__table__,
+        QuestionChoice.__table__,
+        CaseStudyQuestion.__table__,
+        CaseStudy.__table__,
+
+        ProjectAnswer.__table__,
+        ProjectQuestion.__table__,
+        BusinessModelStage.__table__,
+
+        ProjectPhase.__table__,
+        Task.__table__,
+    ])
 
     Session = sessionmaker(db_conn)
     session = Session()
