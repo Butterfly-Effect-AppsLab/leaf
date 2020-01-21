@@ -113,19 +113,24 @@ function DenseAppBar() {
                     setHeaderColor('#E17A47');
                     setTextColor("#FFFFFF");
                     break;
-                case "/LCFirma":        //Firma Otazky
+                case "/FirmaInfo": //Firma Description
                     setValue(3);
+                    setHeaderColor("#EFCA59");
+                    setTextColor("#FFFFFF");
+                    break;
+                case "/LCFirma":        //Firma Otazky
+                    setValue(4);
                     setHeaderColor('#F9FAFB');
                     setTextColor("#EFCA59");
                     break;
                 case "/Otazky":         //Projekt Otazky
-                    setValue(4);
+                    setValue(5);
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     setShowHint(true);
                     break;
                 case "/ToDo":
-                    setValue(5);  //Projek Tuducka
+                    setValue(6);  //Projek Tuducka
                     setHeaderColor('#F9FAFB');
                     setTextColor("#E17A47");
                     setShowHint(true);
