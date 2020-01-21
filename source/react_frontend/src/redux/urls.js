@@ -22,24 +22,24 @@ export const API_CASE_STUDIES = () =>
     HOST + API_VERSION + "/case-studies";
 
 /* GET */
-export const API_CASE_STUDY_INFO = (idCaseStudy) => 
-    HOST + API_VERSION + "/case-study/" + idCaseStudy;
-
-/* GET */
 export const API_COMPANY_CASE_STUDIES = (idCompany) => 
     HOST + API_VERSION + "/company/" + idCompany + "/case-studies";
 
 /* GET */
-export const API_CASE_STUDY_QUESTIONS = (idCaseStudy) => 
-    HOST + API_VERSION + "/case-study/" + idCaseStudy + "/questions";
+export const API_CASE_STUDY_DETAIL = (idCaseStudy) => 
+    HOST + API_VERSION + "/case-study/" + idCaseStudy;
 
 /* GET */
-export const API_QUESTION_ANSWERS = (idQuestion) => 
-    HOST + API_VERSION + "/question/" + idQuestion + "/answers";
+export const API_CASE_STUDY_STAGE_QUESTIONS = (idCaseStudy, idStage) => 
+    HOST + API_VERSION + "/case-study/" + idCaseStudy + '/stage/'+ idStage + "/questions";
+
+/* GET */
+export const API_QUESTION_CHOICES = (idQuestion) => 
+    HOST + API_VERSION + "/question/" + idQuestion + "/choices";
 
 /* GET, PUT */
-export const API_QUESTION_USER_ANSWER = (idQuestion) => 
-    HOST + API_VERSION + "/question/" + idQuestion + "/answer";
+export const API_USER_CHOICE = (idQuestion) => 
+    HOST + API_VERSION + "/question/" + idQuestion + "/choice";
 
 /*--------------------------------------------------------------------------*/
 
