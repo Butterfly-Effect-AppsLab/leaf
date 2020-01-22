@@ -1,25 +1,23 @@
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import React from "react";
+import * as ProjectColors from "../utils/colors";
+
 
 const useStyles = makeStyles(theme => ({
         box: {
-            display: 'flex',
+           display:  'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '30px',
-            marginTop: '15%',
+            marginTop: '10%'
         },
-        button: {
-            textTransform: 'none',
+        button:{
             marginRight: '10px',
             marginLeft: '10px',
-            paddingLeft: '9%',
-            paddingRight: '9%',
-            paddingTop: '4px',
-            paddingBottom: '4px',
-            color: '#FFFFFF',
-            backgroundColor: '#E17A47'
+            paddingLeft: '7%',
+            paddingRight: '7%',
+            color: ProjectColors.white(),
+            backgroundColor: ProjectColors.orange()
         }
     }))
 ;
@@ -28,8 +26,8 @@ export default function MyProjectButtons() {
     const classes = useStyles();
     return (
         <div className={classes.box}>
-            <Button className={classes.button}>uložiť</Button>
-            <Button className={classes.button}>ďalej</Button>
+            <Button className={classes.button}>Uložiť</Button>
+            <Button className={classes.button}>Ďalej</Button>
         </div>
     );
 }
