@@ -1,12 +1,13 @@
 import React from "react";
 import ProfileCards from "../components/ProfileCards";
 import {makeStyles} from "@material-ui/core";
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         root: {
-            background: "#F9FAFB",
+            background: ProjectColors.lightGray(),
             width: '100%',
-            color: "#7C7C7C",
+            color: ProjectColors.darkGray(),
             marginBottom: "60px",
             height: "100%",
         },
@@ -31,10 +32,10 @@ const LoginPage = () => {
             <div className={classes.profile}>
                 <b style={{fontSize: "32px"}}>Michaela</b>
             </div>
-            <b className={classes.texts} style={{color: "#EFCA59"}}>Na čom sa práve učím</b>
-            <ProfileCards type="firm" color="#EFCA59"/>
-            <b className={classes.texts} style={{color: "#E17A47"}}>Moje vlastné projekty</b>
-            <ProfileCards type="project" color="#E17A47"/>
+            <b className={classes.texts} style={{color: ProjectColors.yellow()}}>Na čom sa práve učím</b>
+            <ProfileCards type="firm" color={ProjectColors.yellow()}/>
+            <b className={classes.texts} style={{color: ProjectColors.orange()}}>Moje vlastné projekty</b>
+            <ProfileCards type="project" color={ProjectColors.orange()}/>
             <b className={classes.texts}>Čo už mám za sebou</b>
 
         </div>

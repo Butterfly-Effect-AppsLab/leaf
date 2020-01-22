@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Rocket from '../icons/rocket.svg'
 import Barbershop from "../icons/barbershop.svg";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import * as ProjectColors from "../utils/colors";
 
 
 const useStyles = makeStyles({
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
        display: "inline-block",
        padding: "10px",
        overflowX: "auto",
-       background: "#F9FAFB",
+       background: ProjectColors.lightGray(),
        position: "relative",
    },
    addTitle: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles({
         fontSize: 20,
         margin: 0,
         fontWeight: "bold",
-        color: "white",
+        color: ProjectColors.white(),
         position: "absolute",
         top: "50%",
         left: "50%",
@@ -56,7 +57,7 @@ const useStyles = makeStyles({
       content: {
         width: 170,
         height: 170,
-        background: "#E17A47",
+        background: ProjectColors.orange(),
         backgroundImage: `url(${Rocket})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "160px 160px",

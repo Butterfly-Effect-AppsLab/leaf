@@ -2,14 +2,9 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Typography from "@material-ui/core/Typography";
+import * as ProjectColors from "../utils/colors";
+
 
 const useStyles = makeStyles({
     hint: {
@@ -20,7 +15,7 @@ const useStyles = makeStyles({
     },
     hintHeader: {
         fontSize: "17px",
-        color: "#46B29D",
+        color: ProjectColors.green(),
         marginBottom: "5%",
         marginTop: "5%",
         textAlign: "center",
@@ -29,12 +24,12 @@ const useStyles = makeStyles({
         marginLeft: "10%",
         marginRight: "10%",
         marginBottom: "10%",
-        color: "#7C7C7C",
+        color: ProjectColors.darkGray(),
         fontSize: "14px",
     },
     button: {
-        background: "#46B29D",
-        color: "white",
+        background: ProjectColors.green(),
+        color: ProjectColors.white(),
         width: "130px",
         marginBottom: "5%",
     },

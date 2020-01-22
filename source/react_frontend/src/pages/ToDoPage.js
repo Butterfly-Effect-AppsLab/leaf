@@ -4,7 +4,7 @@ import {makeStyles} from "@material-ui/core";
 import ProjectBackground from "../icons/background_projekt_orange.svg";
 import Button from "@material-ui/core/Button"
 import FormGroup from "@material-ui/core/FormGroup";
-
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,11 +12,11 @@ const useStyles = makeStyles(theme => ({
         width: "100%",
         marginTop: '80px',
         marginBottom: '60px',
-        background: "#F9FAFB",
+        background: ProjectColors.lightGray(),
         backgroundImage: `url(${ProjectBackground})`,
     },
     title: {
-        color: "#7C7C7C",
+        color: ProjectColors.darkGray(),
         padding: 20,
         paddingTop: 10,
         fontSize: 21,

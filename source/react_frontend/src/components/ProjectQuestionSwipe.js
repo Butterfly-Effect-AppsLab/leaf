@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import * as ProjectColors from "../utils/colors";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: '30px'
     },
     indicator: {
-        backgroundColor: '#7C7C7C',
+        backgroundColor: ProjectColors.darkGray(),
         borderRadius: '10px',
     },
 }));
@@ -106,7 +107,7 @@ export default function ScrollableTabsButtonAuto() {
                         }}
                         value={value}
                         onChange={handleChange}
-                        textColor="#7C7C7C"
+                        textColor={ProjectColors.darkGray()}
                         variant="scrollable"
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
@@ -118,7 +119,7 @@ export default function ScrollableTabsButtonAuto() {
             {questions.map((question, index) => (
                 <TabPanel value={value} index={index}>
                     <CompanyLCquestion text={question.questionText}/>
-                    <MultilineTextField/>
+                    <MultilineTextField row_num={6}/>
                 </TabPanel>
             ))}
         </div>

@@ -3,13 +3,15 @@ import AddProject from "../components/AddProject";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core";
+import * as ProjectColors from "../utils/colors";
+
 
 const useStyles = makeStyles(theme => ({
         root: {
-            background: "#F9FAFB",
+            background: ProjectColors.lightGray(),
             width: '100%',
             marginBottom: "60px",
-            color: "#7C7C7C",
+            color: ProjectColors.darkGray(),
             height: "auto",
         },
         texts: {

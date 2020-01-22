@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     title: {
         fontSize: 20,
         fontWeight: "bold",
-        color: "white",
+        color: ProjectColors.white(),
         margin: 0,
     },
 }));

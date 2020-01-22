@@ -2,13 +2,14 @@ import React from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {makeStyles} from "@material-ui/core";
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
     box: {
-        color: '#E17A47',
+        color: ProjectColors.orange(),
     },
     label: {
-        color: '#7C7C7C',
+        color: ProjectColors.darkGray(),
 
     },
     root: {

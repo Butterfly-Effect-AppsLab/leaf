@@ -6,12 +6,14 @@ import OnboardingPic from '../icons/onboarding.svg';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
+import {white, orange} from "../utils/colors";
+import * as ProjectColors from "../utils/colors";
 
 
 const useStyles = makeStyles({
     root: {
         height: "100vh",
-        background: 'linear-gradient(207.11deg, #EFCA59 0%, #E17A47 98%);',
+        background: 'linear-gradient(207.11deg, ' + ProjectColors.yellow() + ' 0%,' + ProjectColors.orange() + ' 98%);',
         fontFamily: "\"Sarabun\", sans-serif",
     },
     image: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles({
     },
     title: {
         fontSize: "32px",
-        color: "white",
+        color: ProjectColors.white(),
         textAlign: "center",
         position: "absolute",
         top: "25%",
@@ -31,14 +33,14 @@ const useStyles = makeStyles({
         width: "80%"
     },
     button: {
-        background: "white",
+        background: ProjectColors.white(),
         position: "absolute",
         bottom: "10%",
         left: "50%",
         transform: "translate(-50%, -50%)",
     },
     skip: {
-        color: "white",
+        color: ProjectColors.white(),
         position: "absolute",
         bottom: "5%",
         left: "50%",

@@ -1,7 +1,8 @@
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import React from "react";
-import Explanation from './Explanation'
+import Explanation from './Explanation';
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         typography: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
             marginLeft: "auto",
             overflowX: "auto",
             backgroundColor: "transparent",
-            border: '3px solid #EFCA59',
+            border: '3px solid ' + ProjectColors.yellow(),
             borderRadius: '6px',
             maxWidth: '80%',
         }

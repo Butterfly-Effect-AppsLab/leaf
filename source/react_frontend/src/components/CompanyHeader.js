@@ -10,9 +10,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import Drawer from '@material-ui/core/Drawer';
 import Button from "@material-ui/core/Button";
 import Hint from '../components/Hint';
-
-
-//import {headlines} from './Card';
+import {white, lightGray, orange} from '../utils/colors';
+import * as ProjectColors from '../utils/colors';
 
 const useStyles = makeStyles(theme => ({
     spat: {
@@ -100,39 +99,39 @@ function DenseAppBar() {
             switch (pathname) {
                 case "/LcKategorie":   //Firma LC
                     setValue(0);
-                    setHeaderColor("#EFCA59");
-                    setTextColor("#FFFFFF");
+                    setHeaderColor(ProjectColors.yellow());
+                    setTextColor(ProjectColors.white());
                     break;
                 case "/ProjectInfo":    //Projekt vyplnanie
                     setValue(1);
-                    setHeaderColor('#E17A47');
-                    setTextColor("#FFFFFF");
+                    setHeaderColor(ProjectColors.orange());
+                    setTextColor(ProjectColors.white());
                     break;
                 case "/ProjektLcKategorie": //Projekt LC
                     setValue(2);
-                    setHeaderColor('#E17A47');
-                    setTextColor("#FFFFFF");
+                    setHeaderColor(ProjectColors.orange());
+                    setTextColor(ProjectColors.white());
                     break;
                 case "/FirmaInfo": //Firma Description
                     setValue(3);
-                    setHeaderColor("#EFCA59");
-                    setTextColor("#FFFFFF");
+                    setHeaderColor(ProjectColors.yellow());
+                    setTextColor(ProjectColors.white());
                     break;
                 case "/LCFirma":        //Firma Otazky
                     setValue(4);
-                    setHeaderColor('#F9FAFB');
-                    setTextColor("#EFCA59");
+                    setHeaderColor(ProjectColors.lightGray());
+                    setTextColor(ProjectColors.yellow());
                     break;
                 case "/Otazky":         //Projekt Otazky
                     setValue(5);
-                    setHeaderColor('#F9FAFB');
-                    setTextColor("#E17A47");
+                    setHeaderColor(ProjectColors.lightGray());
+                    setTextColor(ProjectColors.orange());
                     setShowHint(true);
                     break;
                 case "/ToDo":
                     setValue(6);  //Projek Tuducka
-                    setHeaderColor('#F9FAFB');
-                    setTextColor("#E17A47");
+                    setHeaderColor(ProjectColors.lightGray());
+                    setTextColor(ProjectColors.orange());
                     setShowHint(true);
                     break;
                 default:

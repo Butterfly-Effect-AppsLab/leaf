@@ -2,7 +2,7 @@ import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
-import ArrowBackIosIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles({
     button: {
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         color: 'white',
         textTransform: 'none',
         fontWeight: 500,
-        backgroundColor: '#46B29D',
+        backgroundColor: ProjectColors.green(),
         borderRadius: '6px',
         paddingLeft: '3.2%',
         paddingRight: '3.2%',
@@ -26,7 +26,7 @@ const useStyles = makeStyles({
         marginBottom: "30px",
         marginRight: "auto",
         marginLeft: "auto",
-        color: "#FFFFFF",
+        color: ProjectColors.white(),
         overflowX: "auto",
         backgroundColor: "transparent"
     },

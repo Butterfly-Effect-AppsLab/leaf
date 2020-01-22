@@ -1,7 +1,7 @@
 import React from "react";
 import CaseStudyInfo from "../components/CaseStudyInfo";
 import Backround_cisty_zubok from "../icons/backround_cisty_zubok.svg";
-
+import * as ProjectColors from "../utils/colors";
 
 const CaseStudyInfoPage = () => {
         return (
@@ -10,7 +10,7 @@ const CaseStudyInfoPage = () => {
                     height: '100%',
                     marginTop: '80px',
                     marginBottom: '60px',
-                    background: "#EFCA59",
+                    background: ProjectColors.yellow(),
                     backgroundImage: `url(${Backround_cisty_zubok})`,
                 }}
             >

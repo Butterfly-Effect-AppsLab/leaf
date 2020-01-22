@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     outline: {
-        borderColor: "#E17A47",
+        borderColor: ProjectColors.orange(),
     }
 }));
 
@@ -50,4 +51,3 @@ export default function MultilineTextField(props) {
         </form>
     );
 }
-

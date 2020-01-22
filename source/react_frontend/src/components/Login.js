@@ -4,11 +4,11 @@ import GoogleLogin from 'react-google-login';
 import {ReactComponent as Logo} from '../icons/logo.svg';
 import {ReactComponent as Rocket} from '../icons/rocket.svg';
 import history from "../utils/history";
-
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    background: 'linear-gradient(207.11deg, #EFCA59 0%, #E17A47 98%);',
+    background: 'linear-gradient(207.11deg, ' + ProjectColors.yellow() + ' 0%,' + ProjectColors.orange() + ' 98%);',
     height: '100%',
     width: '100%',
     position: 'fixed',

@@ -1,10 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-
-const questions = [
-  "Kto bude tvoj zákazník, teda ten, ktorý bude schopný a ochotný za produkt zaplatiť?"
-];
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
   questionBox: {
@@ -15,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "80%"
   },
   question: {
-    color: "#7C7C7C",
+    color: ProjectColors.darkGray(),
     fontWeight: "bold",
     FontSize: "21px",
     textAlign: "center",

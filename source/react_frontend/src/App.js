@@ -4,18 +4,18 @@ import Layout from "./components/Layout";
 import Routes from "./Routes";
 import {createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import React from "react";
+import {orange} from "./utils/colors";
+import {yellow} from "./utils/colors";
+
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#E17A47'
+            main: orange()
         },
         secondary: {
-            main: '#EFCA59'
-        },
-        default: {
-            main: '#F9FAFB',
-        },
+            main: yellow()
+        }
     },
     typography: {
         fontFamily: "\"Sarabun\", sans-serif",
@@ -23,6 +23,7 @@ const theme = createMuiTheme({
 });
 
 function App() {
+
     return (
         <div className="App">
             <MuiThemeProvider theme={theme}>

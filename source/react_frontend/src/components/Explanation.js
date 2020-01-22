@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles({
     explanation: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
         marginLeft: "10%",
         marginRight: "10%",
         marginBottom: "10%",
-        color: "#7C7C7C",
+        color: ProjectColors.darkGray(),
         fontSize: "14px",
     },
     button: {
@@ -36,7 +37,7 @@ export default function Explanation(props) {
     const isCorrect = props.isCorrect;
     const explanation = props.explanation;
     const classes = useStyles();
-    const color = {incorrect: "#EF3D59", correct: "#46B29D"};
+    const color = {incorrect: ProjectColors.red(), correct: ProjectColors.green()};
     const title = {incorrect: "Nápoveda", correct: "Správne"};
 
 

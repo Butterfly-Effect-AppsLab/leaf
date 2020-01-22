@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import * as ProjectColors from "../utils/colors";
 
 import Barbershop from '../icons/barbershop.svg';
 import Zubok from '../icons/zubok.svg';
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
         fontSize: 20,
         margin: 0,
         fontWeight: "bold",
-        color: "white",
+        color: ProjectColors.white(),
         position: "absolute",
         top: "50%",
         left: "50%",
@@ -50,7 +51,7 @@ const useStyles = makeStyles({
     content: {
         width: 170,
         height: 170,
-        background: "#EFCA59",
+        background: ProjectColors.yellow(),
         backgroundRepeat: "no-repeat",
         backgroundSize: "auto",
         position: "relative",

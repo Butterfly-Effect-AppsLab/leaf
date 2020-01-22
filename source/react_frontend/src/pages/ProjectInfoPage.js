@@ -5,11 +5,11 @@ import {makeStyles} from "@material-ui/core";
 import BackgroundProjectWhite from "../icons/background_project_white.svg";
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles({
         background: {
-            backgroundColor: "#E17A47",
+            backgroundColor: ProjectColors.orange(),
             backgroundImage: `url(${BackgroundProjectWhite})`,
             align: "center",
             marginBottom: "60px",
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
             margin: 0,
             fontSize: "16px",
             textAlign: "center",
-            color: "white",
+            color: ProjectColors.white(),
         },
         textfield: {
             paddingRight: "10%",
@@ -42,8 +42,8 @@ const useStyles = makeStyles({
             background: "rgba(255, 255, 255, 0.5)",
         },
         button: {
-            background: "#46B29D",
-            color: "white",
+            background: ProjectColors.green(),
+            color: ProjectColors.white(),
             width: "200px",
         },
     })

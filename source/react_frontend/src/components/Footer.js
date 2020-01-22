@@ -4,6 +4,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import {ReactComponent as Home} from '../icons/home.svg';
 import {ReactComponent as User} from '../icons/user.svg';
+import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles({
     root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
         height: "60px",
     },
     icon: {
-        color: "#7C7C7C",
+        color: ProjectColors.darkGray(),
     }
 });
 
