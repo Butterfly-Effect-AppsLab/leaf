@@ -19,7 +19,7 @@ def set_content():
         session.commit()
 
     for num in range(1, 3):
-        company = CaseStudy(name='bezecke tenisky' + str(num),
+        case_study = CaseStudy(name='bezecke tenisky' + str(num),
                             id_company=1,
                             description='svetoznama firma v oblasti sportu',
                             motivation='bezci nemaju vhodnu obuv, ktora ....',
@@ -27,7 +27,7 @@ def set_content():
                             revenue=100*num,
                             employees_num=1*num
                           )
-        session.add(company)
+        session.add(case_study)
         session.commit()
 
     for num in range(1, 20):
