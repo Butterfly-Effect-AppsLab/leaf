@@ -34,17 +34,16 @@ const useStyles = makeStyles({
         },
         toggle: {
             width: "100px",
-            boxShadow: "0px 4px 26px rgba(0, 0, 0, 0.06)",
             background: "transparent",
         },
         group: {
-            boxShadow: "0px 4px 26px rgba(0, 0, 0, 0.06)",
-            background: "rgba(255, 255, 255, 0.5)",
+            background: ProjectColors.transWhite(),
         },
         button: {
             background: ProjectColors.green(),
             color: ProjectColors.white(),
             width: "200px",
+            boxShadow: 'none',
         },
     })
 ;
@@ -66,7 +65,7 @@ const ProjectInfo = () => {
             </h3>
 
             <div className={classes.textfield}>
-                <MultilineTextField field_name='Názov projektu' row_num={2}/>
+                <MultilineTextField field_name='Názov projektu' row_num={2} background_color={ProjectColors.transWhite()}/>
             </div>
             <br/>
 
@@ -98,7 +97,9 @@ const ProjectInfo = () => {
             <div className={classes.textfield}>
                 <MultilineTextField
                     field_name='Popíš pár vetami, čomu sa chceš vo svojom projektu venovať a prečo si sa rozhodol práve pre tento?'
-                    row_num={6}/>
+                    row_num={6}
+                    background_color={ProjectColors.transWhite()}
+                />
             </div>
             <br/>
             <div align="center">

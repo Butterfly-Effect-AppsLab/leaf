@@ -25,13 +25,16 @@ const useStyles = makeStyles(theme => ({
             border: '3px solid ' + ProjectColors.yellow(),
             borderRadius: '6px',
             maxWidth: '80%',
+        },
+        button: {
+            width: "100%",
         }
     }))
 ;
 
 export default function AnswerButtons(props) {
-    const answers = props.answers;
     const classes = useStyles();
+    const {answers, goToNextQuestion} = props;
     const [openExplanation, setOpenExplanation] = React.useState(false);
     const [chosenAnswer, setChosenAnswer] = React.useState({});
 
@@ -45,22 +48,29 @@ export default function AnswerButtons(props) {
             return (
                 <Explanation explanation={answer.explanation} isCorrect={answer.isCorrect} open={openExplanation}
                              onClose={() => {
-                              setOpenExplanation(false)
-                          }}/>
+                                 setOpenExplanation(false);
+                                 if (answer.isCorrect) {
+                                     goToNextQuestion()
+                                 }
+                             }}/>
             )
         }
         return null
     };
 
     return (
-        answers.map((answer) => (
-            <div className={classes.box}>
-                <Button onClick={() => {
-                    handleClick(answer)
-                }}>{answer.answerText}</Button>
-                {renderExplanation(chosenAnswer, openExplanation)}
-            </div>
-        ))
+        <>
+            {Object.keys(answers).map((answerId) => (
+                <div className={classes.box}>
+                    <Button className={classes.button} onClick={() => {
+                        handleClick(answers[answerId])
+                    }}>{answers[answerId].answerText}</Button>
+                </div>
+            ))}
+            {
+                renderExplanation(chosenAnswer, openExplanation)
+            }
+        </>
     )
 
 };

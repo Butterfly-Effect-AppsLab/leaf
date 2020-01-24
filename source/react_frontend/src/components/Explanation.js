@@ -33,12 +33,10 @@ const useStyles = makeStyles({
 });
 
 export default function Explanation(props) {
-    const open = props.open;
-    const isCorrect = props.isCorrect;
-    const explanation = props.explanation;
+    const {open, isCorrect, explanation} = props;
     const classes = useStyles();
     const color = {incorrect: ProjectColors.red(), correct: ProjectColors.green()};
-    const title = {incorrect: "Nápoveda", correct: "Správne"};
+    const title = {incorrect: "Nesprávne", correct: "Správne"};
 
 
     const setColor = (isCorrect) => {

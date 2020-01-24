@@ -64,7 +64,7 @@ const SimpleCard = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        props.actionGetCaseStudies(props.dispatch)
+        props.actionGetCaseStudies()
     },
         []
     );
@@ -107,7 +107,7 @@ const SimpleCard = (props) => {
     else {
         return null
     }
-}
+};
 
 
 const mapStateToProps = state => {
@@ -119,7 +119,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     actionGetCaseStudies: bindActionCreators(actionGetCaseStudies, dispatch),
-    dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCard);

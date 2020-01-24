@@ -119,7 +119,7 @@ export default function ScrollableTabsButtonAuto() {
             {questions.map((question, index) => (
                 <TabPanel value={value} index={index}>
                     <CompanyLCquestion text={question.questionText}/>
-                    <MultilineTextField row_num={6}/>
+                    <MultilineTextField row_num={6} background_color={"transparent"}/>
                 </TabPanel>
             ))}
         </div>

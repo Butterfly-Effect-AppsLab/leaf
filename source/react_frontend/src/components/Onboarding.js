@@ -6,7 +6,6 @@ import OnboardingPic from '../icons/onboarding.svg';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {Link} from "react-router-dom";
-import {white, orange} from "../utils/colors";
 import * as ProjectColors from "../utils/colors";
 
 
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
         height: "100vh",
         backgroundRepeat: "no-repeat",
         backgroundSize: "300%",
-        // backgroundImage: `url(${OnboardingPic})`,
+        backgroundImage: `url(${OnboardingPic})`,
     },
     title: {
         fontSize: "32px",
@@ -57,6 +56,9 @@ function Onboarding() {
     const params = {
         pagination: {
             el: '.swiper-pagination',
+            renderBullet: () => {
+                return '<span class="swiper-pagination-bullet swiper-pagination-bullet-active" style="background-color: #ffffff; border-radius: 50%; width: 10px; height: 10px; display: inline-block; margin: 5px;"></span>';
+            }
         },
     };
     return (
@@ -66,13 +68,13 @@ function Onboarding() {
                     <Typography className={classes.title}>
                         Chceš si rozbehnúť vlastný biznis?
                     </Typography>
-                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "left bottom"}}/>
+                    <div className={classes.image} style={{backgroundPosition: "left bottom"}}/>
                 </div>
                 <div className={classes.swipe}>
                     <Typography className={classes.title}>
                         Poď na to krok za krokom. Growie ťa naučí ako začať.
                     </Typography>
-                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`, backgroundPosition: "center bottom"}}/>
+                    <div className={classes.image} style={{backgroundPosition: "center bottom"}}/>
                 </div>
                 <div className={classes.swipe}>
                     <Typography className={classes.title}>
@@ -81,7 +83,7 @@ function Onboarding() {
                     <Button component={Link} to="/" className={classes.button} variant="outlined" color="primary">
                         Poď do toho!
                     </Button>
-                    <div className={classes.image} style={{backgroundImage: `url(${OnboardingPic})`,backgroundPosition: "right bottom"}}/>
+                    <div className={classes.image} style={{backgroundPosition: "right bottom"}}/>
                 </div>
             </Swiper>
             <Button component={Link} to="/" className={classes.skip}>Preskočiť</Button>
