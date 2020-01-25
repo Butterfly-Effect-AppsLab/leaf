@@ -16,7 +16,9 @@ from database.db_models import (
     CaseStudy,
     ProjectAnswer,
     ProjectQuestion,
-    BusinessModelStage
+    BusinessModelStage,
+    CaseStudyQuestion,
+    QuestionChoice
 )
 
 from flask_login import (
@@ -168,6 +170,40 @@ def get_case_study_info(id_case_study):
     }
 
     return make_response(jsonify(case_study_info), 200)
+
+# https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
+@app.route('/api/v1.0/case-study/<int:id_case_study>/stage/<int:id_stage>', methods=['GET'])
+def get_case_study_stage(id_case_study, id_stage):
+    questions = session.query(CaseStudyQuestion).\
+        filter(CaseStudyQuestion.id_case_study == id_case_study, CaseStudyQuestion.id_stage == id_stage)
+
+    if not questions:
+        abort(400)
+
+    questions_attrs = {}
+
+    for question in questions:
+        choices = session.query(QuestionChoice).filter(QuestionChoice.id_question == question.id)
+        choice_attrs = {}
+        for choice in choices:
+            choice_attrs[choice.id] = {
+                'id': choice.id,
+                'id_question': question.id,
+                'choice_text': choice.choice_text,
+                'is_correct': choice.is_correct,
+                'explanation': choice.explanation,
+            }
+
+        questions_attrs[question.id] = {
+            'id': question.id,
+            'id_case_study': question.id_case_study,
+            'id_stage': question.id_stage,
+            'question': question.question,
+            'order': question.order,
+            'choices': choice_attrs
+        }
+
+    return make_response(jsonify(questions_attrs), 200)
 
 
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/

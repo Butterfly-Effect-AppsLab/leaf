@@ -30,6 +30,10 @@ export const API_CASE_STUDY_INFO = (idCaseStudy) =>
     HOST + API_VERSION + "/case-study-info/" + idCaseStudy;
 
 /* GET */
+export const API_CASE_STUDY_STAGE = (idCaseStudy, idStage) => 
+    HOST + API_VERSION + "/case-study/" + idCaseStudy + '/stage/'+ idStage;
+
+/* GET */
 export const API_CASE_STUDY_STAGE_QUESTIONS = (idCaseStudy, idStage) => 
     HOST + API_VERSION + "/case-study/" + idCaseStudy + '/stage/'+ idStage + "/questions";
 
