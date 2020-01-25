@@ -212,9 +212,9 @@ class QuestionChoice(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_question = Column(Integer, ForeignKey('case_study_questions.id'), nullable=False)
-    choice = Column(String, nullable=False)
+    choice_text = Column(String, nullable=False)
     explanation = Column(String, nullable=False)
-    is_right = Column(Boolean, nullable=False)
+    is_correct = Column(Boolean, nullable=False)
 
     __table_args__ = (UniqueConstraint('id_question', 'choice', name='_uc_question_choice'),)
 

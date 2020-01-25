@@ -20,13 +20,13 @@ def set_content():
 
     for num in range(1, 3):
         case_study = CaseStudy(name='bezecke tenisky' + str(num),
-                            id_company=1,
-                            description='svetoznama firma v oblasti sportu',
-                            motivation='bezci nemaju vhodnu obuv, ktora ....',
-                            unique_value='je vynimocny...',
-                            revenue=100*num,
-                            employees_num=1*num
-                          )
+                               id_company=1,
+                               description='svetoznama firma v oblasti sportu',
+                               motivation='bezci nemaju vhodnu obuv, ktora ....',
+                               unique_value='je vynimocny...',
+                               revenue=100 * num,
+                               employees_num=1 * num
+                               )
         session.add(case_study)
         session.commit()
 
@@ -49,15 +49,25 @@ def set_content():
             session.add(project)
             session.commit()
 
-    stages = ["Partners", "Activities", "Resources", "Customer relationships",
-              "Channels", "Value Proposition", "Customer segments", "Cost structure", "Revenue streams"]
+    # stages = ["Partners", "Activities", "Resources", "Customer relationships",
+    #           "Channels", "Value Proposition", "Customer segments", "Cost structure", "Revenue streams"]
+
+    stages = ['Zákazníci',
+              'Problém',
+              'Unikátnosť produktu',
+              'Riešenie',
+              'Marketingové kanály',
+              'Náklady',
+              'Kľúčové metriky',
+              'Neférová výhoda'
+              ]
 
     for num in range(len(stages)):
         question = BusinessModelStage(name=stages[num])
         session.add(question)
         session.commit()
 
-    for num in range(1, 10):
+    for num in range(1, 9):
         for sub_num in range(1, 4):
             question = ProjectQuestion(id_stage=num,
                                        question='stage' + str(num) + ' otazka' + str(sub_num),
