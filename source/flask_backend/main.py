@@ -29,6 +29,7 @@ from flask_login import (
 
 app = Flask("__main__")
 app.url_map.strict_slashes = False
+app.config['JSON_AS_ASCII'] = False
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_conn = connect()
