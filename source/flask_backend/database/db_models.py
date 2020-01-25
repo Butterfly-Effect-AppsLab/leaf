@@ -216,13 +216,14 @@ class QuestionChoice(Base):
     explanation = Column(String, nullable=False)
     is_correct = Column(Boolean, nullable=False)
 
-    __table_args__ = (UniqueConstraint('id_question', 'choice', name='_uc_question_choice'),)
+    __table_args__ = (UniqueConstraint('id_question', 'choice_text', name='_uc_question_choice_text'),)
 
     # many to one
     question = relationship("CaseStudyQuestion", back_populates="choices")
 
     def __repr__(self):
-        return f'<QuestionChoice(choice="{self.choice}", explanation="{self.explanation}", is_right="{self.is_right}")>'
+        return f'<QuestionChoice(choice="{self.choice_text}", ' \
+               f'explanation="{self.explanation}", is_right="{self.is_right}")>'
 
 
 class Specialization(Base):
