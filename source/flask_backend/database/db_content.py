@@ -56,9 +56,10 @@ def set_content():
               'Problém',
               'Unikátnosť produktu',
               'Riešenie',
-              'Marketingové kanály',
+              'Marketing',
               'Náklady',
               'Kľúčové metriky',
+              'Zdroj príjmov',
               'Neférová výhoda'
               ]
 
