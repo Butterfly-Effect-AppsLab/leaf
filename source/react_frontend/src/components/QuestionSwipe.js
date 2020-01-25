@@ -157,7 +157,7 @@ export default function ScrollableTabsButtonAuto() {
     const [currentCategory, setCurrentCategory] = React.useState(0);
     const [reachedCategory, setReachedCategory] = React.useState(0);
 
-    const handleChange = (event, newValue) => {``
+    const handleChange = (event, newValue) => {
         if (newValue <= reachedQuestion) {
             setCurrentQuestion(newValue);
         }
