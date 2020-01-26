@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function CompanyLCquestion(props) {
   const classes = useStyles();
-
   return (
     <div className={classes.questionBox}>
       <Typography className={classes.question}>
