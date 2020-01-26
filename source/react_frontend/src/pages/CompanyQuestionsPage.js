@@ -6,7 +6,6 @@ import * as ProjectColors from "../utils/colors";
 
 const CompanyQuestionsPage = (props) => {
     const {idStage, idCase} =  props.location.state;
-    console.log("idStage: " + idStage + " idCase: " + idCase);
 
     return (<div style={{
             height: '100%',
@@ -17,7 +16,7 @@ const CompanyQuestionsPage = (props) => {
         }}
         >
 
-            <QuestionSwipe/>
+            <QuestionSwipe idCaseStudy = {idCase} idStage = {idStage}/>
         </div>
     )
 };
