@@ -4,17 +4,21 @@ import React from "react";
 import backround_cisty_zubok_white from "../icons/backround_cisty_zubok_white.svg";
 import * as ProjectColors from "../utils/colors";
 
-const CompanyQuestionsPage = () => {
+const CompanyQuestionsPage = (props) => {
+    const {idStage} =  props.location.state;
+    console.log(idStage);
+
     return (<div style={{
-                        height: '100%',
-                        marginTop: '70px',
-                        marginBottom: '25px',
-                        background: ProjectColors.lightGray(),
-                        backgroundImage: `url(${backround_cisty_zubok_white})`,
-                        }}
-            >
-                <QuestionSwipe/>
-            </div>
+            height: '100%',
+            marginTop: '70px',
+            marginBottom: '25px',
+            background: ProjectColors.lightGray(),
+            backgroundImage: `url(${backround_cisty_zubok_white})`,
+        }}
+        >
+
+            <QuestionSwipe/>
+        </div>
     )
 };
 
