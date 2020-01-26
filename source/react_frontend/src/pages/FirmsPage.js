@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
             width: '100%',
             marginBottom: "60px",
             color: ProjectColors.darkGray(),
-            height: "auto",
+            height: "100%",
         },
         texts: {
             paddingRight: 10,

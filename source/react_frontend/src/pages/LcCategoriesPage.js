@@ -16,7 +16,9 @@ const LcCategoriesPage = () => {
         >
                 <CategoryCard />
                 <br />
-        </div>)
+        </div>
+    )
 };
+
 
 export default LcCategoriesPage;

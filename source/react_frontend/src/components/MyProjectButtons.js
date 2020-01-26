@@ -6,12 +6,14 @@ import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         box: {
-           display:  'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            marginTop: '10%'
+            marginTop: '10%',
+            marginRight: 'auto',
+            marginLeft: 'auto',
         },
-        button:{
+        button: {
+            textTransform: 'no',
             marginRight: '10px',
             marginLeft: '10px',
             paddingLeft: '7%',
@@ -26,8 +28,10 @@ export default function MyProjectButtons() {
     const classes = useStyles();
     return (
         <div className={classes.box}>
-            <Button className={classes.button}>Uložiť</Button>
-            <Button className={classes.button}>Ďalej</Button>
+            <div>
+                <Button className={classes.button}>Uložiť</Button>
+                <Button className={classes.button}>Ďalej</Button>
+            </div>
         </div>
     );
 }

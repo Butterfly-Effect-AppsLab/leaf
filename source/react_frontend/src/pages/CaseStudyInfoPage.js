@@ -9,7 +9,7 @@ const CaseStudyInfoPage = () => {
                 style={{
                     height: '100%',
                     marginTop: '80px',
-                    marginBottom: '60px',
+                    paddingBottom: '60px',
                     background: ProjectColors.yellow(),
                     backgroundImage: `url(${Backround_cisty_zubok})`,
                 }}

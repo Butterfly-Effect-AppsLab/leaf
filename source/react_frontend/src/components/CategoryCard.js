@@ -58,6 +58,7 @@ const useStyles = makeStyles({
 const CategoryCard = (props) => {
     const stages = props.data.stages;
     const classes = useStyles();
+    console.log(stages);
 
     useEffect(() => {
         props.actionGetStages(props.dispatch)
