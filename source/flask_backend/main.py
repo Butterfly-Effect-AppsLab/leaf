@@ -147,6 +147,7 @@ def get_case_studies():
             'id_company': case_study.id_company,
             'company_name': case_study.company.name,
             'name': case_study.name,
+            'stages': {}
         }
         case_studies[case_study.id] = case_study_attrs
     return jsonify(case_studies)
@@ -198,7 +199,7 @@ def get_case_study_stage(id_case_study, id_stage):
             'id': question.id,
             'id_case_study': question.id_case_study,
             'id_stage': question.id_stage,
-            'question': question.question,
+            'question_text': question.question,
             'order': question.order,
             'choices': choice_attrs
         }
