@@ -8,6 +8,7 @@ export const GET_COMPANIES = "GET_COMPANIES";
 export const GET_COMPANY_CASE_STUDIES = "GET_COMPANY_CASE_STUDIES";
 export const GET_CASE_STUDIES = "GET_CASE_STUDIES";
 export const GET_CASE_STUDY_INFO = "GET_CASE_STUDIES";
+export const GET_CASE_STUDY_STAGE = "GET_CASE_STUDY_STAGE";
 export const GET_CASE_STUDY_STAGE_QUESTIONS = "GET_CASE_STUDY_STAGE_QUESTIONS";
 
 export const GET_QUESTION_ANSWERS = "GET_QUESTION_ANSWERS";
@@ -49,10 +50,10 @@ export const actionGetCaseStudies = () => dispatch => {
 };
 
 
-export const actionGetCaseStudyStageQuestions = (idCaseStudy, idStage) => dispatch => {
+export const actionGetCaseStudyStage = (idCaseStudy, idStage) => dispatch => {
     dispatch(fetchData({
-        type: GET_CASE_STUDY_STAGE_QUESTIONS,
-        apiUrl: URL.API_CASE_STUDIES(idCaseStudy, idStage),
+        type: GET_CASE_STUDY_STAGE,
+        apiUrl: URL.API_CASE_STUDY_STAGE(idCaseStudy, idStage),
         idList: {idCaseStudy: idCaseStudy, idStage: idStage},
         hasHeader: false
     })

@@ -1,7 +1,7 @@
 import {
     GET_CASE_STUDIES,
     GET_CASE_STUDY_INFO,
-    GET_CASE_STUDY_STAGE_QUESTIONS
+    GET_CASE_STUDY_STAGE
 } from "../actions";
 
 const initialState = {};
@@ -15,17 +15,19 @@ const setCaseStudyInfo = (state, caseStudyInfo) => {
             motivation: caseStudyInfo.motivation,
             unique_value: caseStudyInfo.unique_value,
             revenue: caseStudyInfo.revenue,
-            employees_num: caseStudyInfo.employees_num
+            employees_num: caseStudyInfo.employees_num,
+            stages: {}
         }
     };
 
     return newState;
 };
 
-const setCaseStudyStageQuestions = (state, action) => {
+const setCaseStudyStage = (state, action) => {
     const idCaseStudy = action.idList.idCaseStudy;
     const idStage = action.idList.idStage;
-    const caseStudyStageQuestions = action.payload;
+    const caseStudyStage = action.payload;
+
 
     const newState = {
         ...state,
@@ -33,12 +35,11 @@ const setCaseStudyStageQuestions = (state, action) => {
             ...state[idCaseStudy],
             stages: {
                 ...state[idCaseStudy].stages, 
-                [idStage]: caseStudyStageQuestions
+                [idStage]: caseStudyStage
             }
         }
     };
 
-    console.log(newState);
     return newState;
 };
 
@@ -55,8 +56,8 @@ export default function(state = initialState, action) {
         }
 
 
-        case GET_CASE_STUDY_STAGE_QUESTIONS: {
-            return setCaseStudyStageQuestions(state, action)
+        case GET_CASE_STUDY_STAGE: {
+            return setCaseStudyStage(state, action)
         }
 
         default:
