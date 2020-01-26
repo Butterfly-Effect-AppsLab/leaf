@@ -3,7 +3,9 @@ import CategoryCard from "../components/CategoryCard";
 import Backround_cisty_zubok from "../icons/backround_cisty_zubok.svg";
 import * as ProjectColors from "../utils/colors";
 
-const LcCategoriesPage = () => {
+const LcCategoriesPage = (props) => {
+    const {idCase} =  props.location.state;
+
     return (
         <div
             style={{
@@ -14,7 +16,7 @@ const LcCategoriesPage = () => {
                 height: "100%",
             }}
         >
-                <CategoryCard />
+                <CategoryCard idCase={idCase}/>
                 <br />
         </div>
     )

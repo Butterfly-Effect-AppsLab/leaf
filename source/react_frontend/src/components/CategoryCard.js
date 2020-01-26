@@ -59,11 +59,11 @@ const useStyles = makeStyles({
 
 const CategoryCard = (props) => {
     const stages = props.data.stages;
+    const {idCase} = props;
     const classes = useStyles();
 
     const handleClick = (idStage) => {
-        history.push('/LCFirma', {idStage: idStage})
-        // history.push({pathname: "/LCFirma", state: {idStage: idStage}});
+        history.push('/LCFirma', {idStage: idStage, idCase: idCase})
     };
 
     useEffect(() => {

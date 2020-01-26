@@ -3,7 +3,9 @@ import CaseStudyInfo from "../components/CaseStudyInfo";
 import Backround_cisty_zubok from "../icons/backround_cisty_zubok.svg";
 import * as ProjectColors from "../utils/colors";
 
-const CaseStudyInfoPage = () => {
+const CaseStudyInfoPage = (props) => {
+        const {idCase} =  props.location.state;
+
         return (
             <div
                 style={{
@@ -14,7 +16,7 @@ const CaseStudyInfoPage = () => {
                     backgroundImage: `url(${Backround_cisty_zubok})`,
                 }}
             >
-                    <CaseStudyInfo/>
+                    <CaseStudyInfo idCase={idCase}/>
                 </div>
         )
     };

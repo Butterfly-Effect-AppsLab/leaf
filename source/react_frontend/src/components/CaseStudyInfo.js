@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import Button from '@material-ui/core/Button';
 import * as ProjectColors from "../utils/colors";
+import history from "../utils/history";
 
 const useStyles = makeStyles({
     button: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
         padding: "10px",
         textAlign: 'left',
         marginTop: "30px",
-        marginBottom: "30px",        marginRight: "auto",
+        marginBottom: "30px", marginRight: "auto",
         marginLeft: "auto",
         color: ProjectColors.white(),
         overflowX: "auto",
@@ -37,8 +38,14 @@ const useStyles = makeStyles({
     },
 });
 
-const CaseStudyInfo = () => {
+const CaseStudyInfo = (props) => {
+    const {idCase} = props;
     const classes = useStyles();
+
+    const handleClick = (idCase) => {
+        history.push('/LcKategorie', {idCase: idCase})
+    };
+
     return (
         <div className={classes.card}>
             <Typography className={classes.content}>
@@ -51,7 +58,7 @@ const CaseStudyInfo = () => {
                 <b>Produkt : </b><br/>
                 Dizajnové ekologické zubné kefky s dovozom priamo
                 domov ešte predtým než je stará kefka už nepoužiteľná.
-            </Typography >
+            </Typography>
             <Typography className={classes.content}> <b>Prečo vznikol :</b><br/>
                 Až 80% ľudí si pravidelne zabúda včas vymieňať zubné kefky. Firma Čistý zúbok vznikla v roku 2017 so
                 snahou vyriešiť tento problém. Pomáha rodičom a ľuďom,
@@ -62,7 +69,9 @@ const CaseStudyInfo = () => {
                 Čistý zúbok prináša možnosť predplatiť si službu pravidelného dodania prémiovej ekologickej
                 zubnej kefky priamo až do domu formou predplatného na dvojmesačnej alebo štvrťročnej báze.
             </Typography>
-            <Button className={classes.button}>
+            <Button className={classes.button} onClick={() => {
+                handleClick(idCase)
+            }}>
                 Rozbehni tento biznis
             </Button>
         </div>

@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -9,11 +9,12 @@ import Barbershop from '../icons/barbershop.svg';
 import Zubok from '../icons/zubok.svg';
 import Coffee from '../icons/coffee.svg';
 
-import React, { useEffect } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actionGetCaseStudies } from "../redux/actions";
-import { getCaseStudies } from "../redux/selectors";
+import React, {useEffect} from "react";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {actionGetCaseStudies} from "../redux/actions";
+import {getCaseStudies} from "../redux/selectors";
+import history from "../utils/history";
 
 /*
 const getCaseStudies = () => {
@@ -64,17 +65,24 @@ const SimpleCard = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        props.actionGetCaseStudies()
-    },
+            props.actionGetCaseStudies()
+        },
         []
     );
+
+    const handleClick = (idCase) => {
+        history.push('/LcKategorie', {idCase: idCase})
+    };
 
     console.log(props.data.caseStudies);
     const renderCard = (idCase, name/*, icon, position*/) => {
         return (
-            <Card id={idCase} className={classes.card}>
+            <Card id={idCase} className={classes.card} onClick={() => {
+                handleClick(idCase)
+            }}>
                 <CardActionArea>
-                    <CardContent className={classes.content} style={{ /*backgroundImage: `url(${icon})`, backgroundPosition: position,*/ }}>
+                    <CardContent className={classes.content}
+                                 style={{ /*backgroundImage: `url(${icon})`, backgroundPosition: position,*/}}>
                         <Typography
                             className={classes.title}
                         >
@@ -103,8 +111,7 @@ const SimpleCard = (props) => {
                 }
             </div>
         );
-    }
-    else {
+    } else {
         return null
     }
 };
@@ -114,7 +121,7 @@ const mapStateToProps = state => {
     const data = {
         caseStudies: getCaseStudies(state)
     };
-    return { data };
+    return {data};
 };
 
 const mapDispatchToProps = dispatch => ({
