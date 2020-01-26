@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LockIcon from '@material-ui/icons/Lock';
+import history from '../utils/history';
 
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { actionGetStages } from "../redux/actions";
-import { getStages } from "../redux/selectors";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {actionGetStages} from "../redux/actions";
+import {getStages} from "../redux/selectors";
+import {Link} from "@material-ui/core";
 
 /*const getStages = () => {
     return [{id: 1, name: "Zákazníci"},
@@ -60,15 +62,22 @@ const CategoryCard = (props) => {
     const classes = useStyles();
     console.log(stages);
 
+    const handleClick = (idStage) => {
+        history.push('/LCFirma', {idStage: idStage})
+        // history.push({pathname: "/LCFirma", state: {idStage: idStage}});
+    };
+
     useEffect(() => {
-        props.actionGetStages(props.dispatch)
-    },
+            props.actionGetStages(props.dispatch)
+        },
         []
     );
 
     const renderCard = (idStage, name) => {
         return (
-            <Card id={idStage} className={classes.card}>
+            <Card id={idStage} className={classes.card} onClick={() => {
+                handleClick(idStage)
+            }}>
                 <CardActionArea>
                     <CardContent>
                         <Typography
@@ -87,7 +96,7 @@ const CategoryCard = (props) => {
         );
     };
 
-    if( stages ){
+    if (stages) {
         return (
             <div
                 style={{
@@ -99,8 +108,7 @@ const CategoryCard = (props) => {
                 {Object.keys(stages).sort().map(id => renderCard(id, stages[id].name))}
             </div>
         );
-    }
-    else {
+    } else {
         return null
     }
 };
@@ -110,7 +118,7 @@ const mapStateToProps = state => {
     const data = {
         stages: getStages(state)
     };
-    return { data };
+    return {data};
 };
 
 const mapDispatchToProps = dispatch => ({
