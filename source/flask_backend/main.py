@@ -194,7 +194,7 @@ def get_case_study_stage(id_case_study, id_stage):
                 'explanation': choice.explanation,
             }
 
-        questions_attrs[question.id] = {
+        questions_attrs[question.order] = {
             'id': question.id,
             'id_case_study': question.id_case_study,
             'id_stage': question.id_stage,

@@ -58,10 +58,9 @@ const useStyles = makeStyles({
 const CategoryCard = (props) => {
     const stages = props.data.stages;
     const classes = useStyles();
-    console.log(stages);
 
     useEffect(() => {
-        props.actionGetStages(props.dispatch)
+        props.actionGetStages()
     },
         []
     );
@@ -115,7 +114,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     actionGetStages: bindActionCreators(actionGetStages, dispatch),
-    dispatch
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryCard);

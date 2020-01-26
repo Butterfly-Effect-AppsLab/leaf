@@ -1,6 +1,7 @@
 import {
     GET_CASE_STUDIES,
     GET_CASE_STUDY_INFO,
+    GET_CASE_STUDY_STAGE_QUESTIONS
 } from "../actions";
 
 const initialState = {};
@@ -21,6 +22,26 @@ const setCaseStudyInfo = (state, caseStudyInfo) => {
     return newState;
 };
 
+const setCaseStudyStageQuestions = (state, action) => {
+    const idCaseStudy = action.idList.idCaseStudy;
+    const idStage = action.idList.idStage;
+    const caseStudyStageQuestions = action.payload;
+
+    const newState = {
+        ...state,
+        [idCaseStudy]: {
+            ...state[idCaseStudy],
+            stages: {
+                ...state[idCaseStudy].stages, 
+                [idStage]: caseStudyStageQuestions
+            }
+        }
+    };
+
+    console.log(newState);
+    return newState;
+};
+
 export default function(state = initialState, action) {
 
     switch (action.type) {
@@ -31,6 +52,11 @@ export default function(state = initialState, action) {
 
         case GET_CASE_STUDY_INFO: {
             return setCaseStudyInfo(state, action.payload)
+        }
+
+
+        case GET_CASE_STUDY_STAGE_QUESTIONS: {
+            return setCaseStudyStageQuestions(state, action)
         }
 
         default:

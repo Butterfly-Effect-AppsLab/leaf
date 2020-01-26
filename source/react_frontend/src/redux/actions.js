@@ -1,4 +1,4 @@
-import * as API from "./urls";
+import * as URL from "./urls";
 import { fetchData } from './fetchData';
 
 export const GET_USER = "GET_USER";
@@ -8,7 +8,7 @@ export const GET_COMPANIES = "GET_COMPANIES";
 export const GET_COMPANY_CASE_STUDIES = "GET_COMPANY_CASE_STUDIES";
 export const GET_CASE_STUDIES = "GET_CASE_STUDIES";
 export const GET_CASE_STUDY_INFO = "GET_CASE_STUDIES";
-export const GET_CASE_STUDY_QUESTIONS = "GET_CASE_STUDY_QUESTIONS";
+export const GET_CASE_STUDY_STAGE_QUESTIONS = "GET_CASE_STUDY_STAGE_QUESTIONS";
 
 export const GET_QUESTION_ANSWERS = "GET_QUESTION_ANSWERS";
 export const GET_USER_ANSWER = "GET_QUESTION_ANSWERS";
@@ -31,7 +31,8 @@ export const FETCH_DATA_FAIL = "FETCH_DATA_FAIL";
 export const actionGetStages = () => dispatch => {
     dispatch(fetchData({
         type: GET_STAGES,
-        apiUrl: API.API_STAGES(),
+        apiUrl: URL.API_STAGES(),
+        idList: {},
         hasHeader: false
     })
     )
@@ -40,11 +41,24 @@ export const actionGetStages = () => dispatch => {
 export const actionGetCaseStudies = () => dispatch => {
     dispatch(fetchData({
         type: GET_CASE_STUDIES,
-        apiUrl: API.API_CASE_STUDIES(),
+        apiUrl: URL.API_CASE_STUDIES(),
+        idList: {},
         hasHeader: false
     })
     )
 };
+
+
+export const actionGetCaseStudyStageQuestions = (idCaseStudy, idStage) => dispatch => {
+    dispatch(fetchData({
+        type: GET_CASE_STUDY_STAGE_QUESTIONS,
+        apiUrl: URL.API_CASE_STUDIES(idCaseStudy, idStage),
+        idList: {idCaseStudy: idCaseStudy, idStage: idStage},
+        hasHeader: false
+    })
+    )
+};
+
 
 
 
@@ -54,7 +68,7 @@ export const actionGetCaseStudies = () => dispatch => {
 export const actionGetCompanies = () => {
     fetchData({
         type: GET_COMPANIES,
-        apiUrl: API.API_COMPANIES(),
+        apiUrl: URL.API_COMPANIES(),
         hasHeader: false
     });
 };
@@ -62,7 +76,7 @@ export const actionGetCompanies = () => {
 export const actionGetCaseStudyInfo = (idCaseStudy) => {
     fetchData({
         type: GET_CASE_STUDY_INFO,
-        apiUrl: API.API_CASE_STUDY_INFO(idCaseStudy),
+        apiUrl: URL.API_CASE_STUDY_INFO(idCaseStudy),
         hasHeader: false
     });
 };
@@ -70,7 +84,7 @@ export const actionGetCaseStudyInfo = (idCaseStudy) => {
 export const actionSetProject = (props) => {
     fetchData({
         type: POST_PROJECT,
-        apiUrl: API.API_PROJECTS(),
+        apiUrl: URL.API_PROJECTS(),
         hasHeader: true,
         requestBody: {
             name: props.projectName,
@@ -84,7 +98,7 @@ export const actionSetProject = (props) => {
 export const actionSetProjectName = (props) => {
     fetchData({
         type: PATCH_PROJECT_NAME,
-        apiUrl: API.API_PROJECT(props.idProject),
+        apiUrl: URL.API_PROJECT(props.idProject),
         hasHeader: true,
         requestBody: {
             op: 'UPDATE',

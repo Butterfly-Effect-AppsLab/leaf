@@ -10,6 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import * as ProjectColors from "../utils/colors";
 
+
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actionGetCaseStudyStageQuestions } from "../redux/actions";
+import { getCaseStudyStageQuestions } from "../redux/selectors";
+
+
 const useStyles = makeStyles(theme => ({
     questions: {
         width: 'max-content',
@@ -150,12 +157,20 @@ const questions = {
     };
 
 
-export default function ScrollableTabsButtonAuto() {
+const ScrollableTabsButtonAuto = (props) => {
     const classes = useStyles();
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [reachedQuestion, setReachedQuestion] = React.useState(0);
     const [currentCategory, setCurrentCategory] = React.useState(0);
     const [reachedCategory, setReachedCategory] = React.useState(0);
+    const stageQuestions = props.data.stageQuestions;
+
+    useEffect(() => {
+        props.actionGetCaseStudyStageQuestions()
+    },
+        []
+    );
+
 
     const handleChange = (event, newValue) => {
         if (newValue <= reachedQuestion) {
@@ -189,38 +204,58 @@ export default function ScrollableTabsButtonAuto() {
         )
 
     };
-    return (
-        <div className={classes.root}>
-            <div className={classes.questions}>
+    console.log('aaaaaaaaaaaaaaaaa', stageQuestions);
+    if( stageQuestions ) {
+        return (
+            <div className={classes.root}>
+                <div className={classes.questions}>
 
-                <AppBar position="static" className={classes.appBar}>
-                    <Tabs
-                        classes={{
-                            indicator: classes.indicator,
-                        }}
-                        value={currentQuestion}
-                        onChange={handleChange}
-                        textColor={ProjectColors.darkGray()}
-                        variant="scrollable"
-                        scrollButtons="auto"
-                        aria-label="scrollable auto tabs example"
-                    >
-                        {Object.keys(questions).map((questionId) => renderTab(questions[questionId].questionText, questionId))}
-                    </Tabs>
-                </AppBar>
+                    <AppBar position="static" className={classes.appBar}>
+                        <Tabs
+                            classes={{
+                                indicator: classes.indicator,
+                            }}
+                            value={currentQuestion}
+                            onChange={handleChange}
+                            textColor={ProjectColors.darkGray()}
+                            variant="scrollable"
+                            scrollButtons="auto"
+                            aria-label="scrollable auto tabs example"
+                        >
+                            {Object.keys(questions).map((questionId) => renderTab(questions[questionId].questionText, questionId))}
+                        </Tabs>
+                    </AppBar>
+                </div>
+                {Object.keys(questions).map((questionId, index) => (
+                    <TabPanel value={currentQuestion} index={index}>
+                        <CompanyLCquestion text={questions[questionId].questionText}/>
+                        <AnswerButtons
+                            answers={questions[questionId].answers}
+                            goToNextQuestion={() => {
+                                goToNextQuestion(questions)
+                            }}
+                        />
+
+                    </TabPanel>
+                ))}
             </div>
-            {Object.keys(questions).map((questionId, index) => (
-                <TabPanel value={currentQuestion} index={index}>
-                    <CompanyLCquestion text={questions[questionId].questionText}/>
-                    <AnswerButtons
-                        answers={questions[questionId].answers}
-                        goToNextQuestion={() => {
-                            goToNextQuestion(questions)
-                        }}
-                    />
+        );
+    }
+    else {
+        return null
+    }
+};
 
-                </TabPanel>
-            ))}
-        </div>
-    );
-}
+
+const mapStateToProps = state => {
+    const data = {
+        stageQuestions: getCaseStudyStageQuestions(state)
+    };
+    return { data };
+};
+
+const mapDispatchToProps = dispatch => ({
+    actionGetCaseStudyStageQuestions: bindActionCreators(actionGetCaseStudyStageQuestions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollableTabsButtonAuto);

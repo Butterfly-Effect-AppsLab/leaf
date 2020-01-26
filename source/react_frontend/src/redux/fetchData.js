@@ -21,7 +21,7 @@ export const fetchData = (props) => async dispatch => {
         
         const response = await fetch(props.apiUrl, header);
         const payload = await response.json();
-        dispatch(fetchDataSuccess(props.type, payload));
+        dispatch(fetchDataSuccess(props.type, payload, props.idList));
 
     } catch (err) {
         console.log(err);
@@ -30,10 +30,11 @@ export const fetchData = (props) => async dispatch => {
 };
 
 
-const fetchDataSuccess = (_type, _payload) => {
+const fetchDataSuccess = (_type, _payload, _idList) => {
     return {
         type: _type,
         payload: _payload,
+        idList: _idList
     }
 };
 
