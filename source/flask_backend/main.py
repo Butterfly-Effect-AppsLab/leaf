@@ -230,16 +230,16 @@ def get_user_projects():
     # get user object from flask.authenticated_user
     id_user = 10  # current_user.id
     projects_data = session.query(UserProject).filter(UserProject.id_user == id_user)
-    projects = {'user_projects': {}}
+    projects = {}
     for project in projects_data:
         project_attrs = {
             'id': project.id,
             'id_user': project.id_user,
-            'title': project.name,
+            'name': project.name,
             'theme': project.theme,
             'description': project.description
         }
-        projects['user_projects'][project.id] = project_attrs
+        projects[project.id] = project_attrs
     return jsonify(projects)
 
 
