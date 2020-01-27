@@ -6,8 +6,7 @@ import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         box: {
-            alignItems: 'center',
-            justifyContent: 'center',
+            textAlign: "center",
             marginTop: '10%',
             marginRight: 'auto',
             marginLeft: 'auto',
@@ -19,7 +18,10 @@ const useStyles = makeStyles(theme => ({
             paddingLeft: '7%',
             paddingRight: '7%',
             color: ProjectColors.white(),
-            backgroundColor: ProjectColors.orange()
+            backgroundColor: ProjectColors.orange(),
+            '&:hover': {
+                backgroundColor: ProjectColors.hoverOrange(),
+            },
         }
     }))
 ;
