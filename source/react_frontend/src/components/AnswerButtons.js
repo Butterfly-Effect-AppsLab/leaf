@@ -34,22 +34,25 @@ const useStyles = makeStyles(theme => ({
 
 export default function AnswerButtons(props) {
     const classes = useStyles();
-    const {answers, goToNextQuestion} = props;
+    //const {answers, goToNextQuestion} = props;
+    const {choices, goToNextQuestion} = props;
     const [openExplanation, setOpenExplanation] = React.useState(false);
-    const [chosenAnswer, setChosenAnswer] = React.useState({});
+    //const [chosenAnswer, setChosenAnswer] = React.useState({});
+    const [choice, setChoice] = React.useState({});
 
-    const handleClick = (answer) => {
+    const handleClick = (choice) => {
         setOpenExplanation(true);
-        setChosenAnswer(answer);
+        //setChosenAnswer(answer);
+        setChoice(choice);
     };
 
-    const renderExplanation = (answer, openExplanation) => {
+    const renderExplanation = (choice, openExplanation) => {
         if (openExplanation) {
             return (
-                <Explanation explanation={answer.explanation} isCorrect={answer.isCorrect} open={openExplanation}
+                <Explanation explanation={choice.explanation} isCorrect={choice.is_correct} open={openExplanation}
                              onClose={() => {
                                  setOpenExplanation(false);
-                                 if (answer.isCorrect) {
+                                 if (choice.is_correct) {
                                      goToNextQuestion()
                                  }
                              }}/>
@@ -58,19 +61,31 @@ export default function AnswerButtons(props) {
         return null
     };
 
-    return (
-        <>
-            {Object.keys(answers).map((answerId) => (
-                <div className={classes.box}>
-                    <Button className={classes.button} onClick={() => {
-                        handleClick(answers[answerId])
-                    }}>{answers[answerId].answerText}</Button>
-                </div>
-            ))}
-            {
-                renderExplanation(chosenAnswer, openExplanation)
-            }
-        </>
-    )
+    if(choices) {
+        return (
+            <>
+                {/*Object.keys(answers).map((answerId) => (
+                    <div className={classes.box}>
+                        <Button className={classes.button} onClick={() => {
+                            handleClick(answers[answerId])
+                        }}>{answers[answerId].answerText}</Button>
+                    </div>
+                ))*/}
+                {Object.keys(choices).map((idChoice) => (
+                    <div className={classes.box}>
+                        <Button className={classes.button} onClick={() => {
+                            handleClick(choices[idChoice])
+                        }}>{choices[idChoice].choice_text}</Button>
+                    </div>
+                ))}
+                {
+                    renderExplanation(choice, openExplanation)
+                }
+            </>
+        )
+    }
+    else {
+        return null;
+    }
 
 };

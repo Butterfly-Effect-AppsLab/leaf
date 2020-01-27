@@ -74,7 +74,6 @@ const SimpleCard = (props) => {
         history.push('/FirmaInfo', {idCase: idCase})
     };
 
-    console.log(props.data.caseStudies);
     const renderCard = (idCase, name/*, icon, position*/) => {
         return (
             <Card id={idCase} className={classes.card} onClick={() => {
