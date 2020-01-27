@@ -158,19 +158,24 @@ const questions = {
 */
 
 const ScrollableTabsButtonAuto = (props) => {
+    const { idCaseStudy, idStage } = props;
+
     const classes = useStyles();
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [reachedQuestion, setReachedQuestion] = React.useState(0);
-    const [currentCategory, setCurrentCategory] = React.useState(0);
+    const [currentCategory, setCurrentCategory] = React.useState(idStage - 1);
     const [reachedCategory, setReachedCategory] = React.useState(0);
+    
     const caseStudyStages = props.data.caseStudyStages;
     const caseStudyStage = caseStudyStages[currentCategory + 1];
-    const { idCaseStudy, idStage } = props;
+
 
     console.log('dataaaa', caseStudyStage);
     console.log('current category', currentCategory);
     useEffect(() => {
-        props.actionGetCaseStudyStage(idCaseStudy, currentCategory + 1)
+        console.log('v use effect', currentCategory);
+        props.actionGetCaseStudyStage(idCaseStudy, currentCategory + 1);
+        console.log('alll stages', caseStudyStages);
     },
         [currentCategory]
     );
