@@ -9,6 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import * as ProjectColors from "../utils/colors";
+import MyProjectButtons from "./MyProjectButtons";
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -78,24 +79,30 @@ const questions = [
     {
         id: 1,
         questionId: 3,
-        questionText: 'Máš viac skupín potencionálnych zákazníkov?' ,
+        questionText: 'Máš viac skupín potencionálnych zákazníkov?',
     }
 ];
 
 export default function ScrollableTabsButtonAuto() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [currentQuestion, setCurrentQuestion] = React.useState(0);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        setCurrentQuestion(newValue);
+    };
+
+    const goToNextQuestion = () => {
+        if (currentQuestion < 2) {
+            setCurrentQuestion(currentQuestion + 1);
+        }
     };
 
     const renderTab = (question, questionId) => {
         return (
             <Tab label={"Otázka " + String(questionId)} {...a11yProps(question.id)}/>
         )
-
     };
+
     return (
         <div className={classes.root}>
             <div className={classes.questions}>
@@ -105,7 +112,7 @@ export default function ScrollableTabsButtonAuto() {
                         classes={{
                             indicator: classes.indicator,
                         }}
-                        value={value}
+                        value={currentQuestion}
                         onChange={handleChange}
                         textColor={ProjectColors.darkGray()}
                         variant="scrollable"
@@ -117,11 +124,15 @@ export default function ScrollableTabsButtonAuto() {
                 </AppBar>
             </div>
             {questions.map((question, index) => (
-                <TabPanel value={value} index={index}>
+                <TabPanel value={currentQuestion} index={index}>
                     <CompanyLCquestion text={question.questionText}/>
                     <MultilineTextField row_num={6} background_color={"transparent"}/>
+                    <MyProjectButtons goToNextQuestion={() => {
+                        goToNextQuestion()
+                    }}/>
                 </TabPanel>
             ))}
+
         </div>
     );
 }
