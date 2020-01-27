@@ -71,7 +71,7 @@ const SimpleCard = (props) => {
     );
 
     const handleClick = (idCase) => {
-        history.push('/LcKategorie', {idCase: idCase})
+        history.push('/FirmaInfo', {idCase: idCase})
     };
 
     console.log(props.data.caseStudies);

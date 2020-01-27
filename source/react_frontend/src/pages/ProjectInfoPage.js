@@ -6,6 +6,7 @@ import BackgroundProjectWhite from "../icons/background_project_white.svg";
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import * as ProjectColors from "../utils/colors";
+import history from "../utils/history";
 
 const useStyles = makeStyles({
         background: {
@@ -36,15 +37,22 @@ const useStyles = makeStyles({
             width: "100px",
             background: "transparent",
         },
+        label: {
+            color: ProjectColors.darkGray(),
+        },
         group: {
             background: ProjectColors.transWhite(),
-        },
+        }
+        ,
         button: {
             background: ProjectColors.green(),
-            color: ProjectColors.white(),
-            width: "200px",
-            boxShadow: 'none',
-        },
+            color:
+                ProjectColors.white(),
+            width:
+                "200px",
+            boxShadow:
+                'none',
+        }
     })
 ;
 
@@ -52,8 +60,12 @@ const ProjectInfo = () => {
     const classes = useStyles();
     const [project, setProject] = React.useState('');
 
-    const handleClick = (event, newProject) => {
+    const handleChooseType = (event, newProject) => {
         setProject(newProject);
+    };
+
+    const handleClick = () => {
+        history.push('/Otazky')
     };
 
 
@@ -65,7 +77,8 @@ const ProjectInfo = () => {
             </h3>
 
             <div className={classes.textfield}>
-                <MultilineTextField field_name='Názov projektu' row_num={2} background_color={ProjectColors.transWhite()}/>
+                <MultilineTextField field_name='Názov projektu' row_num={2}
+                                    background_color={ProjectColors.transWhite()}/>
             </div>
             <br/>
 
@@ -77,13 +90,27 @@ const ProjectInfo = () => {
                     className={classes.group}
                     value={project}
                     exclusive
-                    onChange={handleClick}
+                    onChange={handleChooseType}
                     aria-label="project category"
                 >
-                    <ToggleButton className={classes.toggle} value="product" aria-label="product category">
+                    <ToggleButton
+                        className={classes.toggle}
+                        value="product"
+                        aria-label="product category"
+                        classes={{
+                        label: classes.label
+                        }}
+                    >
                         Produkt
                     </ToggleButton>
-                    <ToggleButton className={classes.toggle} value="service" aria-label="service category">
+                    <ToggleButton
+                        className={classes.toggle}
+                        value="service"
+                        aria-label="service category"
+                        classes={{
+                        label: classes.label
+                        }}
+                    >
                         Služba
                     </ToggleButton>
                 </ToggleButtonGroup>
@@ -103,7 +130,9 @@ const ProjectInfo = () => {
             </div>
             <br/>
             <div align="center">
-                <Button variant="contained" className={classes.button}>
+                <Button variant="contained" className={classes.button} onClick={() => {
+                    handleClick()
+                }}>
                     Rozbehni svoj biznis
                 </Button>
             </div>

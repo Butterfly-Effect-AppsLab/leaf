@@ -157,7 +157,7 @@ function DenseAppBar() {
                         <div className={classes.but} style={{color: textColor}}>
                             <IconButton className={classes.but} style={{color: textColor}}>
                                 <ArrowBackIosIcon/>
-                                <Typography className={classes.spat}>
+                                <Typography className={classes.spat} onClick={() => {history.goBack()}}>
                                     Späť
                                 </Typography>
                             </IconButton>

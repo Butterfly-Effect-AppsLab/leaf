@@ -9,6 +9,7 @@ import Rocket from '../icons/rocket.svg'
 import Barbershop from "../icons/barbershop.svg";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import * as ProjectColors from "../utils/colors";
+import history from "../utils/history";
 
 
 const useStyles = makeStyles({
@@ -79,7 +80,7 @@ export default function AddProject() {
   }, [count, projects]);
 
 
-  const handleClick = () => {
+  const handleAddProject = () => {
       let newCount = count + 1;
       if(newCount > 3) {
         newCount = 3
@@ -104,12 +105,17 @@ export default function AddProject() {
     }
   };
 
+      const handleClick = () => {
+        history.push('/ProjectInfo')
+    };
 
 
 
       const renderCard = (text) => {
           return (
-              <Card className={classes.card}>
+              <Card className={classes.card} onClick={() => {
+                handleClick()
+            }}>
                   <CardActionArea>
                       <CardContent className={classes.content}>
                           <Typography
@@ -137,7 +143,7 @@ export default function AddProject() {
               {projects.map(project => renderCard(project))}
               <Card className={classes.addCard}>
                   <CardContent>
-                      <IconButton onClick={handleClick} style={{position: "relative", top: -20, display: 'block', margin: 'auto'}}
+                      <IconButton onClick={handleAddProject} style={{position: "relative", top: -20, display: 'block', margin: 'auto'}}
                                   aria-label="add-project" color="primary">
                           <AddCircleIcon fontSize="large"/>
                       </IconButton>
