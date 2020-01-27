@@ -14,7 +14,7 @@ import * as ProjectColors from "../utils/colors";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { actionGetCaseStudyStage } from "../redux/actions";
-import { getCaseStudyStage } from "../redux/selectors";
+import { getCaseStudyStages } from "../redux/selectors";
 
 
 const useStyles = makeStyles(theme => ({
@@ -163,14 +163,16 @@ const ScrollableTabsButtonAuto = (props) => {
     const [reachedQuestion, setReachedQuestion] = React.useState(0);
     const [currentCategory, setCurrentCategory] = React.useState(0);
     const [reachedCategory, setReachedCategory] = React.useState(0);
-    const caseStudyStage = props.data.caseStudyStage;
+    const caseStudyStages = props.data.caseStudyStages;
+    const caseStudyStage = caseStudyStages[currentCategory + 1];
     const { idCaseStudy, idStage } = props;
 
+    console.log('dataaaa', caseStudyStage);
     console.log('current category', currentCategory);
     useEffect(() => {
         props.actionGetCaseStudyStage(idCaseStudy, currentCategory + 1)
     },
-        []
+        [currentCategory]
     );
 
 
@@ -264,9 +266,10 @@ const ScrollableTabsButtonAuto = (props) => {
 
 
 const mapStateToProps = (state, props) => {
+    console.log('11111111111111', props);
     const { idCaseStudy, idStage } = props
     const data = {
-        caseStudyStage: getCaseStudyStage(state, idCaseStudy, idStage)
+        caseStudyStages: getCaseStudyStages(state, idCaseStudy, idStage)
     };
     return { data };
 };
