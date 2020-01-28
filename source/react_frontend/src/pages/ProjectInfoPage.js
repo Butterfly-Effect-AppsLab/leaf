@@ -56,88 +56,112 @@ const useStyles = makeStyles({
     })
 ;
 
-const ProjectInfo = () => {
-    const classes = useStyles();
-    const [project, setProject] = React.useState('');
-
-    const handleChooseType = (event, newProject) => {
-        setProject(newProject);
-    };
-
-    const handleClick = () => {
-        history.push('/LcKategorie', {/*idProject: idProject,*/type: "project"})
-    };
-
-    return (
-        <div className={classes.background}>
-            <h3 className={classes.title}>
-                Zamysli sa nad tým, aký nápad chceš rozvíjať a vypíš si základné parametre,
-                ktoré tento nápad zakategorizujú.
-            </h3>
-
-            <div className={classes.textfield}>
-                <MultilineTextField field_name='Názov projektu' row_num={2}
-                                    background_color={ProjectColors.transWhite()}/>
-            </div>
-            <br/>
-
-            <h3 className={classes.title}>
-                Aky typ nápadu chceš rozvíjať?
-            </h3>
-            <div align="center">
-                <ToggleButtonGroup
-                    className={classes.group}
-                    value={project}
-                    exclusive
-                    onChange={handleChooseType}
-                    aria-label="project category"
-                >
-                    <ToggleButton
-                        className={classes.toggle}
-                        value="product"
-                        aria-label="product category"
-                        classes={{
-                        label: classes.label
-                        }}
-                    >
-                        Produkt
-                    </ToggleButton>
-                    <ToggleButton
-                        className={classes.toggle}
-                        value="service"
-                        aria-label="service category"
-                        classes={{
-                        label: classes.label
-                        }}
-                    >
-                        Služba
-                    </ToggleButton>
-                </ToggleButtonGroup>
-            </div>
-            <br/>
-            < h3
-                className={classes.title}>
-                O čom bude tvoj projekt?
-            </h3>
-
-            <div className={classes.textfield}>
-                <MultilineTextField
-                    field_name='Popíš pár vetami, čomu sa chceš vo svojom projektu venovať a prečo si sa rozhodol práve pre tento?'
-                    row_num={6}
-                    background_color={ProjectColors.transWhite()}
-                />
-            </div>
-            <br/>
-            <div align="center">
-                <Button variant="contained" className={classes.button} onClick={() => {
-                    handleClick()
-                }}>
-                    Rozbehni svoj biznis
-                </Button>
-            </div>
-            <br/>
-        </div>
-    )
+const projects = {
+    1: {
+        description: "Moj projekt zachrani vsetky macky bez domova na svete.",
+        id: 19,
+        id_user: 10,
+        name: "Projekt 1",
+        theme: null,
+        specialization: "Projekt"
+    },
+    2: {
+        description: "A tento projekt zachrani vsetky psy bez domova na svete.",
+        id: 20,
+        id_user: 10,
+        name: "Projekt 2",
+        theme: null,
+        specialization: "Sluzba"
+    },
 };
+
+const ProjectInfo = (props) => {
+        const classes = useStyles();
+        const [project, setProject] = React.useState('');
+        const {projectObject} = props.location.state;
+
+        const handleChooseType = (event, newProject) => {
+            setProject(newProject);
+        };
+
+        const handleClick = () => {
+            history.push('/LcKategorie', {/*idProject: idProject,*/type: "project"})
+        };
+
+        return (
+            <div className={classes.background}>
+                <h3 className={classes.title}>
+                    Zamysli sa nad tým, aký nápad chceš rozvíjať a vypíš si základné parametre,
+                    ktoré tento nápad zakategorizujú.
+                </h3>
+
+                <div className={classes.textfield}>
+                    <MultilineTextField text={projectObject.name} field_name='Názov projektu' row_num={2}
+                                        background_color={ProjectColors.transWhite()}/>
+                </div>
+                <br/>
+
+                <h3 className={classes.title}>
+                    Aky typ nápadu chceš rozvíjať?
+                </h3>
+                <div align="center">
+                    <ToggleButtonGroup
+                        className={classes.group}
+                        value={project}
+                        exclusive
+                        onChange={handleChooseType}
+                        aria-label="service category"
+                    >
+                        <ToggleButton
+                            className={classes.toggle}
+                            selected={projectObject.specialization === "product"}
+                            value="product"
+                            aria-label="product category"
+                            classes={{
+                                label: classes.label
+                            }}
+                        >
+                            Produkt
+                        </ToggleButton>
+                        <ToggleButton
+                            className={classes.toggle}
+                            selected={projectObject.specialization === "service"}
+                            value="service"
+                            aria-label="service category"
+                            classes={{
+                                label: classes.label
+                            }}
+                        >
+                            Služba
+                        </ToggleButton>
+                    </ToggleButtonGroup>
+                </div>
+                <br/>
+                < h3
+                    className={classes.title}>
+                    O čom bude tvoj projekt?
+                </h3>
+
+                <div className={classes.textfield}>
+                    <MultilineTextField
+                        text={projectObject.description}
+                        field_name='Popíš pár vetami, čomu sa chceš vo svojom projektu venovať a prečo si sa rozhodol práve pre tento?'
+                        row_num={6}
+                        background_color={ProjectColors.transWhite()}
+                    />
+                </div>
+                <br/>
+                <div align="center">
+                    <Button variant="contained" className={classes.button} onClick={() => {
+                        handleClick()
+                    }}>
+                        Rozbehni svoj biznis
+                    </Button>
+                </div>
+                <br/>
+            </div>
+        )
+    }
+;
 
 export default ProjectInfo;

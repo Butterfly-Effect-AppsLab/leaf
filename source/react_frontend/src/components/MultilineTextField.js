@@ -31,10 +31,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function MultilineTextField(props) {
     const classes = useStyles();
+    const {text} = props;
     const field_name = props.field_name;
     const row_num = props.row_num;
     const background_color = props.background_color;
-    const [value, setValue] = React.useState('');
+    const [value, setValue] = React.useState(text);
 
     const handleChange = event => {
         setValue(event.target.value);
