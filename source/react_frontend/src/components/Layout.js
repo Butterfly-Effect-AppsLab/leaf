@@ -16,6 +16,7 @@ const Layout = ({children, history}) => {
     const [backgroundImage, setBackgroundImage] = React.useState("initial");
     const [marginTop, setMarginTop] = React.useState(0);
     const [marginBottom, setMarginBottom] = React.useState(0);
+    const [text, setText] = React.useState("BLABLABLA");
 
     useEffect(() => {
         const processPathName = (pathname, state) => {
@@ -36,7 +37,7 @@ const Layout = ({children, history}) => {
                             setHeaderColor(ProjectColors.orange());
                             setTextColor(ProjectColors.white());
                             setBackgroundColor(ProjectColors.orange());
-                            setBackgroundColor(BackgroundProjectWhite);
+                            setBackgroundImage(`url(${BackgroundProjectWhite})`);
                             setMarginTop(80);
                             setMarginBottom(60);
                             break;
@@ -63,6 +64,7 @@ const Layout = ({children, history}) => {
                     setMarginBottom(60);
                     break;
                 case "/FirmaInfo": //Firma Description
+                    setText(state.name);
                     setShowHeader(3);
                     setHeaderColor(ProjectColors.yellow());
                     setTextColor(ProjectColors.white());
@@ -71,6 +73,7 @@ const Layout = ({children, history}) => {
                     setMarginBottom(60);
                     break;
                 case "/LCFirma":        //Firma Otazky
+                    setText(state.name);
                     setShowHeader(4);
                     setHeaderColor(ProjectColors.lightGray());
                     setTextColor(ProjectColors.yellow());
@@ -122,6 +125,7 @@ const Layout = ({children, history}) => {
             processPathName(history.location.pathname);
             history.listen((location) => {
                 processPathName(location.pathname, location.state);
+                console.log(location.state)
             });
         }
 
@@ -141,7 +145,7 @@ const Layout = ({children, history}) => {
                 marginBottom: marginBottom,
             }}
         >
-            <CompanyHeader showHeader={showHeader} textColor={textColor} headerColor={headerColor} showHint={showHint}
+            <CompanyHeader text={text} showHeader={showHeader} textColor={textColor} headerColor={headerColor} showHint={showHint}
                            history={history}/>
             {children}
             <Footer history={history}/>

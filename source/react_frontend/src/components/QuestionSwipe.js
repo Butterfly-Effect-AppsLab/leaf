@@ -160,6 +160,7 @@ const questions = {
 const ScrollableTabsButtonAuto = (props) => {
     const { idCaseStudy, idStage } = props;
 
+
     const classes = useStyles();
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
     const [reachedQuestion, setReachedQuestion] = React.useState(0);
@@ -199,7 +200,7 @@ const ScrollableTabsButtonAuto = (props) => {
     };
 
     const goToNextCategory = () => {
-        if (currentCategory < 9) {
+        if (currentCategory <= 9) {
             setReachedCategory(currentCategory + 1);
             setCurrentCategory(currentCategory + 1);
             setCurrentQuestion(0);

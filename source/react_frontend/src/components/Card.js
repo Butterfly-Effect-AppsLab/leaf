@@ -70,14 +70,14 @@ const SimpleCard = (props) => {
         []
     );
 
-    const handleClick = (idCase) => {
-        history.push('/FirmaInfo', {idCase: idCase})
+    const handleClick = (idCase, name) => {
+        history.push('/FirmaInfo', {idCase: idCase, name: name})
     };
 
     const renderCard = (idCase, name/*, icon, position*/) => {
         return (
             <Card id={idCase} className={classes.card} onClick={() => {
-                handleClick(idCase)
+                handleClick(idCase, name)
             }}>
                 <CardActionArea>
                     <CardContent className={classes.content}

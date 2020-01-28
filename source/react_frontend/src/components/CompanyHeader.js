@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
 function DenseAppBar(props) {
     const classes = useStyles();
     const [openHint, setOpenHint] = React.useState(false);
-    const {showHeader, textColor, headerColor, showHint} = props;
+    const {showHeader, textColor, headerColor, showHint, text} = props;
 
     const handleClick = () => {
         setOpenHint(true);
@@ -105,7 +105,7 @@ function DenseAppBar(props) {
                         </div>
                         <div>
                             <Typography className={classes.title} style={{color: textColor}}>
-                                Čistý zúbok
+                                {text}
                             </Typography>
                         </div>
                         {showHint === true ? (

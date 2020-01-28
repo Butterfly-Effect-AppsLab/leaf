@@ -62,13 +62,13 @@ const CategoryCard = (props) => {
     const {idCase, idProject, type} = props;
     const stages = props.data.stages;
 
-    const handleClick = (idStage) => {
+    const handleClick = (idStage, name) => {
         switch (type) {
             case "firm":
-                history.push('/LCFirma', {idStage: idStage, idCase: idCase});
+                history.push('/LCFirma', {idStage: idStage, idCase: idCase, name: name});
                 break;
             case "project":
-                history.push('/Otazky', {idStage: idStage, idProject: idProject});
+                history.push('/Otazky', {idStage: idStage, idProject: idProject, name: name});
                 break;
             default:
                 break;
@@ -85,7 +85,7 @@ const CategoryCard = (props) => {
     const renderCard = (idStage, name) => {
         return (
             <Card id={idStage} className={classes.card} onClick={() => {
-                handleClick(idStage)
+                handleClick(idStage, name)
             }}>
                 <CardActionArea>
                     <CardContent>
