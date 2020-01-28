@@ -1,4 +1,4 @@
-// import QuestionSwipe from "../components/QuestionSwipe";
+import QuestionSwipe from "../components/QuestionSwipe";
 import 'swiper/css/swiper.css';
 import React from "react";
 import backround_cisty_zubok_white from "../icons/backround_cisty_zubok_white.svg";
@@ -14,7 +14,7 @@ const CompanyQuestionsPage = (props) => {
             // backgroundImage: `url(${backround_cisty_zubok_white})`,
         }}
         >
-
+            <QuestionSwipe idCaseStudy = {idCase} idStage = {idStage}/>
         </div>
     )
 };
