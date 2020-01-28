@@ -89,6 +89,7 @@ class UserProject(Base):
     theme = Column(String, nullable=True)
     description = Column(String, nullable=False)
     specialization = Column(String, nullable=False)
+    type = Column(String)
 
     __table_args__ = (UniqueConstraint('id_user', 'id', name='_uc_id_project'),
                       UniqueConstraint('id_user', 'name', name='_uc_project_name'),)
@@ -108,7 +109,7 @@ class ProjectAnswer(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_project = Column(Integer, ForeignKey('user_projects.id'))
     id_question = Column(Integer, ForeignKey('project_questions.id'))
-    answer = Column(String, nullable=False)
+    answer_text = Column(String, nullable=False)
 
     __table_args__ = (UniqueConstraint('id_project', 'id_question', name='_uc_project_question'),)
 
@@ -127,12 +128,12 @@ class ProjectQuestion(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_stage = Column(Integer, ForeignKey('business_model_stages.id'))
-    question = Column(String, nullable=False)
+    question_text = Column(String, nullable=False)
     order = Column(Integer, nullable=False)
     help = Column(String)
 
     __table_args__ = (UniqueConstraint('id_stage', 'order', name='_uc_stage_question'),
-                      UniqueConstraint('question', name='_uc_text'),)
+                      UniqueConstraint('question_text', name='_uc_text'),)
 
     # one to many
     answers = relationship("ProjectAnswer", back_populates="question")
@@ -140,7 +141,7 @@ class ProjectQuestion(Base):
     business_model_stage = relationship("BusinessModelStage", back_populates="project_questions")
 
     def __repr__(self):
-        return f'<ProjectQuestion(question="{self.question}", id_stage="{self.id_stage}", order="{self.order}")>'
+        return f'<ProjectQuestion(question="{self.question_text}", id_stage="{self.id_stage}", order="{self.order}")>'
 
 
 class BusinessModelStage(Base):
@@ -171,6 +172,7 @@ class CaseStudy(Base):
     unique_value = Column(String)
     revenue = Column(Integer)
     employees_num = Column(Integer)
+    type = Column(String)
 
     __table_args__ = (UniqueConstraint('id_company', 'name', name='_uc_company_case_name'),)
 

@@ -1,5 +1,10 @@
-import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import React, {useEffect} from "react";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {actionGetProjects} from "../redux/actions";
+import {getProjects} from "../redux/selectors";
+
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -87,67 +92,78 @@ const projects = {
     },
 };
 
-    export default function AddProject() {
-        // let helpCount = JSON.parse(localStorage.getItem('numProjects'));
-        // let helpNames = JSON.parse(localStorage.getItem('nameProjects'));
-        const classes = useStyles();
-        // const [count, setCount] = React.useState(helpCount || 0);
-        // const [projects, setProjects] = React.useState(helpNames || []);
+const AddProject = (props) => {
+    // let helpCount = JSON.parse(localStorage.getItem('numProjects'));
+    // let helpNames = JSON.parse(localStorage.getItem('nameProjects'));
+    const classes = useStyles();
+    // const [count, setCount] = React.useState(helpCount || 0);
+    // const [projects, setProjects] = React.useState(helpNames || []);
 
-        // React.useEffect(() => {
-        //     localStorage.setItem('numProjects', JSON.stringify(count));
-        //     localStorage.setItem('nameProjects', JSON.stringify(projects));
-        // }, [count, projects]);
-
-
-        // const handleAddProject = () => {
-        //     let newCount = count + 1;
-        //     if (newCount > 3) {
-        //         newCount = 3
-        //     }
-        //     setCount(newCount);
-        //     switch (newCount) {
-        //         case 0:
-        //             setProjects([]);
-        //             break;
-        //         case 1:
-        //             setProjects(["Projekt 1"]);
-        //             break;
-        //         case 2:
-        //             setProjects(["Projekt 1", "Projekt 2"]);
-        //             break;
-        //         case 3:
-        //             setProjects(["Projekt 1", "Projekt 2", "Projekt 3"]);
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        // };
-
-        const handleClick = (projectObject) => {
-            history.push('/ProjectInfo', {projectObject: projectObject})
-        };
+    // React.useEffect(() => {
+    //     localStorage.setItem('numProjects', JSON.stringify(count));
+    //     localStorage.setItem('nameProjects', JSON.stringify(projects));
+    // }, [count, projects]);
 
 
-        const renderCard = (key) => {
-            return (
-                <Card className={classes.card} onClick={() => {
-                    handleClick(projects[key])
-                }}>
-                    <CardActionArea>
-                        <CardContent className={classes.content}>
-                            <Typography
-                                className={classes.title}
-                                gutterBottom
-                            >
-                                {projects[key].name}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
-            );
-        };
+    // const handleAddProject = () => {
+    //     let newCount = count + 1;
+    //     if (newCount > 3) {
+    //         newCount = 3
+    //     }
+    //     setCount(newCount);
+    //     switch (newCount) {
+    //         case 0:
+    //             setProjects([]);
+    //             break;
+    //         case 1:
+    //             setProjects(["Projekt 1"]);
+    //             break;
+    //         case 2:
+    //             setProjects(["Projekt 1", "Projekt 2"]);
+    //             break;
+    //         case 3:
+    //             setProjects(["Projekt 1", "Projekt 2", "Projekt 3"]);
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // };
 
+
+    const projects = props.data.projects;
+
+    useEffect(() => {
+            props.actionGetProjects()
+        },
+        []
+    );
+
+
+    const handleClick = (projectObject) => {
+        history.push('/ProjectInfo', { projectObject })
+    };
+
+
+    const renderCard = (key) => {
+        return (
+            <Card className={classes.card} onClick={() => {
+                handleClick(projects[key])
+            }}>
+                <CardActionArea>
+                    <CardContent className={classes.content}>
+                        <Typography
+                            className={classes.title}
+                            gutterBottom
+                        >
+                            {projects[key].name}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
+        );
+    };
+
+    if(projects){
         return (
             <div
                 style={{
@@ -162,9 +178,9 @@ const projects = {
                 <Card className={classes.addCard}>
                     <CardContent>
                         <IconButton /*onClick={handleAddProject}*/
-                                    style={{position: "relative", top: -20, display: 'block', margin: 'auto'}}
-                                    aria-label="add-project" color="primary">
-                            <AddCircleIcon fontSize="large"/>
+                            style={{ position: "relative", top: -20, display: 'block', margin: 'auto' }}
+                            aria-label="add-project" color="primary">
+                            <AddCircleIcon fontSize="large" />
                         </IconButton>
                         <Typography
                             className={classes.addTitle}
@@ -172,10 +188,27 @@ const projects = {
                             gutterBottom
                         >
                             Vytvoriť nový projekt
-                        </Typography>
+                            </Typography>
                     </CardContent>
                 </Card>
             </div>
         );
+    } else {
+        return null
     }
+};
+
+
+const mapStateToProps = state => {
+    const data = {
+        projects: getProjects(state)
+    };
+    return {data};
+};
+
+const mapDispatchToProps = dispatch => ({
+    actionGetProjects: bindActionCreators(actionGetProjects, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddProject);
 

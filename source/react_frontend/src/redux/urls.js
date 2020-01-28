@@ -55,13 +55,18 @@ export const API_USER_CASE_STUDY = (idCaseStudy) =>
 export const API_PROJECTS = () => 
     HOST + API_VERSION + "/projects";
 
-/* PATCH */
+/* PATCH */ 
 export const API_PROJECT = (idProject) => 
     HOST + API_VERSION + "/project/" + idProject;
 
 /* GET */
+export const API_PROJECT_STAGE = (idProject, idStage) => 
+    HOST + API_VERSION + "/project/" + idProject + '/stage/'+ idStage;
+
+/* GET */
 export const API_PROJECT_QUESTIONS = (idStage) => 
     HOST + API_VERSION + "/project-stage-questions/" + idStage;
+
 
 /* GET, PATCH */
 export const API_PROJECT_ANSWER = (idProject, idAnswer) => 

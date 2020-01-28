@@ -21,6 +21,7 @@ export const PATCH_PROJECT_NAME = "PATCH_PROJECT_NAME";
 export const PATCH_PROJECT_DESCRIPTION = "PATCH_PROJECT_DESCRIPTION";
 export const PATCH_PROJECT_SPECIALIZATION = "PATCH_PROJECT_SPECIALIZATION";
 
+export const GET_PROJECT_STAGE = "GET_PROJECT_STAGE";
 export const GET_PROJECT_STAGE_QUESTIONS = "GET_PROJECT_STAGE_QUESTIONS";
 export const GET_PROJECT_ANSWER = "GET_PROJECT_ANSWER";
 export const PATCH_PROJECT_ANSWER = "PATCH_PROJECT_ANSWER";
@@ -54,11 +55,33 @@ export const actionGetCaseStudyStage = (idCaseStudy, idStage) => dispatch => {
     dispatch(fetchData({
         type: GET_CASE_STUDY_STAGE,
         apiUrl: URL.API_CASE_STUDY_STAGE(idCaseStudy, idStage),
-        idList: {idCaseStudy: idCaseStudy, idStage: idStage},
+        idList: {idCaseStudy, idStage},
         hasHeader: false
     })
     )
 };
+
+
+export const actionGetProjects = () => dispatch => {
+    dispatch(fetchData({
+        type: GET_PROJECTS,
+        apiUrl: URL.API_PROJECTS(),
+        hasHeader: false
+    })
+    )
+};
+
+
+export const actionGetProjectStage = (idProject, idStage) => dispatch => {
+    dispatch(fetchData({
+        type: GET_PROJECT_STAGE,
+        apiUrl: URL.API_PROJECT_STAGE(idProject, idStage),
+        idList: {idProject, idStage},
+        hasHeader: false
+    })
+    )
+};
+
 
 
 

@@ -147,6 +147,7 @@ def get_case_studies():
             'id_company': case_study.id_company,
             'company_name': case_study.company.name,
             'name': case_study.name,
+            'type': case_study.type,
             'stages': {}
         }
         case_studies[case_study.id] = case_study_attrs
@@ -172,10 +173,11 @@ def get_case_study_info(id_case_study):
 
     return make_response(jsonify(case_study_info), 200)
 
+
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
 @app.route('/api/v1.0/case-study/<int:id_case_study>/stage/<int:id_stage>', methods=['GET'])
 def get_case_study_stage(id_case_study, id_stage):
-    questions = session.query(CaseStudyQuestion).\
+    questions = session.query(CaseStudyQuestion). \
         filter(CaseStudyQuestion.id_case_study == id_case_study, CaseStudyQuestion.id_stage == id_stage)
 
     if not questions:
@@ -226,9 +228,9 @@ def get_stages():
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
 @app.route('/api/v1.0/projects', methods=['GET'])
 # @login_required
-def get_user_projects():
+def get_projects():
     # get user object from flask.authenticated_user
-    id_user = 10  # current_user.id
+    id_user = 1  # current_user.id
     projects_data = session.query(UserProject).filter(UserProject.id_user == id_user)
     projects = {}
     for project in projects_data:
@@ -236,11 +238,55 @@ def get_user_projects():
             'id': project.id,
             'id_user': project.id_user,
             'name': project.name,
-            'theme': project.theme,
-            'description': project.description
+            'description': project.description,
+            'specialization': project.specialization,
+            'stages': {}
         }
         projects[project.id] = project_attrs
     return jsonify(projects)
+
+
+@app.route('/api/v1.0/project/<int:id_project>/stage/<int:id_stage>', methods=['GET'])
+# @login_required
+def get_project_stage(id_project, id_stage):
+    #  verify owner of project - use flask current_user and his projects ids
+    # get user object from flask.authenticated_user
+    id_user = 1  # current_user.id
+    project_data = session.query(UserProject).filter(UserProject.id_user == id_user,
+                                                     UserProject.id == id_project).first()
+
+    if not project_data:
+        abort(400)
+
+    questions = session.query(ProjectQuestion).filter(ProjectQuestion.id_stage == id_stage)
+
+    if not questions:
+        abort(400)
+
+    questions_attrs = {}
+
+    for question in questions:
+        answers = session.query(ProjectAnswer).filter(ProjectAnswer.id_question == question.id,
+                                                      ProjectAnswer.id_project == id_project)
+        answer_attrs = {}
+        for answer in answers:
+            answer_attrs = {
+                'id': answer.id,
+                'id_project': answer.id_project,
+                'id_question': question.id,
+                'answer_text': answer.answer_text
+            }
+
+        questions_attrs[question.order] = {
+            'id': question.id,
+            'id_stage': question.id_stage,
+            'question_text': question.question_text,
+            'order': question.order,
+            'help': question.help,
+            'answer': answer_attrs
+        }
+
+    return make_response(jsonify(questions_attrs), 200)
 
 
 # https://restfulapi.net/http-status-codes/; https://restfulapi.net/http-methods/
@@ -277,7 +323,7 @@ def get_project_answer(id_project, id_answer):
         'id_project': answer_data.id_project,
         'id_question': answer_data.id_question,
         'answer': answer_data.answer,
-        }
+    }
     }
 
     return jsonify(answer)

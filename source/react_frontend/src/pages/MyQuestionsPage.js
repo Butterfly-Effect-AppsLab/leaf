@@ -3,7 +3,9 @@ import ProjectQuestionSwipe from "../components/ProjectQuestionSwipe";
 import background_projekt_orange from "../icons/background_projekt_orange.svg";
 import * as ProjectColors from '../utils/colors';
 
-const MyQuestionsPage = () => {
+const MyQuestionsPage = (props) => {
+    const {idProject, idStage, name} =  props.location.state;
+    console.log('v my question page', props);
     return (
         <div style={{
                         height: 'auto',
@@ -12,7 +14,7 @@ const MyQuestionsPage = () => {
                         // backgroundImage: `url(${background_projekt_orange})`,
                         }}
             >
-                <ProjectQuestionSwipe/>
+                <ProjectQuestionSwipe idProject={idProject} idStage={idStage} name={name}/>
             </div>
     )
 };

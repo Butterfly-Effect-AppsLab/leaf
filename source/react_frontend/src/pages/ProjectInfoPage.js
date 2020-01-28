@@ -55,7 +55,7 @@ const useStyles = makeStyles({
         }
     })
 ;
-
+/*
 const projects = {
     1: {
         description: "Moj projekt zachrani vsetky macky bez domova na svete.",
@@ -74,7 +74,7 @@ const projects = {
         specialization: "Sluzba"
     },
 };
-
+*/
 const ProjectInfo = (props) => {
         const classes = useStyles();
         const [project, setProject] = React.useState('');
@@ -85,7 +85,7 @@ const ProjectInfo = (props) => {
         };
 
         const handleClick = () => {
-            history.push('/LcKategorie', {/*idProject: idProject,*/type: "project"})
+            history.push('/LcKategorie', {idProject: projectObject.id, type: "project"})
         };
 
         return (

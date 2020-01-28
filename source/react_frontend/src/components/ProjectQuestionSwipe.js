@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CompanyLCquestion from "../components/CompanyLCquestion";
 import {makeStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -10,6 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import * as ProjectColors from "../utils/colors";
 import MyProjectButtons from "./MyProjectButtons";
+
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { actionGetProjectStage } from "../redux/actions";
+import { getProjectStages } from "../redux/selectors";
+
+
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -83,9 +90,32 @@ const questions = [
     }
 ];
 
-export default function ScrollableTabsButtonAuto() {
+
+const ScrollableTabsButtonAuto = (props) => {
+    const { idProject, idStage } = props;
+
     const classes = useStyles();
     const [currentQuestion, setCurrentQuestion] = React.useState(0);
+
+
+    const projectStages = props.data.projectStages;
+    console.log('qqqqqqqqqqqqqq', projectStages);
+    const projectStage = projectStages[idStage];
+    //const projectStage = projectStages[currentCategory + 1];
+
+
+    console.log('dataaaa', projectStage);
+    //console.log('current category', currentCategory);
+    useEffect(() => {
+        //console.log('v use effect', currentCategory);
+        //props.actionGetCaseStudyStage(idProject, currentCategory + 1);
+        props.actionGetProjectStage(idProject, idStage);
+        console.log('alll stages', projectStages);
+    },
+        [] //[currentCategory]
+    );
+
+
 
     const handleChange = (event, newValue) => {
         setCurrentQuestion(newValue);
@@ -97,42 +127,71 @@ export default function ScrollableTabsButtonAuto() {
         }
     };
 
-    const renderTab = (question, questionId) => {
+    const renderTab = (idQuestion) => {
         return (
-            <Tab label={"Otázka " + String(questionId)} {...a11yProps(question.id)}/>
+            <Tab label={"Otázka " + String(idQuestion)} {...a11yProps(idQuestion)}/>
         )
     };
 
-    return (
-        <div className={classes.root}>
-            <div className={classes.questions}>
+    if(projectStage){
+        return (
+            <div className={classes.root}>
+                <div className={classes.questions}>
 
-                <AppBar position="static" className={classes.appBar}>
-                    <Tabs
-                        classes={{
-                            indicator: classes.indicator,
-                        }}
-                        value={currentQuestion}
-                        onChange={handleChange}
-                        textColor={ProjectColors.darkGray()}
-                        variant="scrollable"
-                        scrollButtons="auto"
-                        aria-label="scrollable auto tabs example"
-                    >
-                        {questions.map((question) => renderTab(question.questionText, question.questionId))}
-                    </Tabs>
-                </AppBar>
+                    <AppBar position="static" className={classes.appBar}>
+                        <Tabs
+                            classes={{
+                                indicator: classes.indicator,
+                            }}
+                            value={currentQuestion}
+                            onChange={handleChange}
+                            textColor={ProjectColors.darkGray()}
+                            variant="scrollable"
+                            scrollButtons="auto"
+                            aria-label="scrollable auto tabs example"
+                        >
+                            {questions.map((question) => renderTab(question.id))}
+                        </Tabs>
+                    </AppBar>
+                </div>
+                {/*questions.map((question, index) => (
+                    <TabPanel value={currentQuestion} index={index}>
+                        <CompanyLCquestion text={question.questionText}/>
+                        <MultilineTextField row_num={6} background_color={"transparent"}/>
+                        <MyProjectButtons goToNextQuestion={() => {
+                            goToNextQuestion()
+                        }}/>
+                    </TabPanel>
+                ))*/}
+                {Object.keys(projectStage).sort().map((idOrder, index) => (
+                    <TabPanel value={currentQuestion} index={index}>
+                        <CompanyLCquestion text={projectStage[idOrder].question_text}/>
+                        <MultilineTextField row_num={6} text={projectStage[idOrder].answer.answer_text} background_color={"transparent"}/>
+                        <MyProjectButtons goToNextQuestion={() => {
+                            goToNextQuestion()
+                        }}/>
+                    </TabPanel>
+                ))}
+
             </div>
-            {questions.map((question, index) => (
-                <TabPanel value={currentQuestion} index={index}>
-                    <CompanyLCquestion text={question.questionText}/>
-                    <MultilineTextField row_num={6} background_color={"transparent"}/>
-                    <MyProjectButtons goToNextQuestion={() => {
-                        goToNextQuestion()
-                    }}/>
-                </TabPanel>
-            ))}
+        );
+    } else {
+        return null
+    }
+};
 
-        </div>
-    );
-}
+
+const mapStateToProps = (state, props) => {
+    console.log('props v projectquestionswipe', props);
+    const { idProject } = props
+    const data = {
+        projectStages: getProjectStages(state, idProject)
+    };
+    return { data };
+};
+
+const mapDispatchToProps = dispatch => ({
+    actionGetProjectStage: bindActionCreators(actionGetProjectStage, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollableTabsButtonAuto);

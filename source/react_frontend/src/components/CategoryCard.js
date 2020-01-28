@@ -68,7 +68,7 @@ const CategoryCard = (props) => {
                 history.push('/LCFirma', {idStage: idStage, idCase: idCase, name: name});
                 break;
             case "project":
-                history.push('/Otazky', {idStage: idStage, idProject: idProject, name: name});
+                history.push('/Otazky', {idStage, idProject, name});
                 break;
             default:
                 break;
@@ -109,6 +109,8 @@ const CategoryCard = (props) => {
     };
 
     if (stages) {
+        const keys = Object.keys(stages).map(id => parseInt(id));
+        console.log(keys);
         return (
             <div
                 style={{
@@ -117,7 +119,7 @@ const CategoryCard = (props) => {
                     whiteSpace: "nowrap",
                 }}
             >
-                {Object.keys(stages).sort().map(id => renderCard(id, stages[id].name))}
+                {keys.sort().map(id => renderCard(id, stages[id].name))}
             </div>
         );
     } else {

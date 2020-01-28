@@ -275,7 +275,7 @@ const mapStateToProps = (state, props) => {
     console.log('11111111111111', props);
     const { idCaseStudy, idStage } = props
     const data = {
-        caseStudyStages: getCaseStudyStages(state, idCaseStudy, idStage)
+        caseStudyStages: getCaseStudyStages(state, idCaseStudy)
     };
     return { data };
 };

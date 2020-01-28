@@ -30,8 +30,19 @@ export const getCaseStudies = store => {
 };
 
 
+export const getProjects = store => {
+    return isEmpty(store.projects) ? null : store.projects;
+};
+
+
 export const getCaseStudyStages = (store, idCaseStudy) => {
     const stages = store.case_studies[idCaseStudy].stages;
+
+    return stages;
+};
+
+export const getProjectStages = (store, idProject) => {
+    const stages = store.projects[idProject].stages;
 
     return stages;
 };

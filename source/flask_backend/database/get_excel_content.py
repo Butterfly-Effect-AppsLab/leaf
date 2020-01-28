@@ -105,6 +105,8 @@ for file in os.listdir("content"):
             case_study.motivation = item[1]
         elif item[0] == 'UNIQUE_VALUE':
             case_study.unique_value = item[1]
+        elif item[0] == 'TYPE':
+            case_study.type = item[1]
         else:
             break
 

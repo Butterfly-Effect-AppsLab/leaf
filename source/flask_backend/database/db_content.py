@@ -18,17 +18,17 @@ def set_content():
         session.add(company)
         session.commit()
 
-    for num in range(1, 3):
-        case_study = CaseStudy(name='bezecke tenisky' + str(num),
-                               id_company=1,
-                               description='svetoznama firma v oblasti sportu',
-                               motivation='bezci nemaju vhodnu obuv, ktora ....',
-                               unique_value='je vynimocny...',
-                               revenue=100 * num,
-                               employees_num=1 * num
-                               )
-        session.add(case_study)
-        session.commit()
+    # for num in range(1, 3):
+    #     case_study = CaseStudy(name='bezecke tenisky' + str(num),
+    #                            id_company=1,
+    #                            description='svetoznama firma v oblasti sportu',
+    #                            motivation='bezci nemaju vhodnu obuv, ktora ....',
+    #                            unique_value='je vynimocny...',
+    #                            revenue=100 * num,
+    #                            employees_num=1 * num
+    #                            )
+    #     session.add(case_study)
+    #     session.commit()
 
     for num in range(1, 20):
         user = User(email='user@user.com', name='admin', id_google='123456', created_at=datetime.now())
@@ -71,16 +71,21 @@ def set_content():
     for num in range(1, 9):
         for sub_num in range(1, 4):
             question = ProjectQuestion(id_stage=num,
-                                       question='stage' + str(num) + ' otazka' + str(sub_num),
+                                       question_text='stage' + str(num) + ' otazka' + str(sub_num),
                                        order=sub_num,
                                        help='v napovede ....')
             session.add(question)
             session.commit()
 
-    id_questions = session.query(ProjectQuestion.id)
+    questions = session.query(ProjectQuestion)
     id_project = 1
-    for question in id_questions:
-        new_project = ProjectAnswer(id_project=id_project, id_question=question.id, answer='')
+
+    for question in questions:
+        new_project = ProjectAnswer(id_project=id_project,
+                                    id_question=question.id,
+                                    answer_text='odpoved pre projekt ' + str(id_project) +
+                                                ' stage ' + str(question.id_stage) +
+                                                ' otazka ' + str(question.id))
         session.add(new_project)
         session.commit()
 
