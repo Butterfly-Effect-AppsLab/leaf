@@ -80,76 +80,17 @@ const useStyles = makeStyles(theme => ({
 /**
  * @return {null}
  */
-function DenseAppBar() {
+function DenseAppBar(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState(-1);
-    const [textColor, setTextColor] = React.useState("");
-    const [headerColor, setHeaderColor] = React.useState("");
-    const [showHint, setShowHint] = React.useState(false);
     const [openHint, setOpenHint] = React.useState(false);
-
+    const {showHeader, textColor, headerColor, showHint} = props;
 
     const handleClick = () => {
         setOpenHint(true);
         console.log(openHint);
     };
 
-    useEffect(() => {
-        const processPathName = pathname => {
-            switch (pathname) {
-                case "/LcKategorie":   //Firma LC
-                    setValue(0);
-                    setHeaderColor(ProjectColors.yellow());
-                    setTextColor(ProjectColors.white());
-                    break;
-                case "/ProjectInfo":    //Projekt vyplnanie
-                    setValue(1);
-                    setHeaderColor(ProjectColors.orange());
-                    setTextColor(ProjectColors.white());
-                    break;
-                case "/ProjektLcKategorie": //Projekt LC
-                    setValue(2);
-                    setHeaderColor(ProjectColors.orange());
-                    setTextColor(ProjectColors.white());
-                    break;
-                case "/FirmaInfo": //Firma Description
-                    setValue(3);
-                    setHeaderColor(ProjectColors.yellow());
-                    setTextColor(ProjectColors.white());
-                    break;
-                case "/LCFirma":        //Firma Otazky
-                    setValue(4);
-                    setHeaderColor(ProjectColors.lightGray());
-                    setTextColor(ProjectColors.yellow());
-                    break;
-                case "/Otazky":         //Projekt Otazky
-                    setValue(5);
-                    setHeaderColor(ProjectColors.lightGray());
-                    setTextColor(ProjectColors.orange());
-                    setShowHint(true);
-                    break;
-                case "/ToDo":
-                    setValue(6);  //Projek Tuducka
-                    setHeaderColor(ProjectColors.lightGray());
-                    setTextColor(ProjectColors.orange());
-                    setShowHint(true);
-                    break;
-                default:
-                    setValue(-1);
-                    break;
-            }
-        };
-
-        if (history) {
-            processPathName(history.location.pathname);
-            history.listen((location, action) => {
-                processPathName(location.pathname);
-            });
-        }
-    });
-
-
-    return value >= 0 ? (
+    return showHeader >= 0 ? (
         <div>
             <AppBar className={classes.appBar} style={{backgroundColor: headerColor}}>
                 <Toolbar className={classes.toolBar}>

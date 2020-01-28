@@ -5,10 +5,10 @@ import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         root: {
-            background: ProjectColors.lightGray(),
+            // background: ProjectColors.lightGray(),
             width: '100%',
             color: ProjectColors.darkGray(),
-            marginBottom: "60px",
+            marginBottom: "80px",
             height: "100%",
         },
         profile: {

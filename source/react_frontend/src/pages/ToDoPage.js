@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
     root: {
         height: "100%",
         width: "100%",
-        marginTop: '80px',
-        marginBottom: '60px',
-        background: ProjectColors.lightGray(),
-        backgroundImage: `url(${ProjectBackground})`,
+        // marginTop: '80px',
+        marginBottom: '80px',
+        // background: ProjectColors.lightGray(),
+        // backgroundImage: `url(${ProjectBackground})`,
     },
     title: {
         color: ProjectColors.darkGray(),

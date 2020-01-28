@@ -8,9 +8,9 @@ import * as ProjectColors from "../utils/colors";
 
 const useStyles = makeStyles(theme => ({
         root: {
-            background: ProjectColors.lightGray(),
+            // background: ProjectColors.lightGray(),
             width: '100%',
-            marginBottom: "60px",
+            marginBottom: "80px",
             color: ProjectColors.darkGray(),
             height: "100%",
         },

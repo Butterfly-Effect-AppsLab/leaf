@@ -7,10 +7,9 @@ const MyQuestionsPage = () => {
     return (
         <div style={{
                         height: '100%',
-                        marginTop: '70px',
-                        marginBottom: '25px',
-                        background: ProjectColors.lightGray(),
-                        backgroundImage: `url(${background_projekt_orange})`,
+                        marginBottom: '80px',
+                        // background: ProjectColors.lightGray(),
+                        // backgroundImage: `url(${background_projekt_orange})`,
                         }}
             >
                 <ProjectQuestionSwipe/>

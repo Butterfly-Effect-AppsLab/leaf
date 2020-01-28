@@ -10,11 +10,11 @@ import history from "../utils/history";
 
 const useStyles = makeStyles({
         background: {
-            backgroundColor: ProjectColors.orange(),
-            backgroundImage: `url(${BackgroundProjectWhite})`,
+            // backgroundColor: ProjectColors.orange(),
+            // backgroundImage: `url(${BackgroundProjectWhite})`,
             align: "center",
-            marginBottom: "60px",
-            marginTop: "80px",
+            marginBottom: "80px",
+            // marginTop: "80px",
             height: "100%",
             width: "100%",
             margin: 0,

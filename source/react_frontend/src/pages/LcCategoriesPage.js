@@ -9,10 +9,10 @@ const LcCategoriesPage = (props) => {
     return (
         <div
             style={{
-                marginTop: '80px',
-                marginBottom: '60px',
-                background: ProjectColors.yellow(),
-                backgroundImage: `url(${Backround_cisty_zubok})`,
+                // marginTop: '80px',
+                marginBottom: '80px',
+                // background: ProjectColors.yellow(),
+                // backgroundImage: `url(${Backround_cisty_zubok})`,
                 height: "100%",
             }}
         >

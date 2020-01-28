@@ -59,8 +59,16 @@ const useStyles = makeStyles({
 
 const CategoryCard = (props) => {
     const stages = props.data.stages;
-    const {idCase} = props;
+    const {idCase, type} = props;
     const classes = useStyles();
+    // const [route, setRoute] = React.useState('');
+    // const [color, setColor] = React.useState('');
+    // const [lockIcon, setLockIcon] = React.useState('');
+    //
+    // if (type === "firm") {
+    //     setRoute('/LCFirma')
+    //
+    // }
 
     const handleClick = (idStage) => {
         history.push('/LCFirma', {idStage: idStage, idCase: idCase})

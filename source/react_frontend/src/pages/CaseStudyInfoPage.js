@@ -10,10 +10,9 @@ const CaseStudyInfoPage = (props) => {
             <div
                 style={{
                     height: '100%',
-                    marginTop: '80px',
-                    paddingBottom: '60px',
-                    background: ProjectColors.yellow(),
-                    backgroundImage: `url(${Backround_cisty_zubok})`,
+                    marginBottom: '80px',
+                    // background: ProjectColors.yellow(),
+                    // backgroundImage: `url(${Backround_cisty_zubok})`,
                 }}
             >
                     <CaseStudyInfo idCase={idCase}/>
