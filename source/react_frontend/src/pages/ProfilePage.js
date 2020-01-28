@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
             width: '100%',
             color: ProjectColors.darkGray(),
             marginBottom: "80px",
-            height: "100%",
+            height: "auto",
         },
         profile: {
             paddingRight: 10,

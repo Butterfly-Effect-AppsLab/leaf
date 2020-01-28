@@ -9,8 +9,10 @@ const CaseStudyInfoPage = (props) => {
         return (
             <div
                 style={{
-                    height: '100%',
+                    height: 'auto',
                     marginBottom: '80px',
+                    paddingLeft: '15px',
+                    paddingRight: '15px'
                     // background: ProjectColors.yellow(),
                     // backgroundImage: `url(${Backround_cisty_zubok})`,
                 }}

@@ -6,7 +6,7 @@ import * as ProjectColors from '../utils/colors';
 const MyQuestionsPage = () => {
     return (
         <div style={{
-                        height: '100%',
+                        height: 'auto',
                         marginBottom: '80px',
                         // background: ProjectColors.lightGray(),
                         // backgroundImage: `url(${background_projekt_orange})`,
