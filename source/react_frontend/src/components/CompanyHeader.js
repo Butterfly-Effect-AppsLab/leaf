@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
         margin: 5,
         fontSize: 17,
         fontWeight: "bold",
+        marginLeft: 0,
     },
     appBar: {
         position: 'fixed',
@@ -38,6 +39,7 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center",
         fontWeight: "bold",
         position: 'absolute',
+        paddingleft: '5px',
         left: 0,
         top: 0,
     },
@@ -97,7 +99,7 @@ function DenseAppBar(props) {
                     <div className={classes.head}>
                         <div className={classes.but} style={{color: textColor}}>
                             <IconButton className={classes.but} style={{color: textColor}}>
-                                <ArrowBackIosIcon/>
+                                <ArrowBackIosIcon viewBox="0 0 17 22" />
                                 <Typography className={classes.spat} onClick={() => {history.goBack()}}>
                                     Späť
                                 </Typography>
