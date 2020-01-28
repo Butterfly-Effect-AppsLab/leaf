@@ -65,9 +65,8 @@ const ProjectInfo = () => {
     };
 
     const handleClick = () => {
-        history.push('/Otazky')
+        history.push('/LcKategorie', {/*idProject: idProject,*/type: "project"})
     };
-
 
     return (
         <div className={classes.background}>

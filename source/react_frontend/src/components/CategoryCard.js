@@ -58,25 +58,27 @@ const useStyles = makeStyles({
 });
 
 const CategoryCard = (props) => {
-    const stages = props.data.stages;
-    const {idCase, type} = props;
     const classes = useStyles();
-    // const [route, setRoute] = React.useState('');
-    // const [color, setColor] = React.useState('');
-    // const [lockIcon, setLockIcon] = React.useState('');
-    //
-    // if (type === "firm") {
-    //     setRoute('/LCFirma')
-    //
-    // }
+    const {idCase, idProject, type} = props;
+    const stages = props.data.stages;
 
     const handleClick = (idStage) => {
-        history.push('/LCFirma', {idStage: idStage, idCase: idCase})
+        switch (type) {
+            case "firm":
+                history.push('/LCFirma', {idStage: idStage, idCase: idCase});
+                break;
+            case "project":
+                history.push('/Otazky', {idStage: idStage, idProject: idProject});
+                break;
+            default:
+                break;
+        }
+
     };
 
     useEffect(() => {
-        props.actionGetStages()
-    },
+            props.actionGetStages()
+        },
         []
     );
 
@@ -93,9 +95,12 @@ const CategoryCard = (props) => {
                         >
                             {name}
                         </Typography>
-                        <div>
-                            <LockIcon className={classes.lockicon}/>
-                        </div>
+                        {type === "firm" ? (
+                            <div>
+                                <LockIcon className={classes.lockicon}/>
+                            </div>
+                        ) : null}
+
                     </CardContent>
                 </CardActionArea>
             </Card>

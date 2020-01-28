@@ -43,7 +43,7 @@ const CaseStudyInfo = (props) => {
     const classes = useStyles();
 
     const handleClick = (idCase) => {
-        history.push('/LcKategorie', {idCase: idCase})
+        history.push('/LcKategorie', {idCase: idCase, type: "firm"})
     };
 
     return (
